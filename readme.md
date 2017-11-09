@@ -1,7 +1,6 @@
-# PFE - Stéphanie Cloutier
-## Site web pour le magasin [L'Autre Monde](https://www.facebook.com/Magasin.L.Autre.Monde/)
+# PFE - Site web pour le magasin [L'Autre Monde](https://www.facebook.com/Magasin.L.Autre.Monde/)
 
-### Le contexte
+## Le contexte
 Actuellement, et depuis plusieurs années, sont [site web](http://www.autre-monde.be/) est en travaux.
 > Votre boutique spécialisée en jeux de société, jeux de cartes, jeux de figurines et jeux de rôle. Venez également partager votre passion dans notre salle de jeux.
 
@@ -21,15 +20,15 @@ La seule partie qui comptera du paiement en ligne sera celle des précommandes.
 
 Bien que le site ne présentera pas un panier d'achat, il sera important de garder en tête une possible futur implémentation d'achat en ligne dans la structure de base de données (liens entre les produits et clients, par exemple).
 
-### Les rôles
+## Les rôles
 Deux rôles différents utiliseront le site web : l'administrateur et le client.
 
-#### L'administrateur
+### L'administrateur
 L'administrateur sera toujours seul, et ne disposera de personne pour l'aider dans ses tâches.
 
 Le catalogue du magasin ne peut objectivement pas être entièrement en ligne avec une seule personne qui y travaille à temps libre. Les différents produits seront ajoutés petit à petit, quand l'administrateur aura le temps de le faire.
 
-##### Les produits du catalogue
+#### Les produits du catalogue
 L'administrateur devra pouvoir ajouter de nouveaux produits à son catalogue via une interface d'administration (décrite plus tard dans ce cahier des charges).
 
 Lorsqu'il consultera son catalogue, il devra pouvoir indiquer un quantité de produits disponibles, et facilement pouvoir la modifier. Ces changements ne seront pas chiffrés pour les clients, mais plutôt donnés avec des indicatifs :
@@ -48,7 +47,7 @@ Une fiche technique de produit comptera plusieurs éléments administrables :
 - Possibilité d'avoir une vidéo provenant de youtube
 - Avis de clients
 
-##### Types de produits
+#### Types de produits
 - Produit classique du catalogue
 - Nouveauté du catalogue (mise en avant sur le site)
     - L'administrateur devra pouvoir indiquer une durée pendant laquelle le produit est considéré comme nouveauté
@@ -62,14 +61,14 @@ Une fiche technique de produit comptera plusieurs éléments administrables :
 
 Lors de l'ajout de nouveautés, l'administrateur souhaite que son résumé soit automatiquement publiée sur Facebook et Twitter.
 
-##### Le Calendrier
+#### Le Calendrier
 L'administrateur devra pouvoir gérer un calendrier d'évènements (journées découvertes, sorties de nouveautés, tournois, jeu libre, etc.). Ce calendrier sera consultable par les clients.
 
 L'administrateur souhaiterait une création d'évènement automatisée avec Facebook.
 
 L'administrateur aura la possibilité de créer des *semaines spéciales*, à thème, avec des produits mis de l'avant. Des réductions seront faites sur ces produits en magasin pour une durée déterminée par l'administrateur.
 
-#### Le client
+### Le client
 Le client qui visite le site pourra être un habitué du magasin, tout comme une personne inconnue au milieu.
 
 Le client pourra consulter les fiches de produits et les partager sur Facebook/Twitter.
@@ -91,54 +90,54 @@ Le client pourra se créer un compte sur le site, via lequel plusieurs options l
 
 Le client pourra consulter le calendrier des évènements à venir (et des évènements passé). Il pourra exporter le calendrier à son agenda.
 
-### Aspects graphiques / visuels
+## Aspects graphiques / visuels
 Le site devra être sobre, et miser sur le visuel des produits. Il devra reprendre l'identité visuelle existante de L'Autre Monde.
 Les nouveautés, produits à venir et précommandes devront être mis de l'avant sur le site.
 
-#### Sites web déjà existants, inspirations
+### Sites web déjà existants, inspirations
 Plusieurs magasins existants ont des sites web duquel il faudra s'inspirer, pour la forme (et la logique des catégorie) :
 - [La Case Départ](https://www.casedepart.be/)
 - [Philibert](https://www.philibertnet.com/)
 - [Ludocortex](https://www.ludocortex.fr/index.cfm)
 
-#### Éléments essentiels
+### Éléments essentiels
 - Barre de recherche
     - Avec suggestions lors des entrées de l'utilisateur
 - Implémentation de vidéo dans une fiche produit
 - Possibilité d'avoir les avis des clients (connectés) sur les produits.
 
-### Aspects techniques
+## Aspects techniques
 
-#### Langages et framework
+### Langages et framework
 *Front-End :* HTML, CSS, Javascript (*possible utilisation d'une library, à déterminer*)
 *Back-End :* Python & Django.
 J'aimerais réaliser le back-end avec Python pour plusieurs raisons. D'abord, par envie d'apprendre autre chose que ce qui a été vu en cours (PHP). Ensuite, cela posera un certain challenge technique que je souhaite réaliser. Finalement, après avoir survolé à quoi pouvait ressembler du templating avec Django, j'ai été conquise.
 
-#### La newsletter
+### La newsletter
 La newsletter en place actuellement est à chaque fois créé de toutes pièces et envoyer manuellement à plusieurs *mailing lists* par le gérant (avec l'outil *Thunderbird*).
 Ce qui sera à faire est une newsletter avec *MailChimp*, qui pourra procurer des statistiques au client ainsi qu'un système de doubles vérifications pour ceux qui s'y enregistrent.
 Il sera intéressant de proposer aux utilisateurs plusieurs catégories de newsletter (par exemple: nouveauté / jeux de plateau / évènements et tournoi / etc.).
 
-#### Base de données
+### Base de données
 Une base de données est déjà existante pour une partie de l'inventaire du magasin, mais sa structure sera sans doute à revoir. J'en ajouterai plus ici quand j'aurai un retour par rapport à ce qui existe déjà.
 
-#### Les précommandes
+### Les précommandes
 Les précommandes devront être payables (au prix entier) en ligne, à venir chercher en magasin à partir de leur date de sortie. (Notification par mail)
 *Renseignements à prendre sur les outils suivants :*
 - [Mollie](https://www.mollie.com/en/)
 - [Stripe](https://stripe.com/be)
 
-#### Autre
+### Autre
 L'administrateur souhaite que les liens externes soient ouverts dans un nouvel onglet.
 
-### Aspects logiques
+## Aspects logiques
 
-#### Panneau d'administration
+### Panneau d'administration
 Le panneau d'administration devra être sobre, clair, instinctif. Il doit rendre l'ajout de produit (tâche rébarbative) plus agréable et rapide.
 
-#### La logique des catégories
+### La logique des catégories
 L'inventaire du magasin étant vaste, il sera important de créer des catégories de produits instinctives, logiques, et liées. Cela permettra aux utilisateurs de s'y retrouver, peu importe ce qu'ils cherchent.
 *Les catégories sont en cours de réflexion, par moi, et par le gérant de L'Autre Monde. Un schéma sera créer quand une première version sera disponible*
 
-#### Le catalogue
+### Le catalogue
 Possibilité de surveiller un produit pour recevoir une notification par mail lorsqu'il est de nouveau en stock.
