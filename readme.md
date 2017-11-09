@@ -1,7 +1,7 @@
 # PFE - Site web pour le magasin [L'Autre Monde](https://www.facebook.com/Magasin.L.Autre.Monde/)
 
 ## Le contexte
-Actuellement, et depuis plusieurs années, sont [site web](http://www.autre-monde.be/) est en travaux.
+Actuellement, et depuis plusieurs années, son [site web](http://www.autre-monde.be/) est en travaux.
 > Votre boutique spécialisée en jeux de société, jeux de cartes, jeux de figurines et jeux de rôle. Venez également partager votre passion dans notre salle de jeux.
 
 Le magasin dispose d'une arrière-salle pour organiser des évènements tels que des tournois et découvertes de jeu, ou encore pour du jeu libre par les clients.
