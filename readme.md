@@ -14,7 +14,7 @@ Le projet du site web de l'Autre Monde doit être séparé en deux parties, chac
 - (La petite) Plateforme communautaire : compte client, calendrier, newsletter et réseaux sociaux (facebook, twitter)
 Le site aura d'abord et avant tout un caractère commercial.
 
-Le site web ne proposera pas directement d'achat de produits en ligne. Il sera plutôt une vitrine du catalogue de produits disponibles en magasin, avec une indication sur leurs disponibilités.
+Le site web ne proposera pas directement d'achat de produits en ligne. Il sera plutôt une vitrine du catalogue et donnera la possibilité de faire des précommandes.
 
 La seule partie qui comptera du paiement en ligne sera celle des précommandes.
 
@@ -141,3 +141,7 @@ L'inventaire du magasin étant vaste, il sera important de créer des catégorie
 
 ### Le catalogue
 Possibilité de surveiller un produit pour recevoir une notification par mail lorsqu'il est de nouveau en stock.
+
+
+# Liens vers le déroulement du projet
+[Design sur InVision](https://invis.io/N8FGH6LCFAP)
