@@ -1,0 +1,15 @@
+//  ITCSS
+// Settings : Global variables, config switches
+// Tools : Default mixins and functions
+// Generic : Ground-zero styles (Normalize, reset, box-sizing)
+// Base : Unclassed HTML elements (type selectors)
+// Blocks = THAT TOGETHER : 
+        // Objects : Cosmetic-free design patterns
+        // Components : Designed components, chunks of UI
+// Trumps : Helpers and overrides
+
+
+@import "generic/reset";
+@import "generic/box-sizing";
+
+@import "base/links.scss";
