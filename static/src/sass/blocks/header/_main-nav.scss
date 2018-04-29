@@ -1,0 +1,39 @@
+.main-nav {
+    display: flex;
+    text-transform: uppercase;
+    font-weight: 450;
+    letter-spacing: 1px;
+    font-size: 1.125rem;
+    display: flex;
+    align-items: stretch;
+    flex-grow: 1;
+}
+
+.main-nav__list {
+    display: flex;
+    align-items: stretch;
+    flex-grow: 1;
+}
+
+.main-nav__item {
+    display: flex;
+    align-items: stretch;
+    //justify-content: center;
+    flex-grow: 1;
+}
+
+.main-nav__link {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color $delay ease-in-out, color $delay ease-in-out;
+    &:hover {
+        background: white;
+        color: $am-blue;
+    }
+}
+
+.main-nav__sub-nav {
+    @include hidden;
+}

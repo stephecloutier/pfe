@@ -1,0 +1,8 @@
+body {
+    font: 400 16px $raleway;
+    color: $dark-blue;
+    width: 100%;
+    p:not(:last-of-type) {
+        margin-bottom: 0.4em;
+    }
+}

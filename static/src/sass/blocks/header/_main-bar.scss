@@ -1,0 +1,25 @@
+.main-bar {
+    background-color: $am-blue;
+    color: white;
+    min-height: 110px;
+    display: flex;
+}
+
+.main-bar__content {
+    @include max-width-margin;
+    width: 100%;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+}
+
+.main-bar__logo {
+    display: flex;
+    align-items: center;
+    margin-right: 100px;
+}
+
+.main-bar__svg {
+    fill: currentColor;
+    width: 300px;
+}

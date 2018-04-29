@@ -9,10 +9,20 @@
 // Trumps : Helpers and overrides
 
 @import "settings/colors";
+@import "settings/widths";
+@import "settings/transitions";
 @import "settings/fonts";
 @import "settings/font-families";
+
+@import "tools/mixins";
 
 @import "generic/reset";
 @import "generic/box-sizing";
 
+@import "base/body.scss";
 @import "base/links.scss";
+@import "base/hidden.scss";
+
+@import "blocks/header/header.scss";
+@import "blocks/header/main-bar.scss";
+@import "blocks/header/main-nav.scss";
