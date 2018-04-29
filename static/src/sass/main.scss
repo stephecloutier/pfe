@@ -23,10 +23,13 @@
 @import "base/links.scss";
 @import "base/hidden.scss";
 
+@import "blocks/social-medias.scss";
 @import "blocks/header/header.scss";
 @import "blocks/header/top-nav.scss";
 @import "blocks/header/search-bar.scss";
 @import "blocks/header/main-bar.scss";
 @import "blocks/header/main-nav.scss";
-
-@import "blocks/social-medias.scss";
+@import "blocks/footer/footer.scss";
+@import "blocks/footer/newsletter.scss";
+@import "blocks/footer/footer-content.scss";
+@import "blocks/footer/footer-useful.scss";

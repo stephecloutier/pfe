@@ -248,61 +248,74 @@
           </div>
         </main>
         <footer class="footer">
-            <div class="footer__newsletter newsletter">
-                <h2 class="newsletter__title">Newsletter</h2>
-                <div class="newsletter__description">Ne manquez rien des évènements et nouveautés du magasin&nbsp;!</div>
-                <div class="newsletter__form newsletter-form">
-                    <label for="email" class="newsletter-form__label">Votre email</label>
-                    <input id="email" type="email" name="email" class="newsletter-form__input">
-                    <button class="newsletter-form__button">S'inscrire</button>
+            <div class="footer__newsletter">
+                <div class="newsletter">
+                    <h2 class="newsletter__title">Newsletter</h2>
+                    <div class="newsletter__description">Ne manquez rien des évènements et nouveautés du magasin&nbsp;!</div>
+                    <div class="newsletter__form newsletter-form">
+                        <label for="email" class="newsletter-form__label">Votre email</label>
+                        <input id="email" type="email" name="email" class="newsletter-form__input">
+                        <button class="newsletter-form__button">S'inscrire</button>
+                    </div>
                 </div>
             </div>
-            <div class="footer__content footer-content">
+            <div class="footer__content">
                 <h2 class="hidden">Footer</h2>
-                <div class="footer-content__description footer-description">
-                    <h3 class="footer-description__title">L'Autre Monde</h3>
-                    <div class="footer-description__content">
-                        Votre boutique spécialisée en jeux de société, jeux de cartes, jeux de figurines et jeux de rôle. Venez également partager votre passion dans notre salle de jeux.
-                        <span class="footer-description__question">
-                            Des question&nbsp;? <a href="#" title="Aller sur la page contact" class="footer-description__link">Contactez-nous&nbsp!</a>
-                        </span>
-                    </div>
-                </div>
-                <div class="footer-content__facebook footer-facebook">
-                    <h3 class="footer-facebook__title">Page Facebook</h3>
-                    <!-- Widget facebook ici -->
-                </div>
-                <div class="footer-content__useful-infos footer-useful">
-                    <h3 class="footer-useful__title">Infos pratiques</h3>
-                    <div class="footer-useful__infos footer-useful-infos">
-                        <div class="footer-useful-infos__item footer-useful-infos__item--address">
-                            <div class="footer-useful-infos__icon">
-                                <!-- <svg></svg> -->
-                            </div>
-                            20 Rue Hors Château, 4000 Liège
-                        </div>
-                        <div class="footer-useful-infos__item footer-useful-infos__item--phone">
-                            <div class="footer-useful-infos__icon">
-                                <!-- <svg></svg> -->
-                            </div>
-                            <div class="footer-useful-infos__phone">+32 (0) 4 221 41 10</div>
-                        </div>
-                        <div class="footer-useful-infos__item footer-useful-infos__item--mail">
-                            <div class="footer-useful-infos__icon">
-                                <!-- <svg></svg> -->
-                            </div>
-                            <a href="mailto:info@autre-monde.be" class="footer-useful-infos__mail">info@autremonde.be</a>
-                        </div>
-                        <div class="footer-useful-infos__item footer-useful-infos__item--opening-hours">
-                            <div class="footer-useful-infos__icon">
-                                <!-- <svg></svg> -->
-                            </div>
-                            Ouvert du mardi au samedi de 10h30 à 18h, sauf le jeudi de 13h à 18h
+                <div class="footer-content">
+                    <div class="footer-content__column footer-content__description">
+                        <h3 class="footer-content__title">L'Autre Monde</h3>
+                        <div class="footer-content__text">
+                            Votre boutique spécialisée en jeux de société, jeux de cartes, jeux de figurines et jeux de rôle. Venez également partager votre passion dans notre salle de jeux.
+                            <span class="footer-content__text--line">
+                                Des questions&nbsp;? <a href="#" title="Aller sur la page contact" class="footer-content__link">Contactez-nous&nbsp!</a>
+                            </span>
                         </div>
                     </div>
-                </div>
-                <div class="footer-content__credentials">
-                    Design et développement par <a href="http://stephanie.cloutier.pro" title="Visiter le portfolio de Stéphanie Cloutier" target="_blank" class="footer-content__credentials--link">Stéphanie Cloutier</a>
+                    <div class="footer-content__column footer-content__facebook">
+                            <h3 class="footer-content__title">Page Facebook</h3>
+                            <!-- Widget facebook ici -->
+                        </div>
+                    <div class="footer-content__column footer-content__useful-infos footer-useful">
+                        <h3 class="footer-content__title">Infos pratiques</h3>
+                        <div class="footer-useful__infos footer-useful-infos">
+                            <div class="footer-useful-infos__item footer-useful-infos__item--address">
+                                <div class="footer-useful-infos__icon">
+                                    <svg class="footer-useful-infos__svg" width="19px" height="28px" viewBox="0 0 19 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <path d="M18.3177096,6.77811544 C18.2207718,6.41480425 18.0239201,6.02768598 17.8782918,5.68875172 C16.1356897,1.50085892 12.3281403,0 9.25373487,0 C5.13808643,0 0.605180964,2.75972144 0,8.44815657 L0,9.61033449 C0,9.65883508 0.0167156073,10.0945173 0.0404593677,10.3124533 C0.379710216,13.0234209 2.51886473,15.9045838 4.11647156,18.6155513 C5.83526655,21.5200781 7.61877119,24.3773072 9.38575018,27.2333333 C10.4753039,25.3695431 11.5609319,23.4812493 12.6256654,21.6657065 C12.9158458,21.1328965 13.2526906,20.6004031 13.5431876,20.0918434 C13.7368101,19.7532257 14.1067062,19.414608 14.2756985,19.0995442 C15.9944301,15.9527678 18.7609265,12.7816778 18.7609265,9.65877176 L18.7609265,8.3758489 C18.7609898,8.03729454 18.3413267,6.85111959 18.3177096,6.77811544 Z M9.32908174,12.6122423 C8.11928966,12.6122423 6.79508432,12.0073146 6.14146608,10.3367036 C6.044085,10.0707735 6.05193627,9.53783688 6.05193627,9.48901971 L6.05193627,8.73859025 C6.05193627,6.60886992 7.86026106,5.64037776 9.43342765,5.64037776 C11.3701587,5.64037776 12.8680417,7.1898639 12.8680417,9.12659495 C12.8680417,11.0632627 11.2658128,12.6122423 9.32908174,12.6122423 Z" id="Facebook_Places"></path>
+                                    </svg>
+                                </div>
+                                20 Rue Hors Château, 4000 Liège
+                            </div>
+                            <div class="footer-useful-infos__item footer-useful-infos__item--phone">
+                                <div class="footer-useful-infos__icon">
+                                   <svg class="footer-useful-infos__svg" width="25px" height="26px" viewBox="0 0 25 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <path d="M24.9880838,19.7298387 C25.0410585,20.1359547 24.9173787,20.4890615 24.6175632,20.7891589 L21.0976178,24.2847858 C20.9388233,24.4613391 20.7315514,24.6115393 20.4757158,24.7349969 C20.2198802,24.8586275 19.9684987,24.9380765 19.7215715,24.9733439 C19.7039277,24.9733439 19.6508664,24.9778876 19.562604,24.9867152 C19.4745145,24.9954996 19.3598296,25 19.2186789,25 C18.8833595,25 18.3407683,24.9426202 17.5909052,24.8278172 C16.8410422,24.7130142 15.9236059,24.4304856 14.8385964,23.980361 C13.7533275,23.5301499 12.5227131,22.8547468 11.1465371,21.9544112 C9.77036109,21.0541188 8.30587939,19.8181587 6.75322176,18.2467905 C5.51815319,17.0285722 4.49481066,15.86332 3.68319417,14.7510771 C2.87157768,13.6387476 2.21875572,12.6103242 1.72472829,11.6657637 C1.23065761,10.7212032 0.860137041,9.86491937 0.613123327,9.09691222 C0.366109613,8.32890507 0.198493163,7.66682995 0.11027398,7.11068684 C0.0220547959,6.55454374 -0.0132328776,6.11757416 0.00441095919,5.7997781 C0.0220547959,5.48198204 0.0308767143,5.30542867 0.0308767143,5.270118 C0.0661643878,5.02294328 0.145561653,4.77135474 0.26906851,4.51535235 C0.392575368,4.25934997 0.54254798,4.05189977 0.718986347,3.89300174 L4.23893178,0.37076207 C4.48594549,0.123587357 4.76824688,0 5.08583594,0 C5.31520582,0 5.51810994,0.0662075125 5.69454831,0.198622538 C5.87098668,0.331037563 6.02095929,0.494349427 6.14446615,0.68855813 L8.97630195,6.06460815 C9.13509648,6.34709353 9.17920607,6.65606193 9.10863072,6.99151332 C9.03805537,7.32696472 8.88808276,7.60945011 8.65871288,7.83896948 L7.36189088,9.13663673 C7.32660321,9.1719474 7.2957265,9.22932725 7.26926074,9.30877626 C7.24279498,9.38822528 7.22956211,9.45443279 7.22956211,9.5073988 C7.30013745,9.87816087 7.45893198,10.3018889 7.7059457,10.778583 C7.91767174,11.2023111 8.24408272,11.7187297 8.68517864,12.3278388 C9.12627456,12.9369479 9.75263076,13.6387043 10.5642473,14.4331945 C11.3582199,15.2454265 12.0639734,15.8765182 12.6815077,16.3268159 C13.2989122,16.7768539 13.8151674,17.1080212 14.2297976,17.3198853 C14.6444277,17.5317493 14.9620168,17.6597505 15.1825215,17.703759 L15.513257,17.7700098 C15.5485446,17.7700098 15.6060168,17.756725 15.6853276,17.7302853 C15.7647249,17.703759 15.8220674,17.6729055 15.8573983,17.6375515 L17.3659031,16.1015372 C17.6836651,15.8190951 18.0540127,15.6778524 18.477508,15.6778524 C18.7775397,15.6778524 19.0156018,15.7307752 19.1920402,15.8367504 L19.2184627,15.8367504 L24.3263102,18.855813 C24.6969605,19.0855055 24.9174652,19.376732 24.9880838,19.7298387 Z" id="Shape"></path>
+                                   </svg> 
+                                </div>
+                                <div class="footer-useful-infos__phone">+32 (0) 4 221 41 10</div>
+                            </div>
+                            <div class="footer-useful-infos__item footer-useful-infos__item--mail">
+                                <div class="footer-useful-infos__icon">
+                                    <svg class="footer-useful-infos__svg" width="25px" height="18px" viewBox="0 0 25 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <path d="M12.4809889,9.98632091 L12.4863187,9.98632091 C12.674082,9.98632091 12.8596483,9.93184312 13.0097775,9.83265203 L13.0505036,9.8064913 C13.059373,9.80071397 13.0686493,9.79546555 13.0779663,9.78924068 L13.5522771,9.39682967 L24.873365,0.0544777949 C24.8499302,0.0221328756 24.8100178,0 24.7675015,0 L0.131536005,0 C0.100981245,0 0.072623498,0.0110664378 0.0500430827,0.0296596807 L11.8945898,9.79229208 C12.0438646,9.91589443 12.2568529,9.98632091 12.4809889,9.98632091 Z M0,1.32378194 L0,15.1718828 L8.48494706,8.31756719 L0,1.32378194 Z M16.4234074,8.36407064 L24.899485,15.1754224 L24.899485,1.36983785 L16.4234074,8.36407064 Z M13.7285264,10.5872854 C13.3906338,10.864516 12.948668,11.0173305 12.4845286,11.0173305 C12.0186397,11.0173305 11.5770807,10.8654111 11.2400832,10.5894825 L9.29674351,8.98672051 L0,16.4956647 L0,16.5195471 C0,16.5908686 0.0611095204,16.6515306 0.133285479,16.6515306 L24.767949,16.6515306 C24.8387824,16.6515306 24.8994443,16.5908686 24.8994443,16.5190995 L24.8994443,16.4969667 L15.6107159,9.03371218 L13.7285264,10.5872854 Z" id="Shape"></path>
+                                    </svg>
+                                </div>
+                                <a href="mailto:info@autre-monde.be" class="footer-useful-infos__mail">info@autremonde.be</a>
+                            </div>
+                            <div class="footer-useful-infos__item footer-useful-infos__item--opening-hours">
+                                <div class="footer-useful-infos__icon">
+                                    <svg class="footer-useful-infos__svg" width="25px" height="25px" viewBox="0 0 25 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <path d="M12.3928571,0 C5.55943878,0 0,5.55943878 0,12.3928571 C0,19.2262755 5.55943878,24.7857143 12.3928571,24.7857143 C19.2262755,24.7857143 24.7857143,19.2262755 24.7857143,12.3928571 C24.7857143,5.55943878 19.2262755,0 12.3928571,0 Z M12.3928571,22.1487245 C7.01352041,22.1487245 2.63673469,17.772449 2.63673469,12.3928571 C2.63673469,7.01326531 7.01352041,2.6369898 12.3928571,2.6369898 C17.7721939,2.6369898 22.1489796,7.01326531 22.1489796,12.3928571 C22.1489796,17.772449 17.7721939,22.1487245 12.3928571,22.1487245 Z" id="Shape"></path>
+                                        <path d="M18.8515306,12.0102041 L13.2821429,12.0102041 L13.2821429,5.31377551 C13.2821429,4.7502551 12.8252551,4.29336735 12.2617347,4.29336735 C11.6982143,4.29336735 11.2413265,4.7502551 11.2413265,5.31377551 L11.2413265,13.0306122 C11.2413265,13.5941327 11.6982143,14.0510204 12.2617347,14.0510204 L18.8515306,14.0510204 C19.415051,14.0510204 19.8719388,13.5941327 19.8719388,13.0306122 C19.8719388,12.4670918 19.415051,12.0102041 18.8515306,12.0102041 Z" id="Shape"></path>
+                                    </svg>
+                                </div>
+                                Ouvert du mardi au samedi de 10h30 à 18h, sauf le jeudi de 13h à 18h
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer-content__credentials">
+                        Design et développement par <a href="http://stephanie.cloutier.pro" title="Visiter le portfolio de Stéphanie Cloutier" target="_blank" class="footer-content__credentials--link">Stéphanie Cloutier</a>
+                    </div>
                 </div>
             </div>
         </footer>

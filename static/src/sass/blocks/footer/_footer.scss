@@ -1,0 +1,12 @@
+.footer  {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer__newsletter {
+    background-color: $am-blue;
+}
+
+.footer__content {
+    background-color: $dark-blue;
+}
