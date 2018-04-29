@@ -250,12 +250,16 @@
         <footer class="footer">
             <div class="footer__newsletter">
                 <div class="newsletter">
-                    <h2 class="newsletter__title">Newsletter</h2>
-                    <div class="newsletter__description">Ne manquez rien des évènements et nouveautés du magasin&nbsp;!</div>
+                    <div class="newsletter__text">
+                            <h2 class="newsletter__title">Newsletter</h2>
+                            <div class="newsletter__description">Ne manquez rien des évènements et nouveautés du magasin&nbsp;!</div>
+                    </div>
                     <div class="newsletter__form newsletter-form">
                         <label for="email" class="newsletter-form__label">Votre email</label>
-                        <input id="email" type="email" name="email" class="newsletter-form__input">
-                        <button class="newsletter-form__button">S'inscrire</button>
+                        <div class="newsletter-form__input-button">
+                            <input id="email" type="email" name="email" placeholder="jeanvaljean@mail.com" class="newsletter-form__input">
+                            <button class="newsletter-form__button">S'inscrire</button>
+                        </div>
                     </div>
                 </div>
             </div>

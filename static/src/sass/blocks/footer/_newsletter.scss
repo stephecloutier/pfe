@@ -3,4 +3,64 @@
     width: 100%;
     max-width: $max-width;
     margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    padding: 30px 0;
+}
+
+.newsletter__text {
+    max-width: 400px;
+    margin-right: 25px;
+}
+
+.newsletter__title {
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.newsletter__description {
+    font-size: 1.3rem;
+}
+
+.newsletter__form {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.newsletter-form__label {
+    margin-bottom: 5px;   
+}
+
+.newsletter-form__input-button {
+    position: relative;
+}
+
+.newsletter-form__input {
+    @include default-input;    
+    width: 600px;
+    padding-right: 140px;
+}
+
+::placeholder {
+    color: $neutral-gray;
+    font-style: italic;
+}
+
+.newsletter-form__button  {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: $accent-red;
+    color: white;
+    font-size: $button-font-size;
+    width: 130px;
+    cursor: pointer;
 }
