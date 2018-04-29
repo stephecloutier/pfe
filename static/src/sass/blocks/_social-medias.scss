@@ -1,0 +1,18 @@
+.social-medias {
+    color: $am-blue;
+    display: flex;
+    align-items: center;
+}
+
+.social-medias__link {
+    display: flex;
+    align-items: center;
+
+    &:first-child {
+        margin-right: 20px;
+    }
+}
+
+.social-medias__icon {
+    fill: currentColor;    
+}
