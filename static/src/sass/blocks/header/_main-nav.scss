@@ -18,8 +18,16 @@
 .main-nav__item {
     display: flex;
     align-items: stretch;
-    //justify-content: center;
     flex-grow: 1;
+    position: relative;
+
+    &:hover {
+        .main-nav__link {
+            background: white;
+            color: $am-blue;
+        }
+        
+    }
 }
 
 .main-nav__link {
@@ -28,12 +36,95 @@
     align-items: center;
     justify-content: center;
     transition: background-color $delay ease-in-out, color $delay ease-in-out;
-    &:hover {
-        background: white;
-        color: $am-blue;
-    }
+    z-index: 10;
+
+    // &:hover {
+    //     background: white;
+    //     color: $am-blue;
+    // }
 }
 
 .main-nav__sub-nav {
-    @include hidden;
+    // @include hidden;
+    // //max-height: 0;
+    // width: 100%;
+    // display: flex;
+    // flex-direction: column;
+    // position: absolute;
+    // top: 110px; // main-nav height
+    // left: 0;
+    // transition: max-height $delay ease-in-out;
+    //border: 2px solid $light-blue-gray;
+    padding: 5px 0;
+    box-shadow: 0 2px 4px 0 $t-gray-40;
+    font-size: 1rem;
+    visibility: hidden; /* hides sub-menu */
+    opacity: 0;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 150%;
+    border-radius: 2px;
+    transform: translateY(-2em);
+    z-index: -1;
+    transition: all 0.3s ease-in-out 0s, visibility 0s linear 0.3s, z-index 0s linear 0.01s;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-nav__sub-item {
+    padding: 5px 10px;
+    display: flex;
+}
+
+.main-nav__sub-link {
+    width: 100%;
+    padding: 8px;
+    border-radius: 2px;
+    transition: background-color $delay ease-in-out, color $delay ease-in-out;
+}
+
+.main-nav__sub-nav:hover {
+    // line-height: 1;
+    // text-indent: 0;
+    //max-height: 500px;
+    background-color: white;
+    color: $am-blue;
+
+    visibility: visible; /* shows sub-menu */
+    opacity: 1;
+    z-index: 1;
+    transform: translateY(0%);
+    //transition-delay: 0s, 0s, 0.3s;
+    transition: all 0.3s ease-in-out 0s, visibility 0s linear 0s, z-index 0s linear 0s;
+
+    .main-nav__sub-item:hover {
+        .main-nav__sub-link {
+            color: white;
+            background-color: $am-blue;
+        }
+    }
+}
+
+.main-nav__link:hover, .main-nav__link:focus { //
+    ~ .main-nav__sub-nav { //
+        // line-height: 1;
+        // text-indent: 0;
+        //max-height: 500px;
+        background-color: white;
+        color: $am-blue;
+
+        visibility: visible; /* shows sub-menu */
+        opacity: 1;
+        z-index: 1;
+        transform: translateY(0%);
+        transition-delay: 0s, 0s, 0.3s;
+
+        .main-nav__sub-item:hover {
+            .main-nav__sub-link {
+                color: white;
+                background-color: $am-blue;
+            }
+        }
+    } 
 }
