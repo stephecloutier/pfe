@@ -2,3 +2,25 @@
     background-color: white;
     box-shadow: 0 0 7px 6px $t-gray-10;
 }
+
+.product__title {
+    text-transform: uppercase;
+    color: $am-blue;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.product__short-desc {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-height: 50px;
+    display: block;
+}
+
+.product__arrow {
+    color: $neutral-gray;
+}
+
+.product__arrow-icon {
+    fill: currentColor;
+}
