@@ -20,23 +20,31 @@
 @import "generic/reset";
 @import "generic/box-sizing";
 
-@import "base/body.scss";
-@import "base/links.scss";
-@import "base/hidden.scss";
+@import "base/body";
+@import "base/links";
+@import "base/hidden";
 
 // blocks 
 
-@import "blocks/header/social-medias.scss";
-@import "blocks/header/header.scss";
-@import "blocks/header/top-nav.scss";
-@import "blocks/header/top-nav-user.scss";
-@import "blocks/header/search-bar.scss";
-@import "blocks/header/main-bar.scss";
-@import "blocks/header/main-nav.scss";
+@import "blocks/header/social-medias";
+@import "blocks/header/header";
+@import "blocks/header/top-nav";
+@import "blocks/header/top-nav-user";
+@import "blocks/header/search-bar";
+@import "blocks/header/main-bar";
+@import "blocks/header/main-nav";
 
-@import "blocks/footer/footer.scss";
-@import "blocks/footer/newsletter.scss";
-@import "blocks/footer/footer-content.scss";
-@import "blocks/footer/footer-useful.scss";
+@import "blocks/footer/footer";
+@import "blocks/footer/newsletter";
+@import "blocks/footer/footer-content";
+@import "blocks/footer/footer-useful";
 
+@import "blocks/home/home";
 @import "blocks/home/banner";
+@import "blocks/home/products";
+
+@import "blocks/products/h-list";
+@import "blocks/products/product";
+@import "blocks/products/product-h-thumb";
+
+@import "blocks/titles/titles";

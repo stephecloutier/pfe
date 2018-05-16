@@ -1,0 +1,25 @@
+.product-h-thumb {
+    padding: 30px;
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+    max-width: 550px;
+    min-height: 150px;
+    transition: all 0.12s ease-in ;
+
+    .product__img-wrapper {
+        margin-right: 10px;
+    }
+
+    .product__arrow {
+        position: absolute;
+        right: 0;
+        top: calc(50% - 4px);
+    }
+}
+.product-h-thumb:hover, .product-h-thumb:focus {
+    min-height: 190px;
+    position: relative;
+    margin: 0;
+    box-shadow: 0 0 7px 6px $t-gray-25;
+}

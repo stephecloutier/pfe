@@ -1,0 +1,15 @@
+.products-h-list__title {
+    margin-bottom: 20px;
+}
+
+.products-h-list__list {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: space-between;
+}
+
+.products-h-list__product {
+    //margin-bottom: 40px;
+    margin: 20px 0;
+}
