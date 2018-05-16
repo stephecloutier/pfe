@@ -23,11 +23,29 @@
 
 .top-nav__login {
     color: $am-blue;
-    font-weight: 600;
-    text-decoration: underline;
     flex-basis: 0%;
     flex-grow: 1;
     margin-left: 50px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.top-nav__login-icon {
+    width: 35px;
+    height: 35px;
+    fill: currentColor;
+}
+
+.top-nav__login-links {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+}
+
+.top-nav__login-link {
+    font-weight: 600;
+    text-decoration: underline;
 }
 
 .top-nav__user {
