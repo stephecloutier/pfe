@@ -25,6 +25,9 @@
 @import "base/hidden";
 
 // blocks 
+@import "blocks/titles/titles";
+
+@import "blocks/cta/cta";
 
 @import "blocks/header/social-medias";
 @import "blocks/header/header";
@@ -47,4 +50,8 @@
 @import "blocks/products/product";
 @import "blocks/products/product-h-thumb";
 
-@import "blocks/titles/titles";
+@import "blocks/events/home-events";
+@import "blocks/events/event-home";
+@import "blocks/events/event-home-infos";
+@import "blocks/events/event-home-tips";
+

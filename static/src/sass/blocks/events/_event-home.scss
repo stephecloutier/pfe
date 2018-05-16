@@ -1,0 +1,51 @@
+.event-home {
+    background-color: white;
+    border-radius: 1px;
+    display: flex;
+    align-items: stretch;
+    box-shadow: 0 0 7px 6px $t-gray-10;
+    height: 150px;
+    width: 700px;
+    cursor: pointer;
+    transition: width $delay ease-in;
+    position: relative;
+}
+
+.event-home__infos {
+    padding: 20px;
+    max-width: 530px;
+}
+
+.event-home__date {
+    background-color: $am-blue;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 150px;
+    font-size: 2.5rem;
+    line-height: 1;
+}
+
+.event-home__arrow {
+    align-self: center;
+    color: $blue-gray;
+    opacity: 0;
+    transition: opacity $delay ease-in;
+    position: absolute;
+    right: 20px;
+    top: calc(50% - 10px);
+}
+
+.event-home__arrow-icon {
+    fill: currentColor;
+}
+
+.event-home:hover, .event-home:focus {
+    width: 750px;
+
+    .event-home__arrow {
+        opacity: 1;
+    }
+}
