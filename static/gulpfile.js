@@ -11,7 +11,7 @@ var gulp = require("gulp"),
     sass = require("gulp-sass"),
     autoprefixer = require("gulp-autoprefixer"),
     csso = require("gulp-csso"),
-    // babel = require("gulp-babel"),
+    babel = require("gulp-babel"),
     sourcemaps = require("gulp-sourcemaps")
 
 // --- Tasks for images
@@ -39,21 +39,21 @@ var gulp = require("gulp"),
 
 // --- Tasks for js
 
-    // gulp.task("js", function(){
-    //     gulp.src("src/js/**/*.js")
-    //         .pipe(babel())
-    //         .pipe(gulp.dest("assets/js"))
-    // })
+    gulp.task("js", function(){
+        gulp.src("src/js/**/*.js")
+            .pipe(babel())
+            .pipe(gulp.dest("assets/js"))
+    })
 
 
 // --- Watch tasks
 
     gulp.task("watch", function(){
         gulp.watch("src/sass/**/*.scss", ["css"]);
-        // gulp.watch("src/js/**/*.js", ["js"]);
+        gulp.watch("src/js/**/*.js", ["js"]);
    });
 
 // --- Aliases
 
-    gulp.task("default", ["images", "css"]);
+    gulp.task("default", ["images", "js", "css"]);
     gulp.task("work", ["default", "watch"]);
