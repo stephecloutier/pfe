@@ -12,6 +12,18 @@
     font-style: italic;
     font-weight: 450;
     color: $neutral-gray;
+
+    &--label-style {
+        font-size: 0.75rem;
+        top: -8px;
+        padding: 0 4px;
+        background-color: white;
+        transition: all 0.2s ease-in-out;
+    }
+
+    &--placeholder-style {
+        transition: all 0.2s ease-in-out;
+    }
 }
 
 .search-bar__input {
