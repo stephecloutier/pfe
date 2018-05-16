@@ -10,11 +10,46 @@
     align-items: center;
 }
 
+.top-nav__social-medias {
+    flex-basis: 0%;
+    flex-grow: 1;
+}
+
+.top-nav__search-bar {
+    flex-basis: 0%;
+    flex-grow: 1;
+    margin-left: 50px;
+}
+
 .top-nav__login {
     color: $am-blue;
     font-weight: 600;
     text-decoration: underline;
+    flex-basis: 0%;
+    flex-grow: 1;
+    margin-left: 50px;
 }
 
 .top-nav__user {
+    flex-basis: 0%;
+    flex-grow: 1;
+    margin-left: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.top-nav-user__avatar {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    overflow: hidden;
+
+}
+
+.top-nav-user__img {
+    height: 100%;
+    width: auto;
 }
