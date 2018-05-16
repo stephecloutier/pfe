@@ -1,26 +1,26 @@
 .product-h-thumb {
     padding: 30px;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     position: relative;
     max-width: 550px;
-    height: 150px;
+    height: 160px;
     transition: all 0.12s ease-in;
     overflow: hidden;
 
     .product__img-wrapper {
         margin-right: 10px;
     }
-
+    
     .product__arrow {
         position: absolute;
-        right: 15px;
+        right: 20px;
         top: calc(50% - 10px);
     }
 }
 .product-h-thumb:hover, .product-h-thumb:focus {
-    height: 190px;
+    height: 180px;
     position: relative;
-    margin: 0;
+    margin: 10px 0;
     box-shadow: 0 0 7px 6px $t-gray-25;
 }

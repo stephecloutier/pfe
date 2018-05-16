@@ -1,6 +1,13 @@
 .product {
     background-color: white;
     box-shadow: 0 0 7px 6px $t-gray-10;
+    position: relative;
+}
+
+.product__infos {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
 .product__title {
@@ -8,13 +15,14 @@
     color: $am-blue;
     font-weight: 500;
     font-size: 1rem;
+    margin-bottom: 5px;
 }
 
 .product__short-desc {
     text-overflow: ellipsis;
     overflow: hidden;
     max-height: 50px;
-    display: block;
+   // display: block;
 }
 
 .product__arrow {
@@ -23,4 +31,35 @@
 
 .product__arrow-icon {
     fill: currentColor;
+}
+
+.product__more-infos {
+    display: flex;
+    opacity: 0;
+    transition: opacity $delay ease-out;
+    font-size: 0.8rem;
+    margin-top: 8px;
+}
+
+.product__more-info {
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    color: $am-blue;
+    
+    &:not(:last-child) {
+        margin-right: 15px;
+    }
+}
+
+.product__more-info__svg {
+    margin-right: 5px;
+    fill: $accent-red;
+}
+
+.product:hover, .product:focus {
+    
+    .product__more-infos {
+        opacity: 1;
+    }
 }

@@ -1,3 +1,13 @@
+.products-h-list {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    &:first-child {
+        margin-right: 100px;
+    }
+}
+
 .products-h-list__title {
     margin-bottom: 20px;
 }
@@ -10,6 +20,13 @@
 }
 
 .products-h-list__product {
-    //margin-bottom: 40px;
     margin: 20px 0;
+}
+
+.products-h-list__link {
+    text-align: right;
+    margin-top: 25px;
+    font-weight: 600;
+    color: $am-blue;
+    text-decoration: underline;
 }
