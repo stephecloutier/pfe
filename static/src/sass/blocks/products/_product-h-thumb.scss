@@ -17,7 +17,19 @@
         right: 20px;
         top: calc(50% - 10px);
     }
+
+    border-left-width: 5px;
+    border-left-style: solid;
 }
+
+.product-h-thumb--news {
+    border-color: $new-product;
+}
+
+.product-h-thumb--coming-soon {
+    border-color: $coming-soon-product;
+}
+
 .product-h-thumb:hover, .product-h-thumb:focus {
     height: 180px;
     position: relative;
