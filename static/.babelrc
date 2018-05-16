@@ -1,0 +1,6 @@
+{
+    "presets": ["env"],
+    "plugins": ["iife-wrap"],
+    "compact": false,
+    "comments": false
+}
