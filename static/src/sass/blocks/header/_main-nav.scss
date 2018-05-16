@@ -3,7 +3,7 @@
     text-transform: uppercase;
     font-weight: 450;
     letter-spacing: 1px;
-    font-size: 1.125rem;
+    font-size: 1rem;
     display: flex;
     align-items: stretch;
     flex-grow: 1;
@@ -37,24 +37,9 @@
     justify-content: center;
     transition: background-color $delay ease-in-out, color $delay ease-in-out;
     z-index: 10;
-
-    // &:hover {
-    //     background: white;
-    //     color: $am-blue;
-    // }
 }
 
 .main-nav__sub-nav {
-    // @include hidden;
-    // //max-height: 0;
-    // width: 100%;
-    // display: flex;
-    // flex-direction: column;
-    // position: absolute;
-    // top: 110px; // main-nav height
-    // left: 0;
-    // transition: max-height $delay ease-in-out;
-    //border: 2px solid $light-blue-gray;
     padding: 5px 0;
     box-shadow: 0 2px 4px 0 $t-gray-40;
     font-size: 1rem;
@@ -63,7 +48,7 @@
     position: absolute;
     top: 100%;
     left: 0;
-    width: 150%;
+    width: 130%;
     border-radius: 2px;
     transform: translateY(-2em);
     z-index: -1;
@@ -75,6 +60,7 @@
 .main-nav__sub-item {
     padding: 5px 10px;
     display: flex;
+    font-size: 0.8em;
 }
 
 .main-nav__sub-link {
@@ -85,9 +71,6 @@
 }
 
 .main-nav__sub-nav:hover {
-    // line-height: 1;
-    // text-indent: 0;
-    //max-height: 500px;
     background-color: white;
     color: $am-blue;
 
@@ -95,7 +78,6 @@
     opacity: 1;
     z-index: 1;
     transform: translateY(0%);
-    //transition-delay: 0s, 0s, 0.3s;
     transition: all 0.3s ease-in-out 0s, visibility 0s linear 0s, z-index 0s linear 0s;
 
     .main-nav__sub-item:hover {
