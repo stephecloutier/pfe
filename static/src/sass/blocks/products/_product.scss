@@ -22,7 +22,6 @@
     text-overflow: ellipsis;
     overflow: hidden;
     max-height: 50px;
-   // display: block;
 }
 
 .product__arrow {
@@ -39,6 +38,7 @@
     transition: opacity $delay ease-out;
     font-size: 0.8rem;
     margin-top: 8px;
+    //height: 0;
 }
 
 .product__more-info {
@@ -58,8 +58,21 @@
 }
 
 .product:hover, .product:focus {
-    
+
     .product__more-infos {
         opacity: 1;
+        height: auto;
+    }
+}
+
+@media screen and (max-width: 450px) { 
+    .product__more-infos {
+        opacity: 1;
+        height: auto;
+        flex-wrap: wrap;   
+    }
+
+    .product__more-info {
+        margin-bottom: 3px;
     }
 }

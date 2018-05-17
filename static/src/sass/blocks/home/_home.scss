@@ -18,3 +18,12 @@
     width: 100%;
     padding: 20px 0 60px;
 }
+
+@media screen and (max-width: 600px) {
+
+    .home__products {
+        flex-direction: column;
+        padding: 40px 10px;
+        align-items: stretch;
+    }
+}

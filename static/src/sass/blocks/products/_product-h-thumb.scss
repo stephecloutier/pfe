@@ -37,3 +37,37 @@
     margin: 10px 0;
     box-shadow: 0 0 7px 6px $t-gray-25;
 }
+
+@media screen and (max-width: 600px) {
+    .product-h-thumb {
+        padding: 20px;
+        max-width: 100%;
+
+        .product__arrow {
+            right: 10px;
+        }
+    }
+}
+
+@media screen and (max-width: 450px) {
+
+    .product-h-thumb {
+        padding: 10px;
+        //flex-direction: column;
+        max-width: 100%;
+        min-height: 200px;
+        height: auto;
+        //align-items: flex-start;
+        //justify-content: center;
+        position: relative;
+
+        .product__arrow {
+            display: none;
+        }
+    }
+
+    .product-h-thumb:hover, .product-h-thumb:focus {
+        height: auto;
+        margin: 10px 0;
+    }
+}
