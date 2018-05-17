@@ -9,6 +9,7 @@
     cursor: pointer;
     transition: width $delay ease-in;
     position: relative;
+    max-width: 100%;
 }
 
 .event-home__infos {
@@ -47,5 +48,49 @@
 
     .event-home__arrow {
         opacity: 1;
+    }
+}
+
+@media screen and (max-width: 1220px) {
+    .event-home:hover, .event-home:focus {
+        width: 730px;
+    }
+}
+
+@media screen and (max-width: 1060px) {
+    .event-home {
+        width: 100%;
+    }
+
+    .event-home:hover, .event-home:focus {
+        width: 100%;
+    }
+
+    .event-home__infos {
+        max-width: 650px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .event-home {
+        padding-right: 30px;
+        height: auto;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .event-home {
+        flex-direction: column;
+        align-items: stretch;
+        padding-right: 0;
+    }
+
+    .event-home__date {
+        font-size: 1.8rem;
+        padding: 15px 0;
+    }
+
+    .event-home__arrow {
+        display: none;
     }
 }

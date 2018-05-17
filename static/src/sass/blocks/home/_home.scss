@@ -8,14 +8,14 @@
     align-items: flex-start;
     max-width: $max-width;
     margin: 0 auto;
-    width: 100%;
+    max-width: 100%;
     padding: 40px 0;
 }
 
 .home__events {
     max-width: $max-width;
     margin: 0 auto;
-    width: 100%;
+    max-width: 100%;
     padding: 20px 0 60px;
 }
 
@@ -24,7 +24,7 @@
         padding: 40px 10px;
     }
     .home__events {
-        padding: 20px 10px 60px;
+        margin: 0 10px;
     }
 }
 
