@@ -18,7 +18,7 @@ const manageScroll = function() {
 
     let width = window.screen.width;
     //console.log(width);
-    if (width <= 720) {
+    if (width <= 750) {
         if(scrollTop >= 70) {
             topNav.classList.add('top-nav--sticky');
         } else {

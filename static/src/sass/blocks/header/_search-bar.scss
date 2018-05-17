@@ -54,7 +54,17 @@
     fill: currentColor;
 }
 
-@media screen and (max-width: 720px){
+@media screen and (max-width: 900px) {
+    .search-bar__label {
+        right: 240px;
+
+        &--label-style {
+            right: 270px;
+        }
+    }
+}
+
+@media screen and (max-width: 750px){
 
     .search-bar__input {
         min-width: 0;

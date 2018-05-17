@@ -126,7 +126,13 @@
     } 
 }
 
-@media screen and (max-width: 720px){
+@media screen and (max-width: 900px) {
+    .main-nav {
+        font-size: 0.9rem;
+    }
+}
+
+@media screen and (max-width: 750px){
     .main-nav {
         height: 0;
         width: 0;

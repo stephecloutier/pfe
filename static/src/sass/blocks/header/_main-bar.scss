@@ -40,13 +40,37 @@
     height: 55px;
 }
 
-@media screen and (max-width: 720px){
+@media screen and (max-width: 1220px){
+    .main-bar {
+        padding: 0 0 0 10px;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .main-bar__logo {
+        margin-right: 50px;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .main-bar {
+        height: 70px;
+    }
+
+    .main-bar__logo {
+        margin-right: 25px;
+    }
+    .main-bar__svg {
+        max-width: 180px;
+    }
+}
+
+@media screen and (max-width: 750px){
     .main-bar {
         position: relative;
         top: 0;
         left: 0;
         background-color: transparent;
-        padding: 0 10px;
         height: 70px;
         z-index: 100;
         pointer-events: none;
@@ -56,9 +80,5 @@
         color: $am-blue;
         margin-right: 0;
         pointer-events: auto;
-    }
-
-    .main-bar__svg {
-        max-width: 180px;
     }
 }

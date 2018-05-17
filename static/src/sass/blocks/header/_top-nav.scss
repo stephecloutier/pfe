@@ -82,11 +82,28 @@
     display: none;
 }
 
-@media screen and (max-width: 720px){
+@media screen and (max-width: 1220px){
+    .top-nav {
+        padding: 0 10px;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .top-nav {
+        font-size: 0.9rem;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .top-nav__login-links {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 750px){
 
     .top-nav {
         background-color: $am-blue;
-        padding: 0 10px;
         min-height: 60px;
         height: 60px;
         position: absolute;
@@ -100,7 +117,6 @@
         position: fixed;
         top: 0; 
         left: 0;
-        //-webkit-transform: translateZ(0);
     }
 
     .top-nav__social-medias {
@@ -136,9 +152,5 @@
 
     .top-nav__login-icon {
         color: white;
-    }
-
-    .top-nav__login-links {
-        display: none;
     }
 }
