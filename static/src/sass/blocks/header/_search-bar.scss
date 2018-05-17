@@ -59,7 +59,7 @@
     .search-bar__input {
         min-width: 0;
         opacity: 0;
-        transition: all $delay ease-in-out;
+        transition: opacity $delay ease-in-out;
     }
 
     .search-bar__label {
