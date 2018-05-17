@@ -126,6 +126,13 @@
     } 
 }
 
+@media screen and (max-width: 1000px) {
+    .main-nav__sub-nav {
+        width: 180%;
+    }
+}
+
+
 @media screen and (max-width: 900px) {
     .main-nav {
         font-size: 0.9rem;
