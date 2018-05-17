@@ -11,7 +11,7 @@
     <body id="am-body">
         <header class="header">
             <div class="header__top-nav top-nav" id="am-top-nav">
-                <div class="top-nav__burger-menu">
+                <div id="am-burger-icon" class="top-nav__burger-menu">
                     <svg class="top-nav__burger-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M491.318 235.318H20.682C9.26 235.318 0 244.577 0 256s9.26 20.682 20.682 20.682h470.636c11.423 0 20.682-9.259 20.682-20.682 0-11.422-9.259-20.682-20.682-20.682zM491.318 78.439H20.682C9.26 78.439 0 87.699 0 99.121c0 11.422 9.26 20.682 20.682 20.682h470.636c11.423 0 20.682-9.26 20.682-20.682 0-11.422-9.259-20.682-20.682-20.682zM491.318 392.197H20.682C9.26 392.197 0 401.456 0 412.879s9.26 20.682 20.682 20.682h470.636c11.423 0 20.682-9.259 20.682-20.682s-9.259-20.682-20.682-20.682z"/></svg>
                 </div>
                 <div class="top-nav__social-medias social-medias">
@@ -79,8 +79,14 @@
                             </svg>
                         </h1>
                     </a>
-                    <nav class="main-bar__nav main-nav">
+                    <nav id="am-main-nav" class="main-bar__nav main-nav">
                         <h2 class="main-nav__title hidden">Navigation principale</h2>
+                        <div id="am-main-nav-blocker" class="main-nav__blocker"></div>
+                        <div class="main-nav__close">
+                            <span class="main-nav__close-button" id="am-close-menu">
+                                <svg class="main-nav__close-button-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M505.943 6.058c-8.077-8.077-21.172-8.077-29.249 0L6.058 476.693c-8.077 8.077-8.077 21.172 0 29.249A20.612 20.612 0 0 0 20.683 512a20.614 20.614 0 0 0 14.625-6.059L505.943 35.306c8.076-8.076 8.076-21.171 0-29.248z"/><path d="M505.942 476.694L35.306 6.059c-8.076-8.077-21.172-8.077-29.248 0-8.077 8.076-8.077 21.171 0 29.248l470.636 470.636a20.616 20.616 0 0 0 14.625 6.058 20.615 20.615 0 0 0 14.624-6.057c8.075-8.078 8.075-21.173-.001-29.25z"/></svg>
+                            </span>
+                        </div>
                         <ul class="main-nav__list">
                             <li class="main-nav__item"><a class="main-nav__link" href="#" title="Aller sur la page X">Accueil</a></li>
                             <li class="main-nav__item main-nav__item--catalogue"><a class="main-nav__link" href="#" title="Aller sur la page X">Catalogue</a>

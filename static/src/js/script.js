@@ -1,8 +1,11 @@
-
 const topNavSearchBar = document.getElementById('search-bar')
 const topNavSearchBarLabel = document.getElementById('search-bar-label');
 const topNavSearchButton = document.getElementById('am-search-bar-button');
 const searchInput = document.getElementById('search');
+const burgerMenu = document.getElementById('am-burger-icon');
+const mainNav = document.getElementById('am-main-nav');
+const closeMenuButton = document.getElementById('am-close-menu');
+const menuBlocker = document.getElementById('am-main-nav-blocker');
 
 topNavSearchBarLabel.classList.remove('search-bar__label--label-style');
 
@@ -48,6 +51,15 @@ const minimizeSearchBar = function() {
     topNavSearchBar.classList.remove('search-bar--focus');
 }
 
+const openMenu = function() {
+    mainNav.classList.add('main-nav--opened');
+}
+
+const closeMenu = function() {
+    mainNav.classList.remove('main-nav--opened');
+}
+
+
 // events listeners
 
 window.addEventListener('scroll', manageScroll);
@@ -62,3 +74,7 @@ topNavSearchBar.addEventListener('focusout', function () {
 });
 
 topNavSearchButton.addEventListener('click', deploySearchBar);
+
+burgerMenu.addEventListener('click', openMenu);
+closeMenuButton.addEventListener('click', closeMenu);
+menuBlocker.addEventListener('click', closeMenu);
