@@ -6,25 +6,24 @@
     min-height: 75px;
 
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
 }
 
 .top-nav__social-medias {
-    flex-basis: 0%;
-    flex-grow: 1;
+    // flex-basis: 0%;
+    // flex-grow: 1;
 }
 
 .top-nav__search-bar {
-    flex-basis: 0%;
     flex-grow: 1;
     margin-left: 50px;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .top-nav__login {
     color: $am-blue;
-    flex-basis: 0%;
-    flex-grow: 1;
     margin-left: 50px;
     display: flex;
     justify-content: flex-end;
@@ -35,6 +34,13 @@
     width: 35px;
     height: 35px;
     fill: currentColor;
+}
+
+.top-nav__login-icon-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .top-nav__login-links {
