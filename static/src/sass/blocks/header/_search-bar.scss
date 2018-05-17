@@ -52,3 +52,22 @@
 .search-bar__icon {
     fill: currentColor;
 }
+
+@media screen and (max-width: 720px){
+
+    .search-bar__input {
+        @include hidden;
+        min-width: 0;
+    }
+
+    .search-bar__label {
+        @include hidden;
+    }
+
+    .search-bar__button {
+        position: relative;
+        width: 35px;
+        height: 35px;
+        background-color: transparent;
+    }
+}
