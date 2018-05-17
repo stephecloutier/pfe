@@ -3,7 +3,6 @@
     flex-direction: column;
     align-items: flex-end;
     position: relative;
-    max-width: 100%;
 }
 
 .home-events__title {
@@ -35,7 +34,7 @@
 .home-events__list {
     display: flex;
     flex-direction: column;
-    max-width: 750px;
+    width: 750px;
     z-index: 10;
 }
 
@@ -54,6 +53,7 @@
 @media screen and (max-width: 1060px) {
     .home-events {
         align-items: stretch;
+        max-width: 100%;
     }
 
     .home-events__img-mosaic {
@@ -66,6 +66,7 @@
 
     .home-events__content {
         max-width: 100%;
+        //margin: 0 10px;
     }
 
     .home-events__list {
