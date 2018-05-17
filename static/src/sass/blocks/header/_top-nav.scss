@@ -87,7 +87,13 @@
         top: 70px;
         left: 0;
         justify-content: flex-end;
+        z-index: 60;
+    }
 
+    .top-nav--sticky {
+        position: fixed;
+        top: 0; 
+        left: 0;
     }
 
     .top-nav__social-medias {

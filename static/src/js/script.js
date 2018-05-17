@@ -1,12 +1,25 @@
 const manageScroll = function() {
     let header = document.getElementById('am-main-bar');
+    let topNav = document.getElementById('am-top-nav');
     let scrollTop = window.scrollY;
 
-    if(scrollTop >= 75) {
-        header.classList.add('main-bar--sticky');
+    let width = window.screen.width;
+
+    if (width <= 720) {
+        if(scrollTop >= 70) {
+            topNav.classList.add('top-nav--sticky');
+        } else {
+            topNav.classList.remove('top-nav--sticky');
+        }
     } else {
-        header.classList.remove('main-bar--sticky');
+        if(scrollTop >= 75) {
+            header.classList.add('main-bar--sticky');
+        } else {
+            header.classList.remove('main-bar--sticky');
+        }
     }
+
+    
 }
 
 const topNavSearchBar = document.getElementById('search-bar')
