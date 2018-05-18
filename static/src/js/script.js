@@ -8,9 +8,9 @@ const closeMenuButton = document.getElementById('am-close-menu');
 const menuBlocker = document.getElementById('am-main-nav-blocker');
 const body = document.getElementsByTagName('body')[0];
 const catalogueFilters = document.getElementById('am-catalogue-filters');
+const catalogueFiltersTitle = document.getElementById('am-catalogue-filters-title');
 
 topNavSearchBarLabel.classList.remove('search-bar__label--label-style');
-catalogueFilters.classList.add('catalogue-filters--closed');
 
 const manageScroll = function() {
     let header = document.getElementById('am-main-bar');
@@ -86,4 +86,4 @@ topNavSearchButton.addEventListener('click', deploySearchBar);
 burgerMenu.addEventListener('click', openMenu);
 closeMenuButton.addEventListener('click', closeMenu);
 menuBlocker.addEventListener('click', closeMenu);
-catalogueFilters.addEventListener('click', toggleCatalogueFilters)
+catalogueFiltersTitle.addEventListener('click', toggleCatalogueFilters)
