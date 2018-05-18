@@ -36,7 +36,6 @@
 .product__more-infos {
     display: flex;
     opacity: 0;
-    transition: opacity $delay ease-out;
     font-size: 0.8rem;
     margin-top: 8px;
     flex-wrap: wrap;  
