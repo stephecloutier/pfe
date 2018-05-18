@@ -7,17 +7,18 @@ const mainNav = document.getElementById('am-main-nav');
 const closeMenuButton = document.getElementById('am-close-menu');
 const menuBlocker = document.getElementById('am-main-nav-blocker');
 const body = document.getElementsByTagName('body')[0];
+const catalogueFilters = document.getElementById('am-catalogue-filters');
 
 topNavSearchBarLabel.classList.remove('search-bar__label--label-style');
+catalogueFilters.classList.add('catalogue-filters--closed');
 
 const manageScroll = function() {
     let header = document.getElementById('am-main-bar');
     let topNav = document.getElementById('am-top-nav');
     let scrollTop = window.scrollY;
-    //console.log(scrollTop);
 
     let width = window.screen.width;
-    //console.log(width);
+
     if (width <= 750) {
         if(scrollTop >= 70) {
             topNav.classList.add('top-nav--sticky');
@@ -63,6 +64,9 @@ const closeMenu = function() {
     body.classList.remove('body-with-opened-menu');
 }
 
+const toggleCatalogueFilters = function() {
+    catalogueFilters.classList.toggle('catalogue-filters--closed');
+}
 
 // events listeners
 
@@ -82,3 +86,4 @@ topNavSearchButton.addEventListener('click', deploySearchBar);
 burgerMenu.addEventListener('click', openMenu);
 closeMenuButton.addEventListener('click', closeMenu);
 menuBlocker.addEventListener('click', closeMenu);
+catalogueFilters.addEventListener('click', toggleCatalogueFilters)
