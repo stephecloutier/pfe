@@ -19,6 +19,28 @@
         top: calc(50% - 10px);
     }
 
+    .product__infos {
+        transition: transform $delay ease-out;
+        position: relative;
+    }
+
+    .product__more-infos {
+        position: absolute;
+        bottom: -25px;
+        left: 0;
+        max-width: 100%;
+    }    
+
+    &:hover, &:focus {
+        .product__infos {
+            transform: translateY(-15px);
+        }
+    
+        .product__more-infos {
+            opacity: 1;
+        }
+    }
+
     border-left-width: 5px;
     border-left-style: solid;
 }
@@ -42,7 +64,6 @@
     .product-h-thumb {
         height: 200px;
         padding: 10px 20px 10px 10px;
-        //max-width: 563px;
     }
 
     .product-h-thumb:hover, .product-h-thumb:focus {

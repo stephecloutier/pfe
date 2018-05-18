@@ -8,8 +8,6 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    transition: transform $delay ease-out;
-    position: relative;
     width: 100%;
 }
 
@@ -42,10 +40,6 @@
     font-size: 0.8rem;
     margin-top: 8px;
     flex-wrap: wrap;  
-    position: absolute;
-    bottom: -25px;
-    left: 0;
-    max-width: 100%;
 }
 
 .product__more-info {
@@ -64,17 +58,6 @@
 .product__more-info__svg {
     margin-right: 5px;
     fill: $accent-red;
-}
-
-.product:hover, .product:focus {
-
-    .product__infos {
-        transform: translateY(-15px);
-    }
-
-    .product__more-infos {
-        opacity: 1;
-    }
 }
 
 @media screen and (max-width: 1000px) {
