@@ -1,6 +1,7 @@
 .footer  {
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 .footer__newsletter {
@@ -17,4 +18,23 @@
 
 .footer__content {
     background-color: $dark-blue;
+}
+
+.footer__credentials {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.25);
+    color: $light-blue-gray;
+    padding: 10px;
+
+    font-size: 0.8rem;
+    font-weight: 300;
+
+    &--link {
+        cursor: pointer;
+        font-weight: 500;
+    }
 }
