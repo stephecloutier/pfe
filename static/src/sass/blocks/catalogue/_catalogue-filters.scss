@@ -191,6 +191,17 @@
 .catalogue-filters__select {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    color: $am-blue;
+    position: relative;
+    padding-left: 25px;
+}
+
+.catalogue-filters__svg {
+    fill: currentColor;
+    position: absolute;
+    left: 0;
+    top: calc(50% - 15px / 2);
 }
 
 .catalogue-filters__select-select {
