@@ -101,3 +101,20 @@
         }
     }
 }
+
+@media screen and (max-width: 450px) { 
+    .product-thumb {
+        .product__more-infos {
+            opacity: 1;
+            max-height: none;
+            position: relative;
+            top: 0;
+        }
+    
+        .product:hover, .product:focus {
+            .product__infos {
+                transform: translateY(0);
+            }
+        }
+    }
+}

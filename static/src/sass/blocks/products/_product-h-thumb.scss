@@ -102,6 +102,19 @@
         .product__arrow {
             display: none;
         }
+
+        .product__more-infos {
+            opacity: 1;
+            max-height: none;
+            position: relative;
+            top: 0;
+        }
+    
+        .product:hover, .product:focus {
+            .product__infos {
+                transform: translateY(0);
+            }
+        }
     }
 
     .product-h-thumb:hover, .product-h-thumb:focus {

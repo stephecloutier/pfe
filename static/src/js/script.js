@@ -4,7 +4,7 @@ const topNavSearchButton = document.getElementById('am-search-bar-button');
 const searchInput = document.getElementById('search');
 const burgerMenu = document.getElementById('am-burger-icon');
 const mainNav = document.getElementById('am-main-nav');
-const catalogueLink = document.getElementById('am-catalogue-link');
+const subNavToggle = document.getElementById('am-sub-nav-toggle');
 const subNav = document.getElementById('am-sub-nav');
 const closeMenuButton = document.getElementById('am-close-menu');
 const menuBlocker = document.getElementById('am-main-nav-blocker');
@@ -92,6 +92,6 @@ topNavSearchButton.addEventListener('click', deploySearchBar);
 
 burgerMenu.addEventListener('click', openMenu);
 closeMenuButton.addEventListener('click', closeMenu);
-catalogueLink.addEventListener('click', toggleSubNav);
+subNavToggle.addEventListener('click', toggleSubNav);
 menuBlocker.addEventListener('click', closeMenu);
 catalogueFiltersTitle.addEventListener('click', toggleCatalogueFilters)
