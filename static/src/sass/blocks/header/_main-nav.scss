@@ -77,54 +77,59 @@
     }
 }
 
-.main-nav__sub-nav:hover, .main-nav__sub-nav:focus-within {
-    background-color: white;
-    color: $am-blue;
 
-    visibility: visible; /* shows sub-menu */
-    opacity: 1;
-    z-index: 1;
-    transform: translateY(0%);
-    transition: all 0.3s ease-in-out 0s, visibility 0s linear 0s, z-index 0s linear 0s;
-}
 
-.main-nav__sub-nav:focus {
-    background-color: white;
-    color: $am-blue;
-
-    visibility: visible; /* shows sub-menu */
-    opacity: 1;
-    z-index: 1;
-    transform: translateY(0%);
-    transition-delay: 0s, 0s, 0.3s;
-
-    .main-nav__sub-item:hover {
-        .main-nav__sub-link {
-            color: white;
-            background-color: $am-blue;
-        }
-    }
-}
-
-.main-nav__link:hover, .main-nav__link:focus { //
-    ~ .main-nav__sub-nav {
+@media screen and (min-width: 751px) {
+    .main-nav__sub-nav:hover, .main-nav__sub-nav:focus-within {
         background-color: white;
         color: $am-blue;
+    
+        visibility: visible; /* shows sub-menu */
+        opacity: 1;
+        z-index: 1;
+        transform: translateY(0%);
+        transition: all 0.3s ease-in-out 0s, visibility 0s linear 0s, z-index 0s linear 0s;
+    }
 
+    .main-nav__sub-nav:focus {
+        background-color: white;
+        color: $am-blue;
+    
         visibility: visible; /* shows sub-menu */
         opacity: 1;
         z-index: 1;
         transform: translateY(0%);
         transition-delay: 0s, 0s, 0.3s;
-
+    
         .main-nav__sub-item:hover {
             .main-nav__sub-link {
                 color: white;
                 background-color: $am-blue;
             }
         }
-    } 
+    }
+
+    .main-nav__link:hover, .main-nav__link:focus { //
+        ~ .main-nav__sub-nav {
+            background-color: white;
+            color: $am-blue;
+    
+            visibility: visible; /* shows sub-menu */
+            opacity: 1;
+            z-index: 1;
+            transform: translateY(0%);
+            transition-delay: 0s, 0s, 0.3s;
+    
+            .main-nav__sub-item:hover {
+                .main-nav__sub-link {
+                    color: white;
+                    background-color: $am-blue;
+                }
+            }
+        } 
+    }
 }
+
 
 @media screen and (max-width: 1000px) {
     .main-nav__sub-nav {
@@ -151,11 +156,29 @@
         flex-direction: column;
     }
 
+    .main-nav__sub-nav {
+        transition: none;
+        max-width: 100%;
+        max-height: 100%;
+    }
+    .main-nav__sub-item {
+        transition: none;
+    }
+    .main-nav__sub-link {
+        transition: none;
+    }
+
     .main-nav__list {
         display: flex;
         flex-direction: column;
         transition: transform $delay ease-out;
         transform: translateX(-300px);
+        overflow-y: auto;
+    }
+
+    .main-nav__item {
+        flex-grow: 0; 
+        max-width: 100%;  
     }
 
     .main-nav__close {
@@ -215,6 +238,7 @@
             width: 100vw;
             height: 100vh;
         }
+
         .main-nav__item {
             border-bottom: 2px solid rgba(255, 255, 255, 0.25);
 
@@ -225,13 +249,53 @@
         .main-nav__link {
             text-align: left;
             justify-content: flex-start;
-            padding: 0 10px;
+            padding: 10px;
         }
 
-        .main-nav__link:hover, .main-nav__link:focus { //
-            ~ .main-nav__sub-nav {
-                visibility: hidden;
+        .main-nav__item {
+            display: flex;
+            flex-direction: column;
+            &:focus-within {
+                .main-nav__link {
+                    background-color: $am-blue;
+                    color: white;
+                }
             }
         }
+        .main-nav__sub-nav--opened {
+            position: static;
+            visibility: visible;
+            background-color: $dark-blue;
+            color: white;
+            max-width: 100%;
+            opacity: 1;
+            transform: none;
+            box-shadow: none;
+            width: 100%;
+            transition: none;   
+            padding: 0;
+            z-index: 10;
+
+            .main-nav__sub-item {
+                border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+                cursor: pointer;
+                padding: 0;
+    
+                &:last-child {
+                    border-bottom: none;
+                }
+
+                &:hover, &:focus {
+                    .main-nav__sub-link {
+                        background-color: rgba(255,255,255,0.25);
+                    }
+                }
+            }
+    
+            .main-nav__sub-link {
+                padding: 10px 10px 10px 20px;
+                cursor: pointer; 
+            }
+        }      
     }
 }

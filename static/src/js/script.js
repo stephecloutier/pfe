@@ -4,6 +4,8 @@ const topNavSearchButton = document.getElementById('am-search-bar-button');
 const searchInput = document.getElementById('search');
 const burgerMenu = document.getElementById('am-burger-icon');
 const mainNav = document.getElementById('am-main-nav');
+const catalogueLink = document.getElementById('am-catalogue-link');
+const subNav = document.getElementById('am-sub-nav');
 const closeMenuButton = document.getElementById('am-close-menu');
 const menuBlocker = document.getElementById('am-main-nav-blocker');
 const body = document.getElementsByTagName('body')[0];
@@ -64,6 +66,11 @@ const closeMenu = function() {
     body.classList.remove('body-with-opened-menu');
 }
 
+const toggleSubNav = function(event) {
+    event.preventDefault();
+    subNav.classList.toggle('main-nav__sub-nav--opened');
+}
+
 const toggleCatalogueFilters = function() {
     catalogueFilters.classList.toggle('catalogue-filters--closed');
 }
@@ -85,5 +92,6 @@ topNavSearchButton.addEventListener('click', deploySearchBar);
 
 burgerMenu.addEventListener('click', openMenu);
 closeMenuButton.addEventListener('click', closeMenu);
+catalogueLink.addEventListener('click', toggleSubNav);
 menuBlocker.addEventListener('click', closeMenu);
 catalogueFiltersTitle.addEventListener('click', toggleCatalogueFilters)
