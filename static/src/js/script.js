@@ -11,8 +11,12 @@ const menuBlocker = document.getElementById('am-main-nav-blocker');
 const body = document.getElementsByTagName('body')[0];
 const catalogueFilters = document.getElementById('am-catalogue-filters');
 const catalogueFiltersTitle = document.getElementById('am-catalogue-filters-title');
+const productSpecifications = document.getElementById('am-product-specifications');
+const productSpecificationsTitle = document.getElementById('am-product-specifications-title');
 
-topNavSearchBarLabel.classList.remove('search-bar__label--label-style');
+if (topNavSearchBarLabel) topNavSearchBarLabel.classList.remove('search-bar__label--label-style');
+if (productSpecifications) productSpecifications.classList.add('single-product-specifications--closed');
+
 
 const manageScroll = function() {
     let header = document.getElementById('am-main-bar');
@@ -75,9 +79,15 @@ const toggleCatalogueFilters = function() {
     catalogueFilters.classList.toggle('catalogue-filters--closed');
 }
 
+const toggleProductSpecifications = function() {
+    console.log(productSpecifications)
+    productSpecifications.classList.toggle('single-product-specifications--closed');
+}
+
 // events listeners
 
 window.addEventListener('scroll', manageScroll);
+
 topNavSearchBar.addEventListener('focusin', function () {
     moveLabelUp();
     deploySearchBar();
@@ -88,10 +98,11 @@ topNavSearchBar.addEventListener('focusout', function () {
     minimizeSearchBar();
 });
 
-topNavSearchButton.addEventListener('click', deploySearchBar);
+if (topNavSearchButton) topNavSearchButton.addEventListener('click', deploySearchBar);
 
-burgerMenu.addEventListener('click', openMenu);
-closeMenuButton.addEventListener('click', closeMenu);
-subNavToggle.addEventListener('click', toggleSubNav);
-menuBlocker.addEventListener('click', closeMenu);
-catalogueFiltersTitle.addEventListener('click', toggleCatalogueFilters)
+if (burgerMenu) burgerMenu.addEventListener('click', openMenu);
+if (closeMenuButton) closeMenuButton.addEventListener('click', closeMenu);
+if (subNavToggle) subNavToggle.addEventListener('click', toggleSubNav);
+if (menuBlocker) menuBlocker.addEventListener('click', closeMenu);
+if (catalogueFiltersTitle) catalogueFiltersTitle.addEventListener('click', toggleCatalogueFilters)
+if (productSpecificationsTitle) productSpecificationsTitle.addEventListener('click', toggleProductSpecifications)

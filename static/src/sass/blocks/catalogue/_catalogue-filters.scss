@@ -41,20 +41,7 @@
 }
 
 .catalogue-filters__title {
-    text-transform: uppercase;
-    color: $am-blue;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    font-size: 1.1rem;
-    cursor: pointer;
     padding: 20px;
-}
-
-.catalogue-filters__title-icon {
-    fill: $blue-gray;
-    margin-right: 15px;
-    transition: transform $delay ease-out;
 }
 
 .catalogue-filters__form {

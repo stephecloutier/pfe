@@ -1,3 +1,23 @@
+.single-product-similar {
+    max-width: $max-width;
+    margin: 0 auto 50px;
+}
+
+.single-product-similar__list {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
 .single-product-similar__item {
+    display: flex;
+    width: 28%;
+    max-width: 250px;
+    height: 300px;
     position: relative;
+    margin: 20px 5% 20px 0;
+
+    &:last-child {
+        margin-right: 0;
+    }
 }

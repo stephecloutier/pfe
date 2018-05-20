@@ -9,3 +9,19 @@
     color: $am-blue;
     font-weight: 600;
 }
+
+.deploy-title {
+    text-transform: uppercase;
+    color: $am-blue;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    font-size: 1.1rem;
+    cursor: pointer;
+ 
+    .deploy-title__icon {
+        fill: $blue-gray;
+        margin-right: 15px;
+        transition: transform $delay ease-out;
+    }
+}

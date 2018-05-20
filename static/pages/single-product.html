@@ -177,46 +177,72 @@
                         </div>
                     </div>
                     <!-- maybe bouton précommande -->
-                    <div class="single-product__specifications">
-                        <div class="single-product-specifications__title">
-                            <svg class="single-product-specifications__title__icon" width="16" height="13" xmlns="http://www.w3.org/2000/svg"><path d="M8 13L0 0h16z" /></svg>
-                            <span class="single-product-specifications__title__text">Informations supplémentaires</span>
+                    <div id="am-product-specifications" class="single-product__specifications single-product-specifications">
+                        <div id="am-product-specifications-title" class="single-product-specifications__title deploy-title">
+                            <svg class="single-product-specifications__title__icon deploy-title__icon" width="16" height="13" xmlns="http://www.w3.org/2000/svg"><path d="M8 13L0 0h16z" /></svg>
+                            <span class="single-product-specifications__title__text deploy-title__text">Informations supplémentaires</span>
                         </div>
-                        <dl class="single-product-specifications__list">
-                            <div class="single-product-specifications__item">
-                                <dt class="single-product-specifications__item__term">Date de sortie prévue :</dt>
-                                <dd class="single-product-specifications__item__definition">Février 2019</dd>
+                        <div class="single-product-specifications__inner">
+                            <dl class="single-product-specifications__list">
+                                <div class="single-product-specifications__item">
+                                    <dt class="single-product-specifications__item__term">Date de sortie prévue :</dt>
+                                    <dd class="single-product-specifications__item__definition">Février 2019</dd>
+                                </div>
+                                <div class="single-product-specifications__item">
+                                    <dt class="single-product-specifications__item__term">Langue(s) :</dt>
+                                    <dd class="single-product-specifications__item__definition">Français</dd>
+                                </div>
+                                <div class="single-product-specifications__item">
+                                    <dt class="single-product-specifications__item__term">Éditeur :</dt>
+                                    <dd class="single-product-specifications__item__definition">Oz Editions</dd>
+                                </div>
+                                <div class="single-product-specifications__item">
+                                    <dt class="single-product-specifications__item__term">Thème(s) :</dt>
+                                    <dd class="single-product-specifications__item__definition">Mythologique, Aventure, Famille</dd>
+                                </div>
+                                <div class="single-product-specifications__item">
+                                    <dt class="single-product-specifications__item__term">Catégorie(s) :</dt>
+                                    <dd class="single-product-specifications__item__definition">Jeux de société</dd>
+                                </div>
+                            </dl>
+                            <div class="single-product-specifications__content">
+                                <span class="single-product-specifications__content__title">Contenu</span>
+                                <ul class="single-product-specifications__content__list">
+                                    <li class="single-product-specifications__content__item">9 tuiles village</li>
+                                    <li class="single-product-specifications__content__item">16 figurines totem</li>
+                                    <li class="single-product-specifications__content__item">7 fruits</li>
+                                    <li class="single-product-specifications__content__item">1 figurine shaman</li>
+                                </ul>
                             </div>
-                            <div class="single-product-specifications__item">
-                                <dt class="single-product-specifications__item__term">Langue(s) :</dt>
-                                <dd class="single-product-specifications__item__definition">Français</dd>
-                            </div>
-                            <div class="single-product-specifications__item">
-                                <dt class="single-product-specifications__item__term">Éditeur :</dt>
-                                <dd class="single-product-specifications__item__definition">Oz Editions</dd>
-                            </div>
-                            <div class="single-product-specifications__item">
-                                <dt class="single-product-specifications__item__term">Thème(s) :</dt>
-                                <dd class="single-product-specifications__item__definition">Mythologique, Aventure, Famille</dd>
-                            </div>
-                            <div class="single-product-specifications__item">
-                                <dt class="single-product-specifications__item__term">Catégorie(s) :</dt>
-                                <dd class="single-product-specifications__item__definition">Jeux de société</dd>
-                            </div>
-                        </dl>
-                        <div class="single-product-specifications__content">
-                            <ul class="single-product-specifications__content__list">
-                                <li class="single-product-specifications__content__item">9 tuiles village</li>
-                                <li class="single-product-specifications__content__item">16 figurines totem</li>
-                                <li class="single-product-specifications__content__item">7 fruits</li>
-                                <li class="single-product-specifications__content__item">1 figurine shaman</li>
-                            </ul>
                         </div>
                     </div>
                 </div>
-                <div class="single-product__images"></div>
+                <div class="single-product__images">
+                    <div class="single-product__main-images__wrapper">
+                        <img width="500" height="auto" src="../assets/images/product1.png" alt="Jeu Mission Impossible" class="single-product__main-image">
+                    </div>
+                    <div class="single-product__thumbnails">
+                        <div class="single-product__thumbnails__arrow single-product__thumbnails__arrow--left">
+                            <svg class="single-product__thumbnails__arrow__icon" version="1.1"  width="12px" height="21px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 12 21" xml:space="preserve">
+                                <path d="M0.4,9.5l9.1-9c0.6-0.6,1.5-0.6,2.1,0c0.6,0.6,0.6,1.5,0,2.1l-8,8l8,8c0.6,0.6,0.6,1.5,0,2.1 c-0.6,0.6-1.5,0.6-2.1,0l-9.1-9c-0.3-0.3-0.4-0.7-0.4-1C0,10.1,0.1,9.7,0.4,9.5z"/>
+                            </svg>
+                        </div>
+                        <div class="single-product__thumbnails__list">
+                            <img width="115" height="auto" src="../assets/images/product1.png" alt="Jeu Mission Impossible" class="single-product__thumbnails__image single-product__thumbnails__image--current">
+                            <img width="115" height="auto" src="../assets/images/product3.png" alt="Jeu Mission Impossible" class="single-product__thumbnails__image">
+                            <img width="115" height="auto" src="../assets/images/product4.png" alt="Jeu Mission Impossible" class="single-product__thumbnails__image">
+                            <img width="115" height="auto" src="../assets/images/product5.png" alt="Jeu Mission Impossible" class="single-product__thumbnails__image">
+                            <img width="115" height="auto" src="../assets/images/product6.png" alt="Jeu Mission Impossible" class="single-product__thumbnails__image">
+                        </div>
+                        <div class="single-product__thumbnails__arrow single-product__thumbnails__arrow--right">
+                            <svg class="single-product__thumbnails__arrow__icon" width="12px" height="21px" viewBox="0 0 12 21" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                <path d="M11.5682563,11.539608 L2.51654796,20.568994 C1.94074997,21.1436687 1.00719223,21.1436687 0.431673781,20.568994 C-0.14389126,19.9948307 -0.14389126,19.0635929 0.431673781,18.489476 L8.44103824,10.499849 L0.431906728,2.51050079 C-0.143658314,1.93610503 -0.143658314,1.0049602 0.431906728,0.430796818 C1.00747177,-0.143598939 1.94098292,-0.143598939 2.51678091,0.430796818 L11.5684893,9.4603223 C11.8562718,9.74754342 12,10.12358 12,10.4998025 C12,10.8762109 11.8559923,11.2525263 11.5682563,11.539608 Z" id="Shape"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
             </section>
-            <section class="single-product__similar">
+            <section class="single-product-similar">
                 <h2 class="single-product-similar__title second-title">Produits similaires</h2>
                 <ul class="single-product-similar__list">
                     <li class="single-product-similar__item">

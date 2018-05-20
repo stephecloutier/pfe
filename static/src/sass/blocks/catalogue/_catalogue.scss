@@ -2,7 +2,7 @@
     max-width: $max-width;
     width: 100%;
     margin: 0 auto;
-    padding: 20px 0 60px;
+    padding: 0 0 60px;
 }
 
 .catalogue__content {
@@ -38,7 +38,7 @@
 
 @media screen and (max-width: 1220px) {
     .catalogue {
-        padding: 20px 10px;
+        padding: 0 10px;
     }
 }
 
