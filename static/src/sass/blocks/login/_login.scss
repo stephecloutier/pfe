@@ -19,16 +19,44 @@
     text-decoration: underline;
 }
 
+.login__introduction {
+    max-width: 750px;
+    margin-bottom: 25px;
+    color: $dark-blue;
+}
+
 .login__form {
     display: flex;
     flex-direction: column;
-    max-width: 450px;
+    max-width: 950px;
+
+    &--login {
+        max-width: 450px;
+    }
 }
 
 .login__form__item {
     margin-bottom: 25px;
     display: flex;
     flex-direction: column;
+}
+
+.login__form__signup__inputs {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-between;
+
+    .login__form__item {
+        max-width: 450px;
+        width: 450px;
+        min-width: 0;
+        margin-right: 25px;
+
+        &:nth-child(2n) {
+            margin-right: 0;
+        }
+    }
 }
 
 .login__form__input {
@@ -45,7 +73,7 @@
     margin-bottom: 5px;
 }
 
-.login__form__forgot-password {
+.login__form__forgot-password, .login__form__newsletter {
     align-self: flex-end;
     font-size: 0.8rem;
     color: $am-blue;
@@ -54,9 +82,82 @@
     text-decoration: underline;
 }
 
+.login__form__newsletter {
+    align-self: flex-end;
+    text-decoration: none;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+}
+
+
+
+.login__form__newsletter__label {
+    order: 1;
+}
+
+.login__form__newsletter__custom-checkbox {
+    width: 15px;
+    height: 15px;
+    border-radius: 2px;
+    order: 0;
+    margin-right: 8px;
+    background-color: white;
+    box-shadow: 0 0 4px 2px $t-blue-gray-75;
+    transition: background-color $delay ease-out;
+    position: relative;
+    cursor: pointer;
+
+    &::after {
+        content: "";
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background-color: $am-blue;
+        border-radius: 2px;
+        top: calc(50% - 5px);
+        left: calc(50% - 5px);
+        opacity: 0;
+        transition: opacity $delay ease-out;
+    }
+
+    &:hover::after {
+        opacity: 0.1;
+    }
+}
+
+.login__form__newsletter__input {
+    order: 0;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    opacity: 0;
+    transform: translateX(-8px);
+    cursor: pointer;
+    z-index: 10;
+
+    &:hover {
+        ~ .login__form__newsletter__custom-checkbox::after {
+            opacity: 0.1;
+        }
+    }
+
+    &:checked {
+        ~ .login__form__newsletter__custom-checkbox::after {
+            opacity: 1;
+        }
+    }
+}
+
+
 .login__form__buttons {
     display: flex;
     margin-top: 25px;
+
+    &--signup {
+        width: 450px;
+        align-self: flex-end;
+    }
 }
 
 .login__form__button {
@@ -79,6 +180,34 @@
     }
 }
 
+@media screen and (max-width: 950px) {
+    .login__form {
+        &:not(&--login) {
+            max-width: 100%;
+        }
+    }
+
+    .login__form__signup__inputs {
+    
+        .login__form__item {
+            width: 48%;
+            min-width: 0;
+        }
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .login__form__signup__inputs {
+        flex-direction: column;
+        align-items: stretch;
+        flex-wrap: nowrap;
+        
+        .login__form__item {
+            width: 100%;
+            max-width: 100%;
+        }
+    }
+} 
 
 @media screen and (max-width: 600px) {
     .login__title-line {
@@ -92,6 +221,25 @@
     
     .login__form__item {
         margin-bottom: 15px;
+    }
+}
+
+@media screen and (max-width: 470px) {
+    .login__form__buttons {
+
+        &--signup {
+            flex-direction: column;
+            width: 100%;
+            
+            .login__form__button {
+                width: 100%;
+        
+                &--secondary {
+                    margin-right: 0;
+                    margin-bottom: 10px;
+                }
+            }
+        }
     }
 }
 

@@ -113,13 +113,55 @@
                 </div>
             </div>
         </header>
-        <main class="main main__events">
+        <main class="main main__signup">
             <div class="breadcrumb">
                 <ul class="breadcrumb__list">
                     <li class="breadcrumb__item"><a class="breadcrumb__link" href="../index.html" title="Aller sur la page accueil">Accueil</a></li>
                     <li class="breadcrumb__item breadcrumb__item--current">Créer un compte</li>
                 </ul>
             </div>
+
+            <section class="login">
+                <div class="login__title-line">
+                    <h2 class="login__title main-title">Création d'un compte</h2>
+                    <a href="./login.html" title="Aller sur la page de connexion" class="login__title-link">Déjà un compte&nbsp;? Connectez-vous&nbsp;!</a>
+                </div>
+
+                <div class="login__introduction">
+                    Rejoignez la communauté de L’Autre Monde en créant votre compte! Vous pourrez ajouter des commentaires sur les produits et placer des précommandes, mais aussi personnaliser vos newsletters pour ne rien manquer&nbsp;!
+                </div>
+
+                <form action="#" method="post" class="login__form">
+                    <div class="login__form__inputs login__form__signup__inputs">
+                        <div class="login__form__item">
+                            <label for="first-name" class="login__form__label">Prénom *</label>
+                            <input required="required" type="text" id="first-name" name="first-name" class="login__form__input">
+                        </div>
+                        <div class="login__form__item">
+                            <label for="last-name" class="login__form__label">Nom *</label>
+                            <input required="required" type="text" id="last-name" name="last-name" class="login__form__input">
+                        </div>
+                        <div class="login__form__item">
+                            <label for="email" class="login__form__label">Adresse email *</label>
+                            <input required="required" type="email" id="email" name="email" class="login__form__input">
+                        </div>
+                        <div class="login__form__item">
+                            <label for="password" class="login__form__label">Mot de passe *</label>
+                            <input required="required" type="password" id="password" name="password" class="login__form__input">
+                        </div>
+                    </div>
+                    <div class="login__form__newsletter">
+                        <label for="newsletter" class="login__form__newsletter__label">M'abonner à la newsletter générale</label>
+                        <input type="checkbox" checked="checked" class="login__form__newsletter__input">
+                        <span class="login__form__newsletter__custom-checkbox"></span>
+                    </div>
+
+                    <div class="login__form__buttons login__form__buttons--signup">
+                        <a href="./login.html" title="Aller me connecter" class="cta cta--dark-blue login__form__button login__form__button--secondary">J'ai déjà un compte</a>
+                        <input class="cta cta--pink login__form__button login__form__button--main" type="submit" value="Créer mon compte">
+                    </div>
+                </form>
+            </section>
         </main>
         <footer class="footer">
             <div class="footer__newsletter">
