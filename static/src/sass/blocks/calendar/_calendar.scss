@@ -1,0 +1,191 @@
+.calendar {
+    max-width: $max-width;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.calendar__title {
+    margin-bottom: 25px;
+}
+
+.calendar__header-line {
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+
+.calendar__display {
+    flex: 1 0 0%;
+}
+
+.calendar__filters {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.85rem;
+    color: $am-blue;
+    flex: 1 0 auto;
+}
+
+.calendar__filters__title {
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.calendar__filters__checkboxes {
+    display: flex;
+    flex-direction: column;
+}
+
+.calendar__filters__checkbox {
+    display: inline-flex;
+    min-width: 120px;
+    margin-bottom: 10px;
+    color: $am-blue;
+    font-weight: 450;
+    align-items: center;
+    position: relative;
+    margin-right: 10px;
+
+    &::after {
+        content: "•";
+        font-size: 3rem;
+        display: inline-flex;
+        order: 2;
+        margin-left: 3px;
+        line-height: 0;
+    }
+
+    &--news::after {
+        color: $accent-turquoise;
+    }
+
+    &--events::after {
+        color: $accent-red;
+    }
+}
+
+.calendar__filters__checkbox-label {
+    order: 1;
+    color: $am-blue;
+    cursor: pointer;
+}
+
+.calendar__filters__custom-checkbox {
+    width: 15px;
+    height: 15px;
+    border-radius: 2px;
+    order: 0;
+    margin-right: 8px;
+    background-color: white;
+    box-shadow: 0 0 4px 2px $t-blue-gray-75;
+    transition: background-color $delay ease-out;
+    position: relative;
+    cursor: pointer;
+
+    &::after {
+        content: "";
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background-color: $am-blue;
+        border-radius: 2px;
+        top: calc(50% - 5px);
+        left: calc(50% - 5px);
+        opacity: 0;
+        transition: opacity $delay ease-out;
+    }
+
+    &:hover::after {
+        opacity: 0.1;
+    }
+}
+
+.calendar__filters__checkbox-input {
+    order: 0;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    opacity: 0;
+    transform: translateX(-8px);
+    cursor: pointer;
+    z-index: 10;
+
+    &:hover {
+        ~ .calendar__filters__custom-checkbox::after {
+            opacity: 0.1;
+        }
+    }
+
+    &:checked {
+        ~ .calendar__filters__custom-checkbox::after {
+            opacity: 1;
+        }
+    }
+}
+
+.calendar__month-selection {
+    display: flex;
+    align-items: center;
+    color: $am-blue;
+    flex: 1 0 auto;
+}
+
+.calendar__month-selection__title {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.calendar__month-selection__arrow {
+    color: $am-blue;
+    display: flex;
+    justify-content: center;
+    padding: 10px 30px;
+    cursor: pointer;
+}
+
+.calendar__month-selection__arrow__icon {
+    fill: currentColor;
+}
+
+.calendar__days {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+}
+
+.calendar__days__item {
+    margin-bottom: 50px;
+}
+
+
+
+@media screen and (max-width: 1220px) {
+
+    .calendar {
+        padding: 0 10px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    
+    .calendar__header-line {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .calendar__month-selection {
+        align-self: center; 
+    }
+}
+
+@media screen and (max-width: 350px) {
+
+    .calendar__month-selection__arrow {
+        padding: 10px 20px;
+    }
+}

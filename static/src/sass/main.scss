@@ -27,6 +27,7 @@
 // blocks 
 @import "blocks/titles/titles";
 @import "blocks/cta/cta";
+@import "blocks/cta/large-cta";
 @import "blocks/breadcrumb/breadcrumb";
 
 @import "blocks/header/social-medias";
@@ -58,6 +59,10 @@
 @import "blocks/events/event-home";
 @import "blocks/events/event-home-infos";
 @import "blocks/events/event-home-tips";
+
+@import "blocks/calendar/calendar";
+@import "blocks/calendar/calendar-day";
+@import "blocks/calendar/calendar-day-event";
 
 @import "blocks/catalogue/catalogue";
 @import "blocks/catalogue/catalogue-categories";
