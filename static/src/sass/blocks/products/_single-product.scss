@@ -56,3 +56,10 @@
         border: 2px solid $am-blue;
     }
 }
+
+@media screen and (max-width: 1220px) {
+    
+    .single-product {
+        padding: 0 10px;
+    }
+}
