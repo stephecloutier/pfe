@@ -2,6 +2,7 @@
     font-size: 1rem;
     font-weight: 500;
     font-family: $raleway;
+    text-align: center;
     cursor: pointer;
     padding: 15px;
     border-radius: 2px;
@@ -18,5 +19,16 @@
         border-color: $accent-red;
         background-color: white;
         color: $accent-red;
+    }
+}
+
+.cta--dark-blue {
+    background-color: $dark-blue;
+    color: white;
+
+    &:hover, &:focus {
+        border-color: $dark-blue;
+        background-color: white;
+        color: $dark-blue;
     }
 }
