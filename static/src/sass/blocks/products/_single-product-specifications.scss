@@ -75,3 +75,13 @@
         color: $am-blue;
     }
 }
+@media screen and (max-width: 500px) {
+
+    .single-product-specifications__item {
+        flex-direction: column;
+        margin-bottom: 10px;
+    }
+    .single-product-specifications__item__definition {
+        margin-left: 0;
+    }
+}
