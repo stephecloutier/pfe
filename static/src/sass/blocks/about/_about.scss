@@ -15,6 +15,10 @@
     display: flex;
 }
 
+.about__description__inner {
+    width: 60%;
+}
+
 .about__description__title {
     font-size: 1.2rem;
     text-transform: uppercase;
@@ -30,11 +34,17 @@
     max-width: 600px;
 }
 
-.about__description__image {
+.about__description__image-wrapper {
     position: absolute;
     top: -100px;
     right: 10%;
     z-index: -1;
+    max-width: 350px;
+}
+
+.about__description__image {
+    max-width: 100%;
+    height: auto;
 }
 
 .about__infos {
@@ -45,6 +55,9 @@
 }
 
 .about__useful-infos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background-color: $am-blue;
     color: white;
     padding: 30px;
@@ -84,11 +97,15 @@
 }
 
 .about__map-wrapper {
-    background-color: hotpink;
     display: inline-flex;
     width: 100%;
     border-top-right-radius: 2px;
     border-bottom-right-radius: 2px;
+}
+
+.about__map {
+    height: 100%;
+    width: 100%;
 }
 
 .about__contact {
@@ -179,6 +196,19 @@
     }
 }
 
+@media screen and (max-width: 1100px) {
+    .about__description__image-wrapper {
+        right: 3%;
+    } 
+}
+
+@media screen and (max-width: 900px) {
+    .about__description__image-wrapper {
+        max-width: 290px;
+        right: 0;
+    } 
+}
+
 @media screen and (max-width: 800px) {
     .about__form__inner {
         flex-direction: column;
@@ -192,5 +222,38 @@
     .about__form__message {
         width: 100%;
         margin-top: 20px;
+    }
+
+    .about__description__image-wrapper {
+        display: none;
+    }
+
+    .about__description__inner {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .about__infos {
+        flex-direction: column;
+    }
+
+    .about__useful-infos {
+        width: 100%;
+        max-width: 100%;
+        border-top-left-radius: 2px;
+        border-top-right-radius: 2px;
+        border-bottom-left-radius: 0;
+    }
+
+    .about-useful-infos__item {
+        align-items: center;    
+    }
+
+    .about__map-wrapper {
+        height: 300px;
+        border-top-right-radius: 0;
+        border-bottom-left-radius: 2px;
+        border-bottom-right-radius: 2px;
     }
 }

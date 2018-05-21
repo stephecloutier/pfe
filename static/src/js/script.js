@@ -84,6 +84,8 @@ const toggleProductSpecifications = function() {
     productSpecifications.classList.toggle('single-product-specifications--closed');
 }
 
+
+
 // events listeners
 
 window.addEventListener('scroll', manageScroll);
@@ -106,3 +108,6 @@ if (subNavToggle) subNavToggle.addEventListener('click', toggleSubNav);
 if (menuBlocker) menuBlocker.addEventListener('click', closeMenu);
 if (catalogueFiltersTitle) catalogueFiltersTitle.addEventListener('click', toggleCatalogueFilters)
 if (productSpecificationsTitle) productSpecificationsTitle.addEventListener('click', toggleProductSpecifications)
+
+
+// Google map
