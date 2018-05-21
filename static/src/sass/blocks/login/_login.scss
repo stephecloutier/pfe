@@ -35,6 +35,7 @@
     @include default-input;
     padding: 10px;
     width: 100%;
+    min-width: 100%;
 }
 
 .login__form__label {
@@ -68,5 +69,44 @@
 
     &--main {
         order: 1;
+    }
+}
+
+
+@media screen and (max-width: 1220px) {
+    .login {
+        padding: 0 10px;
+    }
+}
+
+
+@media screen and (max-width: 600px) {
+    .login__title-line {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .login__title {
+        margin-bottom: 10px;
+    }
+    
+    .login__form__item {
+        margin-bottom: 15px;
+    }
+}
+
+@media screen and (max-width: 370px) {
+
+    .login__form__buttons {
+        flex-direction: column;
+    }
+
+    .login__form__button {
+        width: 100%;
+
+        &--secondary {
+            margin-right: 0;
+            margin-bottom: 10px;
+        }
     }
 }
