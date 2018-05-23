@@ -28,9 +28,7 @@
   {% include 'favicon.html' %}
   {% render_bundle 'storefront' 'css' attrs='async' %}
 
-  {% block stylesheet %}
-    <link rel="stylesheet" type="text/css" href="{% static "/assets/main.css" %}">
-  {% endblock stylesheet %}
+  {% block stylesheet %}{% endblock stylesheet %}
 
   {% block meta_tags %}
     <meta property="og:title" content="{{ site.name }}">
@@ -46,10 +44,10 @@
   <![endif]-->
 </head>
 
-<body id="am-body">
+<body>
 {% block header %}
-  <header class="navbar header" role="navigation">
-     <!-- <div class="navbar__login container-fluid {% if user.is_impersonate %} bg-warning{% endif %}">
+  <header class="navbar" role="navigation">
+    <div class="navbar__login container-fluid {% if user.is_impersonate %} bg-warning{% endif %}">
       <div class=" d-none d-md-block container">
       <div class="row">
         <div class="col-6">
@@ -97,8 +95,8 @@
         </div>
       </div>
     </div>
-    </div> -->
-    <!-- <div class="navbar__brand container-fluid d-block">
+    </div>
+    <div class="navbar__brand container-fluid d-block">
       <div class="container">
         <div class="row no-gutters">
           <div class="col-8 col-md-4 navbar__logo">
@@ -129,72 +127,30 @@
               </form>
             {% endif %}
           </div>
+          <div class="col-2 col-md-4">
+            <div class="navbar__brand__cart float-right">
+              <a rel="nofollow" class="cart__icon" href="{% url "cart:index" %}">
+                <span class="cart-label d-none d-md-inline-block">
+                  {% trans "Your Cart" context "Main navigation item" %}
+                </span>
+                <div class="navbar__brand__cart__icon">
+                  <svg data-src="{% static "images/cart.svg" %}" width="35" height="30"/>
+                </div>
+                <span class="badge {% if not cart_counter %}empty{% endif %}">
+                  {% if cart_counter %}
+                    {{ cart_counter }}
+                  {% else %}
+                    0
+                  {% endif %}
+                </span>
+              </a>
+              <div class="cart-dropdown d-none">
+                {% include 'cart_dropdown.html' %}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>  -->
-
-    <div class="header__top-nav top-nav" id="am-top-nav">
-        <div id="am-burger-icon" class="top-nav__burger-menu">
-            <svg class="top-nav__burger-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M491.318 235.318H20.682C9.26 235.318 0 244.577 0 256s9.26 20.682 20.682 20.682h470.636c11.423 0 20.682-9.259 20.682-20.682 0-11.422-9.259-20.682-20.682-20.682zM491.318 78.439H20.682C9.26 78.439 0 87.699 0 99.121c0 11.422 9.26 20.682 20.682 20.682h470.636c11.423 0 20.682-9.26 20.682-20.682 0-11.422-9.259-20.682-20.682-20.682zM491.318 392.197H20.682C9.26 392.197 0 401.456 0 412.879s9.26 20.682 20.682 20.682h470.636c11.423 0 20.682-9.259 20.682-20.682s-9.259-20.682-20.682-20.682z"/></svg>
-        </div>
-        <div class="top-nav__social-medias social-medias">
-            <a href="www.facebook.com" class="social-medias__link">
-                <span class="hidden">Facebook</span> 
-                <svg class="social-medias__icon" width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                    <path d="M20,0 C8.97204544,0 0,8.97204544 0,20 C0,31.027149 8.97204544,40 20,40 C31.027149,40 40,31.027149 40,20 C40,8.97204544 31.0287602,0 20,0 Z M24.9738178,20.7041005 L21.719971,20.7041005 C21.719971,25.9026827 21.719971,32.3016193 21.719971,32.3016193 L16.898413,32.3016193 C16.898413,32.3016193 16.898413,25.9647144 16.898413,20.7041005 L14.606461,20.7041005 L14.606461,16.605172 L16.898413,16.605172 L16.898413,13.9539193 C16.898413,12.0551035 17.8006928,9.08805285 21.7642794,9.08805285 L25.3371465,9.10174817 L25.3371465,13.0806413 C25.3371465,13.0806413 23.1660356,13.0806413 22.7438975,13.0806413 C22.3217594,13.0806413 21.7215822,13.2917103 21.7215822,14.1972126 L21.7215822,16.6059776 L25.3951502,16.6059776 L24.9738178,20.7041005 Z" id="facebook-svg"></path>
-                </svg>
-            </a>
-            <a href="www.twitter.com" class="social-medias__link">
-                <span class="hidden">Twitter</span> 
-                <svg class="social-medias__icon" width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                    <path d="M19.8608,0 C8.9096,0 0,8.9096 0,19.8608 C0,30.8112 8.9096,39.7216 19.8608,39.7216 C30.8112,39.7216 39.7216,30.8112 39.7216,19.8608 C39.7216,8.9096 30.8128,0 19.8608,0 Z M28.7208,15.3152 C28.7296,15.512 28.7344,15.7104 28.7344,15.9088 C28.7344,21.9496 24.1376,28.9128 15.7272,28.9128 C13.1456,28.9128 10.7424,28.1584 8.72,26.8608 C9.0776,26.9032 9.4416,26.9248 9.8104,26.9248 C11.9528,26.9248 13.9232,26.1936 15.488,24.968 C13.488,24.9312 11.7992,23.6096 11.2176,21.7928 C11.496,21.8456 11.7832,21.8752 12.0768,21.8752 C12.4936,21.8752 12.8984,21.8208 13.2816,21.716 C11.1904,21.2968 9.6152,19.4496 9.6152,17.2336 C9.6152,17.2144 9.6152,17.1944 9.616,17.176 C10.232,17.5176 10.9368,17.724 11.6856,17.7472 C10.46,16.9288 9.6528,15.5288 9.6528,13.9432 C9.6528,13.1048 9.8776,12.3192 10.2712,11.644 C12.5248,14.4104 15.8944,16.2296 19.6928,16.4216 C19.6144,16.0864 19.5752,15.7384 19.5752,15.3792 C19.5752,12.8552 21.6216,10.808 24.1456,10.808 C25.4608,10.808 26.6472,11.3632 27.4824,12.2512 C28.5248,12.0464 29.5008,11.6672 30.3864,11.1416 C30.0424,12.2096 29.32,13.1048 28.3736,13.6712 C29.2992,13.5608 30.1824,13.316 30.9992,12.952 C30.3896,13.8672 29.6144,14.6728 28.7208,15.3152 Z" id="twitter-svg"></path>
-                </svg>
-            </a>
-        </div>
-        <div id="search-bar" class="top-nav__search-bar search-bar">
-            <label id="search-bar-label" class="search-bar__label search-bar__label--label-style" for="search">Rechercher dans le catalogue</label>
-            <input class="search-bar__input" type="text" name="search" id="search">
-            <button id="am-search-bar-button" class="search-bar__button" type="submit">
-                <svg class="search-bar__icon" width="21px" height="21px" viewBox="0 0 21 21" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                    <path d="M20.4860574,18.0042667 L15.923915,13.4422081 C15.8996692,13.4179624 15.8712287,13.4010155 15.8458923,13.3784477 C16.743572,12.0167431 17.2674982,10.3867413 17.2674982,8.63383298 C17.2674982,3.86547589 13.4020223,0 8.63374908,0 C3.86547589,0 0,3.86547589 0,8.63374908 C0,13.4019384 3.86539199,17.2674982 8.63366519,17.2674982 C10.3866575,17.2674982 12.0165753,16.743572 13.3782799,15.8458923 C13.4008477,15.8711448 13.4177107,15.8995853 13.4419564,15.9238311 L18.0041828,20.4860574 C18.6895235,21.1713142 19.8006328,21.1713142 20.4860574,20.4860574 C21.1713142,19.8007167 21.1713142,18.6896074 20.4860574,18.0042667 Z M8.21743204,13.6956522 C5.19180214,13.6956522 2.73913043,11.2429805 2.73913043,8.21743204 C2.73913043,5.19180214 5.19188362,2.73913043 8.21743204,2.73913043 C11.242899,2.73913043 13.6956522,5.19188362 13.6956522,8.21743204 C13.6956522,11.2429805 11.242899,13.6956522 8.21743204,13.6956522 Z" id="search-svg"></path>
-                </svg>
-                <span class="hidden">Rechercher</span>
-            </button>
-        </div>
-        
-        <div class="top-nav__login">
-        {% if user.is_authenticated %}
-          <div class="top-nav__user top-nav-user">
-            <div class="top-nav-user__avatar">
-                <img class="top-nav-user__img" src="https://www.amvq.quebec/images/public/entretien-chaton.jpg" alt="Username img">
-            </div>   
-            <div class="top-nav-user__infos">
-                Connecté(e) en tant que
-                <a href="{% url "account:details" %}" title="Aller sur votre profil" class="top-nav-user__infos--username">
-                    {{ user }}
-                </a>
-                <a href="{% url "account:logout" %}">
-                  Se déconnecter
-                </a>
-            </div>
-          </div> 
-        {% else %}
-            <a href="{% url "account:login" %}" title="Se connecter" class="top-nav__login-icon-link">
-                <svg class="top-nav__login-icon" version="1.1" id="user-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                viewBox="0 0 299.997 299.997" xml:space="preserve">
-                    <path d="M149.996,0C67.157,0,0.001,67.158,0.001,149.997c0,82.837,67.156,150,149.995,150s150-67.163,150-150
-                    C299.996,67.156,232.835,0,149.996,0z M150.453,220.763v-0.002h-0.916H85.465c0-46.856,41.152-46.845,50.284-59.097l1.045-5.587
-                    c-12.83-6.502-21.887-22.178-21.887-40.512c0-24.154,15.712-43.738,35.089-43.738c19.377,0,35.089,19.584,35.089,43.738
-                    c0,18.178-8.896,33.756-21.555,40.361l1.19,6.349c10.019,11.658,49.802,12.418,49.802,58.488H150.453z"/>
-                </svg>
-            </a>
-            <div class="top-nav__login-links">
-                <span><a href="{% url "account:login" %}" title="Se connecter" class="top-nav__login-link">Se connecter</a><span class="top-nav__login-links--or"> ou </span></span>
-                <a href="{% url "account:signup" %}" title="Créer un compte" class="top-nav__login-link">Créer un compte</a>
-            </div>
-        {% endif %}
-        </div> 
-            
     </div>
     <div class="navbar__menu container d-block">
       <nav class="navigation">

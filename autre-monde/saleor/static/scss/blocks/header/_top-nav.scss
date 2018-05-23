@@ -1,0 +1,156 @@
+.top-nav {
+    background-color: white;
+    max-width: $max-width;
+    margin: 0 auto;
+    width: 100%;
+    min-height: 75px;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.top-nav__social-medias {
+    // flex-basis: 0%;
+    // flex-grow: 1;
+}
+
+.top-nav__search-bar {
+    flex-grow: 1;
+    margin-left: 50px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.top-nav__login {
+    color: $am-blue;
+    margin-left: 50px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.top-nav__login-icon {
+    width: 35px;
+    height: 35px;
+    fill: currentColor;
+}
+
+.top-nav__login-icon-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.top-nav__login-links {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+}
+
+.top-nav__login-link {
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.top-nav__user {
+    flex-basis: 0%;
+    flex-grow: 1;
+    margin-left: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.top-nav-user__avatar {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    overflow: hidden;
+
+}
+
+.top-nav-user__img {
+    height: 100%;
+    width: auto;
+}
+
+.top-nav__burger-menu {
+    display: none;
+}
+
+@media screen and (max-width: 1220px){
+    .top-nav {
+        padding: 0 10px;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .top-nav {
+        font-size: 0.9rem;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .top-nav__login-links {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 750px){
+
+    .top-nav {
+        background-color: $am-blue;
+        min-height: 60px;
+        height: 60px;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        justify-content: flex-end;
+        z-index: 99;
+    }
+
+    .top-nav--sticky {
+        position: fixed;
+        top: 0; 
+        left: 0;
+    }
+
+    .top-nav__social-medias {
+        position: absolute;
+        top: calc(35px / 2  - 70px); // icon / 2 - main-bar height
+        right: 10px;
+        z-index: 51;
+    }
+
+    .top-nav__burger-menu {
+        display: inline-flex;
+        color: white;
+        cursor: pointer;
+        position: absolute;
+        left: 10px;
+        top: calc(60px / 2 - 35px / 2);
+    }
+
+    .top-nav__burger-icon {
+        fill: currentColor;
+        width: 35px;
+        height: 35px;
+    }
+
+    .top-nav__search-bar {
+        max-width: 50px;
+    }
+
+    .top-nav__login {
+        margin-left: 10px;
+        flex-grow: 0;
+    }
+
+    .top-nav__login-icon {
+        color: white;
+    }
+}

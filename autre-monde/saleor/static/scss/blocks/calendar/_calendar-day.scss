@@ -1,0 +1,56 @@
+.calendar-day__title  {
+    background-color: $am-blue;
+    color: white;
+    font-weight: 500;
+    font-size: 1.5rem;
+    padding: 5px 10px;
+    margin-bottom: 10px;
+}
+
+.calendar-day__list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    margin: 0 -1%;  
+}
+
+.calendar-day__item {
+    width: 48%;
+    margin: 1%;
+    min-height: 150px;
+
+    background-color: white;
+    border-radius: 2px;
+    box-shadow: 0 0 7px 6px $t-gray-10;
+    cursor: pointer;
+    transition: box-shadow $delay ease-out;
+
+    display: flex;
+    align-items: stretch;
+
+    &:hover, &:focus {
+        box-shadow: 0 0 7px 6px $t-gray-25;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .calendar-day__list {
+        margin: 0 -1.5%;
+    }
+
+    .calendar-day__item {
+        margin: 1.5%;
+        width: 47%;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .calendar-day__list {
+        margin: 0;
+    }
+
+    .calendar-day__item {
+        margin: 10px 0;
+        width: 100%;
+    }
+}

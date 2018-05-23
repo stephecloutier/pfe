@@ -1,0 +1,22 @@
+.event-home-infos {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.event-home-infos__title {
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: $am-blue;
+}
+
+.event-home-infos__tips {
+    display: flex;
+    align-items: center;
+    color: $am-blue;
+    margin-top: 5px;
+}
+
+.event-home-infos__description {
+    margin-top: 5px;
+}

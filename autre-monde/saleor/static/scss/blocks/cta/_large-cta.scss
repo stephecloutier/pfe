@@ -1,0 +1,29 @@
+.large-cta {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    min-height: 300px;
+    background: url("../images/cta-large.jpg") center center no-repeat;
+    background-size: cover;
+    background-color: hotpink;
+}
+
+.large-cta__text {
+    max-width: $max-width;
+    margin: 0 auto;
+    padding: 0 20px;
+
+    text-align: center;
+    line-height: 1.2;
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: white;
+}
+
+@media screen and (max-width: 900px) {
+    
+    .large-cta__text {
+        font-size: 1.8rem;
+        font-weight: 500;
+    }
+}

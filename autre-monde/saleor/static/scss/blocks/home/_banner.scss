@@ -1,0 +1,29 @@
+.banner {
+    background: url("../images/maps_banner.jpg") no-repeat center fixed;
+    background-size: cover;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.banner__text {
+    color: white;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 400;
+    max-width: 70%;
+}
+
+@media screen and (max-width: 450px) {
+
+    .banner {
+        padding: 20px 10px;
+        min-height: 150px;
+    }
+
+    .banner__text {
+        font-size: 1.5rem;
+    }
+}

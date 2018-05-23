@@ -1,0 +1,33 @@
+.breadcrumb {
+    max-width: $max-width;
+    width: 100%;
+    margin: 0 auto 30px;
+    padding-top: 15px;
+    color: $am-blue;
+    font-weight: 500;
+}
+
+.breadcrumb__list {
+    display: flex;
+}
+
+.breadcrumb__item {
+
+    &:not(&--current) {
+        &::after {
+            content: ">";
+            margin: 0 10px;
+            font-weight: 400;
+        }
+    }
+}
+
+.breadcrumb__link {
+    text-decoration: underline;
+}
+
+@media screen and (max-width: 1220px) {
+    .breadcrumb {
+        padding: 15px 10px 0;
+    }
+}

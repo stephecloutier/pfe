@@ -1,0 +1,68 @@
+.calendar-day-event {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    color: $dark-blue;
+    padding: 20px;
+
+    &--event {
+        .calendar-day-event__title::before {
+            color: $accent-red;
+        }
+    }
+
+    &--news {
+        .calendar-day-event__title::before {
+            color: $accent-turquoise;
+        }
+    }
+}
+
+.calendar-day-event__title {
+    display: flex;
+    align-items: center;
+    font-size: 1.25rem;
+    line-height: 1.2;
+    font-weight: 500;
+    color: $am-blue;
+
+    &::before {
+        content: "•";
+        font-size: 3rem;
+        display: inline-flex;
+        margin-right: 5px;
+        line-height: 0;
+    }
+}
+
+.calendar-day-event__description {
+    margin-top: 10px;
+}
+
+.calendar-day-event__infos {
+    display: flex;
+    align-items: flex-start;
+    margin-top: 5px;
+}
+
+.calendar-day-event__infos__tip {
+    display: flex;
+    align-items: center;
+    font-weight: 450;
+    color: $am-blue;
+    margin-right: 10px;
+}
+
+.calendar-day-event__infos__icon {
+    display: flex;
+    align-items: center;
+    color: $accent-red;
+    margin-right: 3px;
+}
+
+.calendar-day-event__infos__icon__svg {
+    fill: currentColor;
+}
+
+

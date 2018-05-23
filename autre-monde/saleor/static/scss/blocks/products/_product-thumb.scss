@@ -1,0 +1,120 @@
+.product-thumb {
+    width: 100%;
+    min-height: 300px;
+    border-radius: 2px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 20px;
+    transition: transform $delay ease-out;
+    z-index: 1;
+
+    .product__infos {
+        margin-top: 20px;
+        flex-shrink: 1;
+        margin-bottom: 30px;
+    }
+
+    .product__more-infos {
+        position: absolute;
+        bottom: 10px;
+        left: 20px;
+        max-width: 100%;
+        animation-name: animeOut;
+        animation-duration: 0;
+        animation-fill-mode: both;
+    }
+
+    .product__img-wrapper {
+        display: flex;
+        justify-content: center;
+        flex-shrink: 1;
+    }
+
+    .product__img {
+        max-width: 125px;
+        max-height: 125px;
+        flex-shrink: 1;
+    }
+}
+
+.product-thumb:hover, .product-thumb:focus {
+    box-shadow: 0 0 7px 6px $t-gray-25;
+    transform: scale(1.1);
+    padding-bottom: 50px;
+    z-index: 10;
+
+    .product__more-infos {
+        animation-name: animeIn;
+        animation-duration: 0.5s;
+        animation-fill-mode: both;
+    }
+}
+
+@keyframes animeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes animeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+
+@media screen and (max-width: 480px) {
+
+    .product-thumb {
+        position: static;
+        max-height: 100%;
+        z-index: 1;
+        justify-content: space-between;
+
+        .product__infos {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0;
+        }
+        .product__more-infos {
+            opacity: 1;
+            animation: none;
+            position: static;
+            margin-top: 30px;
+        }
+    }    
+
+    .product-thumb:hover, .product-thumb:focus {
+        transform: none;
+        padding-bottom: 20px;
+        z-index: 1;
+
+        .product__more-infos {
+            animation: none;
+        }
+    }
+}
+
+@media screen and (max-width: 450px) { 
+    .product-thumb {
+        .product__more-infos {
+            opacity: 1;
+            max-height: none;
+            position: relative;
+            top: 0;
+        }
+    
+        .product:hover, .product:focus {
+            .product__infos {
+                transform: translateY(0);
+            }
+        }
+    }
+}

@@ -1,0 +1,19 @@
+.top-nav-user {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.top-nav-user__infos {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    
+
+    &--username {
+        cursor: pointer;
+        text-decoration: underline;
+        color: $accent-red;
+        font-weight: 600;
+        line-height: 1;
+    }
+}

@@ -1,0 +1,16 @@
+body {
+    font: 400 16px/1.4 $raleway;
+    color: $dark-blue;
+    width: 100%;
+    p:not(:last-of-type) {
+        margin-bottom: 0.4em;
+    }
+}
+
+@media screen and (max-width: 750px){
+    .body-with-opened-menu {
+        //position: fixed;
+        //max-width: 100%;
+        //height: 100vh;
+    }
+}
