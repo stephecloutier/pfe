@@ -1,0 +1,25 @@
+<nav class="catalogue-categories__nav">
+    <ul class="catalogue-categories__list">
+        {% for item in menu_items %}
+        {% with children=item.get_children %}
+        <li class="catalogue-categories__item {% if children %}catalogue-categories__item--has-children{% endif %}">
+            <a class="catalogue-categories__link" href="{{ item.get_url }}" title="Afficher les produits de la catégorie x">
+                {{ item }} <!-- <span class="catalogue-categories__number">(123)</span>  -->
+            </a>
+            {% if children %}
+            <ul class="catalogue-categories__sub-list">
+            {% for child in children %}
+                <li>
+                    <a class="catalogue-categories__sub-item" href="{{ child.get_url }}">
+                        {{ child }}
+                    </a>
+                </li>
+           
+            {% endfor %}
+            </ul>
+        {% endif %}
+        </li>
+        {% endwith %}
+        {% endfor %}
+    </ul>
+</nav>
