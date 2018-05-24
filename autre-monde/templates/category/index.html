@@ -3,14 +3,20 @@
 {% load staticfiles %}
 
 {% block breadcrumb_part %}
-  <li>
-    <a href="{% url 'home' %}">{% trans "Home" context 'Category breadcrumbs home' %}</a>
+  <li class="breadcrumb__item">
+    <a class="breadcrumb__link" href="{% url 'home' %}" title="Aller sur la page accueil">Accueil</a>
+  </li>
+  <li class="breadcrumb__item">
+    <a class="breadcrumb__link" href="{% url "product:category-list" %}" title="Aller sur la page du catalogue">Catalogue</a>
   </li>
   {% for ancestor in object.get_ancestors %}
-    <li><a href='{{ ancestor.get_absolute_url }}'>{{ ancestor.name }}</a>
-    </li>
+  <li class="breadcrumb__item">
+    <a class="breadcrumb__link" href='{{ ancestor.get_absolute_url }}'>{{ ancestor.name }}</a>
+  </li>
   {% endfor %}
-  <li><a href='{{ object.get_absolute_url }}'>{{ object.name }}</a></li>
+  <li class="breadcrumb__item breadcrumb__item--current">
+    {{ object.name }}
+  </li>
 {% endblock %}
 
 {% block filters %}

@@ -41,9 +41,13 @@
 {% block breadcrumb %}
   <div class="row">
     <div class="col-md-7">
-      <ul class="breadcrumbs list-unstyled d-none d-md-block">
-        {% block breadcrumb_part %}{% endblock %}
-      </ul>
+      <!--  my breadcrumb -->
+      <div class="breadcrumb">
+          <ul class="breadcrumb__list">
+              {% block breadcrumb_part %}{% endblock %}
+          </ul>
+      </div>
+      <!-- end -->
     </div>
     <div class="col-md-5">
       <h3 class="d-md-none float-left filters-toggle">
