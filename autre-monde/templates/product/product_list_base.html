@@ -129,9 +129,11 @@
         <div>
           <div>
             {% if products %}
-              <div class="row">
+            <section class="catalogue__products catalogue-products">
+                <h2 class="hidden">Produits du catalogue</h2>
+              {% comment %} <div class="row"> {% endcomment %}
                 {% include "_items.html" with products=products %}
-              </div>
+              {% comment %} </div> {% endcomment %}
               <div class="row">
                 <div class="m-auto">
                   {% if products_paginated.has_other_pages %}
@@ -139,6 +141,7 @@
                   {% endif %}
                 </div>
               </div>
+            </section>
             {% else %}
               <div class="row no-results">
                 <div class="col-12">
