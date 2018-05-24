@@ -23,6 +23,7 @@ from ..core.models import SortableModel
 from ..core.utils.taxes import DEFAULT_TAX_RATE_NAME, apply_tax_to_price
 from ..discount.utils import calculate_discounted_price
 from ..seo.models import SeoModel
+from .validators import validate_ean
 
 
 class Category(MPTTModel, SeoModel):
@@ -192,6 +193,9 @@ class ProductVariant(models.Model):
     cost_price = MoneyField(
         currency=settings.DEFAULT_CURRENCY, max_digits=12,
         decimal_places=settings.DEFAULT_DECIMAL_PLACES, blank=True, null=True)
+    distributor = models.CharField(max_length=32)
+    ean = models.CharField(max_length=13, validators=[validate_ean])
+    product_reference = models.CharField(max_length=32, blank=True, null=True)
 
     class Meta:
         app_label = 'product'
