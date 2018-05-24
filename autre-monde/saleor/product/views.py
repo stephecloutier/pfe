@@ -9,8 +9,8 @@ from django.urls import reverse
 from ..cart.utils import set_cart_cookie
 from ..core.utils import serialize_decimal
 from ..seo.schema.product import product_json_ld
-from .filters import ProductCategoryFilter, ProductCollectionFilter
-from .models import Category, Collection
+from .filters import ProductCategoryFilter, ProductCollectionFilter, ProductFilter
+from .models import Category, Collection, Product, ProductType
 from .utils import (
     collections_visible_to_user, get_product_images, get_product_list_context,
     handle_cart_form, products_for_cart, products_with_details)
@@ -140,3 +140,6 @@ def collection_index(request, slug, pk):
     ctx = get_product_list_context(request, product_filter)
     ctx.update({'object': collection})
     return TemplateResponse(request, 'collection/index.html', ctx)
+
+def category_list(request):
+    return TemplateResponse(request, 'catalogue/index.html')

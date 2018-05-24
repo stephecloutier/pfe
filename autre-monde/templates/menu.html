@@ -7,7 +7,7 @@
 </div>
 <ul class="main-nav__list">
     <li class="main-nav__item"><a class="main-nav__link" href="{% url 'home' %}" title="Aller sur la page X">Accueil</a></li>
-    <li class="main-nav__item main-nav__item--catalogue"><a class="main-nav__link" href="./catalogue.html" title="Aller sur la page X">Catalogue</a>
+    <li class="main-nav__item main-nav__item--catalogue"><a class="main-nav__link" href="{% url "product:category-list" %}" title="Aller sur la page X">Catalogue</a>
         <ul id="am-sub-nav" class="main-nav__sub-nav">
             {% for item in menu_items %}
             <li class="main-nav__sub-item"><a class="main-nav__sub-link" href="{{ item.get_url }}">{{ item }}</a></li>
