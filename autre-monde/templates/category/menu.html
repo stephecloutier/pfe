@@ -1,10 +1,10 @@
 <nav class="catalogue-categories__nav">
-    <h2 class="hidden">Catégories du catalogue</h2>
+    <h3 class="catalogue-categories__title">Les catégories</h3>
     <ul class="catalogue-categories__list">
         {% for item in menu_items %}
         {% with children=item.get_children %}
         <li class="catalogue-categories__item {% if children %}catalogue-categories__item--has-children{% endif %}">
-            <a class="catalogue-categories__link" href="{{ item.get_url }}" title="Afficher les produits de la catégorie x">
+            <a class="catalogue-categories__link" href="{{ item.get_url }}" title="Afficher les produits de la catégorie {{ item }}">
                 {{ item }} <!-- <span class="catalogue-categories__number">(123)</span>  -->
             </a>
             {% if children %}

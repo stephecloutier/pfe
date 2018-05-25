@@ -11,15 +11,20 @@
 {% endblock footer_scripts %}
 
 {% block title %}
-  {% if object.seo_title %}
-    {{ object.seo_title }}
+  Catalogue
+  {% if object %}
+    {% if object.seo_title %}
+       - {{ object.seo_title }}
+    {% else %}
+       - {{ object.name }} | {{ block.super }}
+    {% endif %}
   {% else %}
-    {{ object.name }} - {{ block.super }}
+    | {{ block.super }}
   {% endif %}
 {% endblock %}
 
 {% block meta_tags %}
-  <meta property="og:title" content="{{ object.seo_title|default:object.name }}">
+  <meta property="og:title" content="Catalogue{% if object %} - {{ object.seo_title|default:object.name }}{% endif %}">
   {% get_object_properties object=object properties="seo_description,description" as seo_description %}
   <meta property="og:description" content="{{ seo_description }}">
   <meta name="description" content="{{ seo_description }}">

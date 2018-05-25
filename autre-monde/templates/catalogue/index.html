@@ -3,17 +3,6 @@
 {% load staticfiles %}
 {% load shop %}
 
-<!-- {% block breadcrumb_part %}
-  <li>
-    <a href="{% url 'home' %}">{% trans "Home" context 'Category breadcrumbs home' %}</a>
-  </li>
-  {% for ancestor in object.get_ancestors %}
-    <li><a href='{{ ancestor.get_absolute_url }}'>{{ ancestor.name }}</a>
-    </li>
-  {% endfor %}
-  <li><a href='{{ object.get_absolute_url }}'>{{ object.name }}</a></li>
-{% endblock %} -->
-
 {% block breadcrumb %}
     <div class="breadcrumb">
         <ul class="breadcrumb__list">
@@ -28,9 +17,7 @@
     <h2 class="catalogue__title main-title">Catalogue</h2>
     <div class="catalogue__content">
         <div class="catalogue__categories catalogue-categories">
-            <nav class="catalogue-categories__nav">
-                {% full_categories_menu site_menu=site.settings.top_menu %}
-            </nav>              
+            {% full_categories_menu site_menu=site.settings.top_menu %}
         </div>
 
         <div class="catalogue__right">
