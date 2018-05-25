@@ -5,6 +5,12 @@
     padding: 0 0 60px;
 }
 
+.catalogue__title {
+    &--category {
+        font-weight: 400;
+    }
+}
+
 .catalogue__content {
     display: flex;
     justify-content: space-between;
