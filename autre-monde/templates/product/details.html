@@ -72,23 +72,179 @@
       {% endblocktrans %}
     </div>
   {% endif %}
-  <div class="row product">
-    <script type="application/ld+json">{{ json_ld_product_data|safe }}</script>
-    <div class="col-md-6 col-12 product__gallery">
-      {% with images=product_images %}
-        {% if images %}
-          <div id="carousel-example-generic" class="carousel slide">
-            <div class="carousel-inner" role="listbox">
-              {% for image in images %}
-                <div class="carousel-item{% if forloop.first %} active{% endif %}">
-                  <img class="d-block img-fluid lazyload lazypreload"
-                       data-src="{% get_thumbnail image.image method="crop" size="540x540" %}"
-                       data-srcset="{% get_thumbnail image.image method="crop" size="540x540" %} 1x, {% get_thumbnail image.image method="crop" size="1080x1080" %} 2x"
-                       alt=""
-                       src="{% placeholder size=540 %}">
+  <section class="single-product">
+      <div class="single-product__infos">
+          <div class="single-product__infos__main">
+              <h2 class="single-product__title main-title">{{ product }}</h2>
+              {% if user.is_staff %}
+              <span class="single-product__edit-dashboard">
+                <a href="{% url "dashboard:product-details" pk=product.pk %}">
+                  {% trans "Edit in dashboard" context "Product details link text" %}
+                </a>
+              </span>
+              {% endif %}
+              <!-- maybe flag (nouveauté, à venir, précommande) -->
+              <div class="single-product__description">
+                      {{ product.description|safe }}
+              </div>
+
+              <table class="single-product__more-infos product__more-infos">
+                {% for attribute, value in product_attributes.items %}
+                  <tr>
+                    <td>{{ attribute }}:</td>
+                    <td><strong>{{ value }}</strong></td>
+                  </tr>
+                {% endfor %}
+              </table>
+              {% comment %} <div class="single-product__more-infos product__more-infos">
+                  <div class="product__more-info product__more-info--time">
+                      <svg class="product__more-info__svg" width="15px" height="15px" viewBox="0 0 25 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> 
+                          <g>
+                              <path d="M12.3928571,0 C5.55943878,0 0,5.55943878 0,12.3928571 C0,19.2262755 5.55943878,24.7857143 12.3928571,24.7857143 C19.2262755,24.7857143 24.7857143,19.2262755 24.7857143,12.3928571 C24.7857143,5.55943878 19.2262755,0 12.3928571,0 Z M12.3928571,22.1487245 C7.01352041,22.1487245 2.63673469,17.772449 2.63673469,12.3928571 C2.63673469,7.01326531 7.01352041,2.6369898 12.3928571,2.6369898 C17.7721939,2.6369898 22.1489796,7.01326531 22.1489796,12.3928571 C22.1489796,17.772449 17.7721939,22.1487245 12.3928571,22.1487245 Z" id="Shape"></path>
+                              <path d="M18.8515306,12.0102041 L13.2821429,12.0102041 L13.2821429,5.31377551 C13.2821429,4.7502551 12.8252551,4.29336735 12.2617347,4.29336735 C11.6982143,4.29336735 11.2413265,4.7502551 11.2413265,5.31377551 L11.2413265,13.0306122 C11.2413265,13.5941327 11.6982143,14.0510204 12.2617347,14.0510204 L18.8515306,14.0510204 C19.415051,14.0510204 19.8719388,13.5941327 19.8719388,13.0306122 C19.8719388,12.4670918 19.415051,12.0102041 18.8515306,12.0102041 Z" id="Shape"></path>
+                          </g>              
+                      </svg>
+                      <div class="product__more-info__text">
+                          15 à 30 min.
+                      </div>
+                  </div>
+                  <div class="product__more-info product__more-info--age">
+                      <svg class="product__more-info__svg" width="15" height="12" xmlns="http://www.w3.org/2000/svg">
+                          <g>
+                              <g transform="translate(4.2 1.2)">
+                                  <ellipse cx="2.629" cy=".901" rx="1.014" ry="1"/>
+                                  <path d="M2.983 2.233a2.072 2.072 0 0 0-.776.008C.521 2.417-.026 4.151.128 5.474c.067.572 1.081.578 1.014 0-.057-.482-.033-1.21.256-1.727v1.885c0 .023.002.043.003.065 0 .01-.003.019-.003.029 0 1.496-.003 2.991-.073 4.486-.03.664 1.129.661 1.16 0 .054-1.172.067-2.344.07-3.516.055.003.11.003.165 0a81.38 81.38 0 0 0 .07 3.516c.032.661 1.19.664 1.16 0-.07-1.495-.072-2.99-.072-4.486a.505.505 0 0 0-.018-.13c-.001-.649-.03-1.299-.02-1.948.344.52.376 1.312.316 1.825-.068.578.946.572 1.013 0 .159-1.35-.415-3.13-2.186-3.24z"/>
+                              </g>
+                              <g transform="translate(9.6)">
+                                  <ellipse cx="2.592" cy=".984" rx="1.08" ry="1"/>
+                                  <path d="M3.054 2.593a2.102 2.102 0 0 0-.823.01C.443 2.798-.137 4.723.026 6.19c.072.635 1.147.642 1.075 0-.06-.535-.034-1.342.272-1.916v2.092c0 .025.003.048.004.072-.001.011-.004.02-.004.032 0 1.66-.003 3.32-.077 4.978-.032.737 1.197.735 1.23 0 .057-1.3.072-2.6.075-3.901.058.003.116.003.175 0 .003 1.301.017 2.602.075 3.901.032.735 1.262.737 1.229 0-.074-1.659-.077-3.318-.077-4.978a.585.585 0 0 0-.018-.143c-.002-.72-.032-1.442-.022-2.162.366.576.399 1.455.336 2.025-.073.64 1.003.634 1.074 0 .168-1.498-.44-3.473-2.319-3.597z"/>
+                              </g>
+                              <g transform="translate(0 3.6)">
+                                  <ellipse cx="2.1" cy=".7" rx="1" ry="1"/>
+                                  <path d="M2.375 1.825a1.816 1.816 0 0 0-.64.007C.346 1.968-.106 3.313.022 4.339c.055.444.891.448.836 0C.81 3.965.83 3.401 1.067 3v1.462c0 .018.003.034.004.05 0 .008-.003.015-.003.023 0 1.16-.002 2.32-.06 3.48-.025.515.93.513.956 0a58.6 58.6 0 0 0 .059-2.728c.045.003.09.003.136 0 .003.91.014 1.819.058 2.727.026.514.982.516.956 0-.057-1.16-.06-2.319-.06-3.48a.37.37 0 0 0-.014-.1c-.001-.503-.024-1.007-.017-1.51.285.402.31 1.017.261 1.415-.056.448.781.443.836 0 .13-1.047-.343-2.428-1.804-2.514z"/>
+                              </g>
+                          </g>
+                      </svg>
+                      <div class="product__more-info__text">
+                          8 ans +
+                      </div>
+                  </div>
+                  <div class="product__more-info product__more-info--age">
+                      <svg class="product__more-info__svg" width="15" height="13" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M13.605 4.114c-.47 0-.85.386-.85.859s.38.858.85.858a.855.855 0 0 0 .85-.858.855.855 0 0 0-.85-.859zm-12.209 0c-.47 0-.85.386-.85.859s.38.858.85.858c.469 0 .85-.385.85-.858a.855.855 0 0 0-.85-.859zm9.682-1.561c-.697 0-1.263.573-1.263 1.278a1.27 1.27 0 0 0 1.263 1.277c.697 0 1.265-.573 1.265-1.277s-.568-1.278-1.265-1.278zM15 10.323h-1.44v-2.68c0-.46-.134-.887-.349-1.26.127-.037.257-.064.394-.064.768 0 1.395.634 1.395 1.412v2.592zM3.922 2.553c-.698 0-1.265.573-1.265 1.278 0 .704.567 1.277 1.265 1.277A1.27 1.27 0 0 0 5.184 3.83c0-.704-.566-1.278-1.262-1.278zM1.396 6.319c.138 0 .266.027.393.064-.217.373-.349.8-.349 1.26v2.68H0V7.73C0 6.953.627 6.32 1.396 6.32zM7.5 0C6.469 0 5.63.847 5.63 1.889c0 1.041.839 1.89 1.869 1.89s1.87-.849 1.87-1.89C9.368.847 8.528 0 7.498 0zm5.599 11.32h-2.206V7.243c0-.56-.146-1.082-.383-1.55.18-.053.37-.091.569-.091 1.113 0 2.02.914 2.02 2.042v3.676zM4.106 7.243v4.077H1.903V7.644c0-1.126.905-2.042 2.02-2.042.199 0 .387.038.567.092a3.416 3.416 0 0 0-.384 1.55zm.462 5.257h5.861V7.243c0-1.633-1.315-2.962-2.93-2.962-1.617 0-2.93 1.329-2.93 2.962V12.5z" />
+                      </svg>
+                      <div class="product__more-info__text">
+                          2 joueurs
+                      </div>
+                  </div>
+              </div> {% endcomment %}
+              <!-- maybe bouton précommande -->
+          </div>
+          
+          {% comment %} <div id="am-product-specifications" class="single-product__specifications single-product-specifications">
+              <div id="am-product-specifications-title" class="single-product-specifications__title deploy-title">
+                  <svg class="single-product-specifications__title__icon deploy-title__icon" width="16" height="13" xmlns="http://www.w3.org/2000/svg"><path d="M8 13L0 0h16z" /></svg>
+                  <span class="single-product-specifications__title__text deploy-title__text">Informations supplémentaires</span>
+              </div>
+              <div class="single-product-specifications__inner">
+                  <dl class="single-product-specifications__list">
+                      <div class="single-product-specifications__item">
+                          <dt class="single-product-specifications__item__term">Date de sortie prévue:</dt>
+                          <dd class="single-product-specifications__item__definition">Février 2019</dd>
+                      </div>
+                      <div class="single-product-specifications__item">
+                          <dt class="single-product-specifications__item__term">Langue(s):</dt>
+                          <dd class="single-product-specifications__item__definition">Français</dd>
+                      </div>
+                      <div class="single-product-specifications__item">
+                          <dt class="single-product-specifications__item__term">Éditeur:</dt>
+                          <dd class="single-product-specifications__item__definition">Oz Editions</dd>
+                      </div>
+                      <div class="single-product-specifications__item">
+                          <dt class="single-product-specifications__item__term">Thème(s):</dt>
+                          <dd class="single-product-specifications__item__definition">Mythologique, Aventure, Famille</dd>
+                      </div>
+                      <div class="single-product-specifications__item">
+                          <dt class="single-product-specifications__item__term">Catégorie(s):</dt>
+                          <dd class="single-product-specifications__item__definition">Jeux de société</dd>
+                      </div>
+                  </dl>
+                  <div class="single-product-specifications__content">
+                      <span class="single-product-specifications__content__title">Contenu</span>
+                      <ul class="single-product-specifications__content__list">
+                          <li class="single-product-specifications__content__item">9 tuiles village</li>
+                          <li class="single-product-specifications__content__item">16 figurines totem</li>
+                          <li class="single-product-specifications__content__item">7 fruits</li>
+                          <li class="single-product-specifications__content__item">1 figurine shaman</li>
+                      </ul>
+                  </div>
+              </div>
+          </div> {% endcomment %}
+      </div>
+    
+      <script type="application/ld+json">{{ json_ld_product_data|safe }}</script>
+      <div class="single-product__images product__gallery">
+          {% with images=product_images %}
+            {% if images %}
+              <div id="carousel-example-generic" class="carousel slide">
+                <div class="carousel-inner" role="listbox">
+                  {% for image in images %}
+                    <div class="carousel-item{% if forloop.first %} active{% endif %}">
+                      <img class="d-block img-fluid lazyload lazypreload"
+                           data-src="{% get_thumbnail image.image method="crop" size="500x500" %}"
+                           data-srcset="{% get_thumbnail image.image method="crop" size="500x500" %} 1x, {% get_thumbnail image.image method="crop" size="1000x1000" %} 2x"
+                           alt=""
+                           src="{% placeholder size=500 %}">
+                    </div>
+                  {% endfor %}
                 </div>
-              {% endfor %}
-            </div>
+                {% if images|length > 1 %}
+                  <a class="carousel-control-prev" href="#carousel-example-generic" role="button" data-slide="prev">
+                    <svg data-src="{% static "images/gallery-arrow.svg" %}" />
+                  </a>
+                  <a class="carousel-control-next" href="#carousel-example-generic" role="button" data-slide="next">
+                    <svg data-src="{% static "images/gallery-arrow.svg" %}" />
+                  </a>
+                {% endif %}
+                <ol class="carousel-indicators d-none d-md-block">
+                  {% for image in images %}
+                    {% if images|length > 1 %}
+                      <li data-target="#carousel-example-generic" data-slide-to="{{ forloop.counter0 }}"{% if forloop.first %} class="active"{% endif %}>
+                        <img data-src="{% get_thumbnail image.image method="crop" size="60x60" %}"
+                             data-srcset="{% get_thumbnail image.image method="crop" size="60x60" %} 1x, {% get_thumbnail image.image method="crop" size="120x120" %} 2x"
+                             alt=""
+                             class="lazyload lazypreload"
+                             src="{% placeholder size=60 %}">
+                      </li>
+                    {% endif %}
+                  {% endfor %}
+                </ol>
+              </div>
+            {% else %}
+              <img data-src="{% placeholder size=500 %}"
+                   data-srcset="{% placeholder size=500 %} 1x, {% placeholder size=1000 %} 2x"
+                   alt=""
+                   class="img-fluid lazyload lazypreload">
+            {% endif %}
+          {% endwith %}
+      </div>
+      {% comment %} <div class="single-product__images product__gallery">
+          {% with images=product_images %}
+            {% if images %}
+            {% for image in images %}
+                <div class="single-product__main-images__wrapper carousel-item{% if forloop.first %} active{% endif %}">
+                    <img 
+                      width="500" 
+                      height="500" 
+                      class="single-product__main-image d-block img-fluid lazyload lazypreload"
+                      data-src="{% get_thumbnail image.image method="crop" size="500x500" %}"
+                      data-srcset="{% get_thumbnail image.image method="crop" size="500x500" %} 1x, {% get_thumbnail image.image method="crop" size="1000x1000" %} 2x"
+                      alt=""
+                      src="{% placeholder size=500 %}"
+                      >
+                </div>
+            {% endfor %}
+            {% endif %}
             {% if images|length > 1 %}
               <a class="carousel-control-prev" href="#carousel-example-generic" role="button" data-slide="prev">
                 <svg data-src="{% static "images/gallery-arrow.svg" %}" />
@@ -107,29 +263,23 @@
                          class="lazyload lazypreload"
                          src="{% placeholder size=60 %}">
                   </li>
-                {% endif %}
-              {% endfor %}
             </ol>
-          </div>
-        {% else %}
-          <img data-src="{% placeholder size=540 %}"
-               data-srcset="{% placeholder size=540 %} 1x, {% placeholder size=1080 %} 2x"
-               alt=""
-               class="img-fluid lazyload lazypreload">
-        {% endif %}
-      {% endwith %}
-    </div>
+            {% else %}
+              <img data-src="{% placeholder size=540 %}"
+                    data-srcset="{% placeholder size=540 %} 1x, {% placeholder size=1080 %} 2x"
+                    alt=""
+                    class="img-fluid lazyload lazypreload">
+            {% endif %}
+            {% endfor %}
+            {% endwith %}
+      </div> {% endcomment %}
+  </section>
+{% endblock %}
+{% comment %} 
+  <div class="row product">
     <div class="col-md-6 col-12 product__info">
-      <h1 class="product__info__name">
-        {{ product }}
-      </h1>
-      {% if user.is_staff %}
-        <p>
-          <a href="{% url "dashboard:product-details" pk=product.pk %}">
-            {% trans "Edit in dashboard" context "Product details link text" %}
-          </a>
-        </p>
-      {% endif %}
+ 
+      
       {% if availability.available %}
         {% if show_variant_picker %}
           <div id="variant-price-component"></div>
@@ -195,20 +345,7 @@
           {% blocktrans context "Product details text" %}This product is currently <strong>unavailable</strong>.{% endblocktrans %}
         </p>
       {% endif %}
-      <div class="product__info__description">
-        <h3>{% trans "Description" context "Product details title" %}</h3>
-        <hr>
-        {{ product.description|safe }}
-      </div>
-      <hr>
-      <table>
-        {% for attribute, value in product_attributes.items %}
-          <tr>
-            <td>{{ attribute }}:</td>
-            <td><strong>{{ value }}</strong></td>
-          </tr>
-        {% endfor %}
-      </table>
+      
     </div>
   </div>
-{% endblock content %}
+ {% endcomment %}
