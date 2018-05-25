@@ -21,7 +21,7 @@
             </div>
             <div class="product__infos">
                 <span class="product__title">{{ product }}</span>
-                <div class="product__short-desc">10 minutes pour vous sauver&nbsp;!</div>
+                <div class="product__short-desc"> {{ product.description|safe }}</div>
                 <div class="product__more-infos">
                     <div class="product__more-info product__more-info--time">
                         <svg class="product__more-info__svg" width="15px" height="15px" viewBox="0 0 25 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> 

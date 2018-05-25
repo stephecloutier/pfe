@@ -48,89 +48,89 @@
 
 <body id="am-body">
 {% block header %}
-  <header class="navbar header" role="navigation">
-     <!-- <div class="navbar__login container-fluid {% if user.is_impersonate %} bg-warning{% endif %}">
-      <div class=" d-none d-md-block container">
-      <div class="row">
+    <header class="navbar header" role="navigation">
+        <!-- <div class="navbar__login container-fluid {% if user.is_impersonate %} bg-warning{% endif %}">
+        <div class=" d-none d-md-block container">
+        <div class="row">
         <div class="col-6">
-          <p class="text-left">{{ site.settings.header_text }}</p>
+            <p class="text-left">{{ site.settings.header_text }}</p>
         </div>
         <div class="col-6">
-          <ul class="float-right">
+            <ul class="float-right">
             {% include "_language_picker.html" %}
             {% if user.is_authenticated %}
-              {% if user.is_staff or request.impersonator.is_staff %}
+                {% if user.is_staff or request.impersonator.is_staff %}
                 <li>
-                  <a href="{% url "dashboard:index" %}" target="_blank" rel="noopener">
+                    <a href="{% url "dashboard:index" %}" target="_blank" rel="noopener">
                     {% trans "Dashboard" context "Main navigation item" %}
-                  </a>
+                    </a>
                 </li>
-              {% endif %}
-              <li>
+                {% endif %}
+                <li>
                 <a href="{% url "account:details" %}">
-                  {% trans "Your account" context "Main navigation item" %}</a>
-              </li>
-              {% if user.is_impersonate %}
-                <li>
-                  <a href="{% url "impersonate-stop" %}">
-                    {% trans 'Stop impersonating' context 'Main navigation item' %}
-                  </a>
+                    {% trans "Your account" context "Main navigation item" %}</a>
                 </li>
-              {% else %}
+                {% if user.is_impersonate %}
                 <li>
-                  <a href="{% url "account:logout" %}">
+                    <a href="{% url "impersonate-stop" %}">
+                    {% trans 'Stop impersonating' context 'Main navigation item' %}
+                    </a>
+                </li>
+                {% else %}
+                <li>
+                    <a href="{% url "account:logout" %}">
                     {% trans "Log out" context "Main navigation item" %}</a>
                 </li>
-              {% endif %}
+                {% endif %}
             {% else %}
-              <li>
+                <li>
                 <a rel="nofollow" href="{% url "account:signup" %}">
-                  {% trans "Register" context "Main navigation item" %}</a>
-              </li>
-              <li>
+                    {% trans "Register" context "Main navigation item" %}</a>
+                </li>
+                <li>
                 <a rel="nofollow" href="{% url "account:login" %}">
-                  {% trans "Log in" context "Main navigation item" %}
+                    {% trans "Log in" context "Main navigation item" %}
                 </a>
-              </li>
+                </li>
             {% endif %}
-          </ul>
+            </ul>
         </div>
-      </div>
+        </div>
     </div>
     </div> -->
     <!-- <div class="navbar__brand container-fluid d-block">
-      <div class="container">
+        <div class="container">
         <div class="row no-gutters">
-          <div class="col-8 col-md-4 navbar__logo">
+            <div class="col-8 col-md-4 navbar__logo">
             <div class="menu-icon-mobile d-md-none navbar__brand__menu-toggle closed open">
-              <svg data-src="{% static "images/mobile-menu.svg" %}" width="28px" height="20px"/>
-              <span>{% trans "menu" context "Hamburger button text" %}</span>
+                <svg data-src="{% static "images/mobile-menu.svg" %}" width="28px" height="20px"/>
+                <span>{% trans "menu" context "Hamburger button text" %}</span>
             </div>
             <a href="{% url 'home' %}">
-              <svg data-src="{% static "images/logo.svg" %}" height="38px" width="176px"/>
+                <svg data-src="{% static "images/logo.svg" %}" height="38px" width="176px"/>
             </a>
-          </div>
-          <div class="col-2 col-md-4 navbar__search static">
+            </div>
+            <div class="col-2 col-md-4 navbar__search static">
             {% if SEARCH_IS_ENABLED %}
-              <div class="d-md-none mobile-search-icon">
+                <div class="d-md-none mobile-search-icon">
                 <svg data-src="{% static "images/search.svg" %}" width="30" height="30"/>
-              </div>
-              <form class="form-inline search-form" action="{% url "search:search" %}">
+                </div>
+                <form class="form-inline search-form" action="{% url "search:search" %}">
                 <div class="mobile-close-search d-md-none">
-                  <svg data-src="{% static "images/close.svg" %}" width="30" height="30"/>
+                    <svg data-src="{% static "images/close.svg" %}" width="30" height="30"/>
                 </div>
                 <input class="form-control" type="text" name="q"
-                       value="{% if query %}{{ query }}{% endif %}"
-                       placeholder="{% trans "Search for product" %}"
-                       required>
+                        value="{% if query %}{{ query }}{% endif %}"
+                        placeholder="{% trans "Search for product" %}"
+                        required>
                 <button class="btn btn-link" type="submit">
-                  <svg data-src="{% static "images/search.svg" %}" width="30" height="30"/>
+                    <svg data-src="{% static "images/search.svg" %}" width="30" height="30"/>
                 </button>
-              </form>
+                </form>
             {% endif %}
-          </div>
+            </div>
         </div>
-      </div>
+        </div>
     </div>  -->
 
     <div class="header__top-nav top-nav" id="am-top-nav">
@@ -153,7 +153,7 @@
                 </svg>
             </a>
             <a href="{% url "dashboard:index" %}" target="_blank" rel="noopener">
-              Dashboard
+                Dashboard
             </a>
         </div>
         <div id="search-bar" class="top-nav__search-bar search-bar">
@@ -169,7 +169,7 @@
         
         <div class="top-nav__login">
         {% if user.is_authenticated %}
-          <div class="top-nav__user top-nav-user">
+            <div class="top-nav__user top-nav-user">
             <div class="top-nav-user__avatar">
                 <img class="top-nav-user__img" src="https://www.amvq.quebec/images/public/entretien-chaton.jpg" alt="Username img">
             </div>   
@@ -179,10 +179,10 @@
                     {{ user }}
                 </a>
                 <a href="{% url "account:logout" %}">
-                  Se déconnecter
+                    Se déconnecter
                 </a>
             </div>
-          </div> 
+            </div> 
         {% else %}
             <a href="{% url "account:login" %}" title="Se connecter" class="top-nav__login-icon-link">
                 <svg class="top-nav__login-icon" version="1.1" id="user-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -217,27 +217,30 @@
             </nav>
         </div>
     </div>
-    
+
     <!-- <div class="navbar__menu container d-block">
-      <nav class="navigation">
+        <nav class="navigation">
         {% menu site_menu=site.settings.top_menu horizontal=True %}
-      </nav>
+        </nav>
     </div> -->
-  </header>
+    </header>
 {% endblock %}
-  {% block topcontent %}{% endblock topcontent %}
-  {% if messages %}
+{% block topcontent %}{% endblock topcontent %}
+{% if messages %}
     {% for message in messages %}
-      <div class="alert{% if message.tags %} alert-{{ message.tags }}{% endif %}">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        {{ message }}
-      </div>
+        <div class="alert{% if message.tags %} alert-{{ message.tags }}{% endif %}">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            {{ message }}
+        </div>
     {% endfor %}
-  {% endif %}
-  {% block breadcrumb %}
-  {% endblock breadcrumb %}
-  {% block content %}
-  {% endblock content %}
+{% endif %}
+<main class="main">
+    {% block breadcrumb %}
+    {% endblock breadcrumb %}
+    {% block content %}
+    {% endblock content %}
+</main>
+  
 {% block footer %}
     <footer class="footer">
       <div class="footer__newsletter">
