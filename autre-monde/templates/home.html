@@ -2,49 +2,11 @@
 {% load i18n %}
 
 {% block content %}
-  <div class="home">
-    <div class="row">
-      <div class="col-sm-12 home__block1">
-        <div class="home--square">
-          <div class="home--content">
-            <div class="home--content-wrapper">
-              <div class="home--content-inner">
-                <h1>{% trans "Promo & Sale" context "Homepage title" %}</h1>
-                <h2>{% trans "from the Northpole" context "Homepage title" %}</h2>
-                  <a class="btn btn-secondary home__button" href="#">
-                    {% trans "Shop now" context "Homepage action" %}
-                  </a>
-              </div>
-            </div>
-          </div>
+  <main class="main main__home">
+    <div class="home__banner banner">
+        <div class="banner__text">
+              Votre magasin spécialisé à Liège en jeux de rôle, de cartes, de figurines et de société&nbsp;!
         </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12 col-md-6 home__block2">
-        <div class="home--square">
-          <div class="home--content">
-            <div class="home--content-wrapper">
-              <div class="home--content-inner">
-                <h1>{% trans "Size & Colours" context "Homepage title" %}</h1>
-                <a class="btn btn-secondary home__button" href="#">{% trans "Shop now" context "Homepage action" %}</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-12 col-md-6 home__block3">
-        <div class="home--square">
-          <div class="home--content">
-            <div class="home--content-wrapper">
-              <div class="home--content-inner">
-                <h1>{% trans "Digital Downloads" context "Homepage title" %}</h1>
-                <a class="btn btn-secondary home__button" href="#">{% trans "Shop now" context "Homepage action" %}</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
     <div class="home__featured">
       <h2 class="text-center">{% trans "Featured products" context "Homepage title" %}</h2>
@@ -53,5 +15,5 @@
       </div>
     </div>
     <script type="application/ld+json">{{ webpage_schema|safe }}</script>
-  </div>
+  </main>
 {% endblock %}
