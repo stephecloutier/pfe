@@ -13,10 +13,16 @@ from .filters import ProductCategoryFilter, ProductCollectionFilter, ProductFilt
 from .models import Category, Collection, Product, ProductType
 from .utils import (
     collections_visible_to_user, get_product_images, get_product_list_context,
-    handle_cart_form, products_for_cart, products_with_details)
+    handle_cart_form, products_for_cart, products_with_details, new_products, coming_soon_products)
 from .utils.attributes import get_product_attributes_data
-from .utils.availability import get_availability
+from .utils.availability import get_availability, products_with_availability
 from .utils.variants_picker import get_variant_picker_data
+from ..seo.schema.webpage import get_webpage_schema
+
+# from ..product.utils.availability import products_with_availability
+
+
+# from ..product.utils import products_for_homepage, coming_soon_products, 
 
 
 def product_details(request, slug, product_id, form=None):
@@ -142,4 +148,25 @@ def collection_index(request, slug, pk):
     return TemplateResponse(request, 'collection/index.html', ctx)
 
 def category_list(request):
-    return TemplateResponse(request, 'catalogue/index.html')
+    products = new_products()
+    products = products_with_availability(
+        products, discounts=request.discounts, taxes=request.taxes,
+        local_currency=request.currency)
+    webpage_schema = get_webpage_schema(request)
+    return TemplateResponse(request, 'catalogue/index.html', {
+            'parent': None,
+            'products': products,
+            'webpage_schema': json.dumps(webpage_schema)})
+
+
+def catalogue_coming_soon(request):
+    products = coming_soon_products()
+    products = products_with_availability(
+        products, discounts=request.discounts, taxes=request.taxes,
+        local_currency=request.currency)
+    webpage_schema = get_webpage_schema(request)
+
+    return TemplateResponse(request, 'catalogue/index.html', {
+        'parent': None,
+        'products': products,
+        'webpage_schema': json.dumps(webpage_schema)})

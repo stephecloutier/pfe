@@ -12,5 +12,7 @@ urlpatterns = [
     url(r'^collection/(?P<slug>[a-z0-9-_/]+?)-(?P<pk>[0-9]+)/$',
         views.collection_index, name='collection'),
     url(r'^$',
-        views.category_list, name='category-list')
+        views.category_list, name='category-list'),
+    url(r'^a-venir/$',
+        views.catalogue_coming_soon, name='catalogue-coming-soon')
     ]
