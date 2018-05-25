@@ -50,7 +50,12 @@
 
 {% block collection_published_warning %}{% endblock %}
 <section class="catalogue">
-    <h2 class="catalogue__title main-title">Catalogue</h2>
+    <h2 class="catalogue__title main-title">
+        Catalogue
+        {% if object %}
+        <span class="catalogue__title--category"> - {{object}}</span>
+        {% endif %}
+    </h2>
     <div class="catalogue__content">
         <div class="catalogue__categories catalogue-categories">
             {% full_categories_menu site_menu=site.settings.top_menu %}
