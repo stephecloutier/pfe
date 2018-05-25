@@ -14,7 +14,10 @@ const catalogueFiltersTitle = document.getElementById('am-catalogue-filters-titl
 const productSpecifications = document.getElementById('am-product-specifications');
 const productSpecificationsTitle = document.getElementById('am-product-specifications-title');
 
-if (topNavSearchBarLabel) topNavSearchBarLabel.classList.remove('search-bar__label--label-style');
+if (topNavSearchBarLabel && !search.value) {
+    topNavSearchBarLabel.classList.remove('search-bar__label--label-style');
+}
+
 if (productSpecifications) productSpecifications.classList.add('single-product-specifications--closed');
 
 

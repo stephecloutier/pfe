@@ -156,17 +156,44 @@
                 Dashboard
             </a>
         </div>
-        <div id="search-bar" class="top-nav__search-bar search-bar">
-            <label id="search-bar-label" class="search-bar__label search-bar__label--label-style" for="search">Rechercher dans le catalogue</label>
-            <input class="search-bar__input" type="text" name="search" id="search">
-            <button id="am-search-bar-button" class="search-bar__button" type="submit">
-                <svg class="search-bar__icon" width="21px" height="21px" viewBox="0 0 21 21" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                    <path d="M20.4860574,18.0042667 L15.923915,13.4422081 C15.8996692,13.4179624 15.8712287,13.4010155 15.8458923,13.3784477 C16.743572,12.0167431 17.2674982,10.3867413 17.2674982,8.63383298 C17.2674982,3.86547589 13.4020223,0 8.63374908,0 C3.86547589,0 0,3.86547589 0,8.63374908 C0,13.4019384 3.86539199,17.2674982 8.63366519,17.2674982 C10.3866575,17.2674982 12.0165753,16.743572 13.3782799,15.8458923 C13.4008477,15.8711448 13.4177107,15.8995853 13.4419564,15.9238311 L18.0041828,20.4860574 C18.6895235,21.1713142 19.8006328,21.1713142 20.4860574,20.4860574 C21.1713142,19.8007167 21.1713142,18.6896074 20.4860574,18.0042667 Z M8.21743204,13.6956522 C5.19180214,13.6956522 2.73913043,11.2429805 2.73913043,8.21743204 C2.73913043,5.19180214 5.19188362,2.73913043 8.21743204,2.73913043 C11.242899,2.73913043 13.6956522,5.19188362 13.6956522,8.21743204 C13.6956522,11.2429805 11.242899,13.6956522 8.21743204,13.6956522 Z" id="search-svg"></path>
-                </svg>
-                <span class="hidden">Rechercher</span>
+        {% comment %} {% if SEARCH_IS_ENABLED %}
+            <div class="d-md-none mobile-search-icon">
+            <svg data-src="{% static "images/search.svg" %}" width="30" height="30"/>
+            </div>
+            <form class="form-inline search-form" action="{% url "search:search" %}">
+            <div class="mobile-close-search d-md-none">
+                <svg data-src="{% static "images/close.svg" %}" width="30" height="30"/>
+            </div>
+            <input class="form-control" type="text" name="q"
+                    value="{% if query %}{{ query }}{% endif %}"
+                    placeholder="{% trans "Search for product" %}"
+                    required>
+            <button class="btn btn-link" type="submit">
+                <svg data-src="{% static "images/search.svg" %}" width="30" height="30"/>
             </button>
-        </div>
-        
+            </form>
+        {% endif %} {% endcomment %}
+        {% if SEARCH_IS_ENABLED %}
+        <div id="search-bar" class="top-nav__search-bar search-bar">
+            <form action="{% url "search:search" %}">
+                <label id="search-bar-label" class="search-bar__label search-bar__label--label-style" for="search">Rechercher dans le catalogue</label>
+                <input 
+                    class="search-bar__input" 
+                    type="text" 
+                    name="q"
+                    value="{% if query %}{{ query }}{% endif %}"
+                    required
+                    id="search">
+                <button id="am-search-bar-button" class="search-bar__button" type="submit">
+                    <svg class="search-bar__icon" width="21px" height="21px" viewBox="0 0 21 21" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <path d="M20.4860574,18.0042667 L15.923915,13.4422081 C15.8996692,13.4179624 15.8712287,13.4010155 15.8458923,13.3784477 C16.743572,12.0167431 17.2674982,10.3867413 17.2674982,8.63383298 C17.2674982,3.86547589 13.4020223,0 8.63374908,0 C3.86547589,0 0,3.86547589 0,8.63374908 C0,13.4019384 3.86539199,17.2674982 8.63366519,17.2674982 C10.3866575,17.2674982 12.0165753,16.743572 13.3782799,15.8458923 C13.4008477,15.8711448 13.4177107,15.8995853 13.4419564,15.9238311 L18.0041828,20.4860574 C18.6895235,21.1713142 19.8006328,21.1713142 20.4860574,20.4860574 C21.1713142,19.8007167 21.1713142,18.6896074 20.4860574,18.0042667 Z M8.21743204,13.6956522 C5.19180214,13.6956522 2.73913043,11.2429805 2.73913043,8.21743204 C2.73913043,5.19180214 5.19188362,2.73913043 8.21743204,2.73913043 C11.242899,2.73913043 13.6956522,5.19188362 13.6956522,8.21743204 C13.6956522,11.2429805 11.242899,13.6956522 8.21743204,13.6956522 Z" id="search-svg"></path>
+                    </svg>
+                    <span class="hidden">Rechercher</span>
+                </button>
+            </form>
+        </div> 
+        {% endif %}
+                
         <div class="top-nav__login">
         {% if user.is_authenticated %}
             <div class="top-nav__user top-nav-user">
