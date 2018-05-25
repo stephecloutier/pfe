@@ -49,7 +49,7 @@ def coming_soon_products():
 def new_products():
     user = AnonymousUser()
     products = products_with_details(user)
-    # products = products.filter(release_date__lt=date.today()) #.order_by('-release_date')
+    products = products.filter(release_date__lte=date.today()).order_by('-release_date')
     return products
 
 def get_product_images(product):
