@@ -4,16 +4,28 @@
         {% for item in menu_items %}
         {% with children=item.get_children %}
         <li class="catalogue-categories__item {% if children %}catalogue-categories__item--has-children{% endif %}">
-            <a class="catalogue-categories__link" href="{{ item.get_url }}" title="Afficher les produits de la catégorie {{ item }}">
-                {{ item }} <!-- <span class="catalogue-categories__number">(123)</span>  -->
-            </a>
+            <span class="catalogue-categories__link-wrapper {% if item|cut:" " == current_category|cut:" " %} catalogue-categories__link-wrapper--current{% endif %}">
+            {% if item|cut:" " != current_category|cut:" " %}
+                <a class="catalogue-categories__link" href="{{ item.get_url }}" title="Afficher les produits de la catégorie {{ item }}">
+                    {{ item }} <!-- <span class="catalogue-categories__number">(123)</span>  -->
+                </a>
+            {% else %}
+                {{ item }}
+            {% endif %}
+            </span>
             {% if children %}
             <ul class="catalogue-categories__sub-list">
             {% for child in children %}
-                <li>
-                    <a class="catalogue-categories__sub-item" href="{{ child.get_url }}">
-                        {{ child }}
-                    </a>
+                <li class="catalogue-categories__sub-item">
+                    <span class="catalogue-categories__sub-link-wrapper {% if child|cut:" " == current_category|cut:" " %} catalogue-categories__sub-link-wrapper--current{% endif %}">
+                    {% if child|cut:" " != current_category|cut:" " %}
+                        <a class="catalogue-categories__sub-link" href="{{ child.get_url }}">
+                            {{ child }}
+                        </a>
+                    {% else %}
+                            {{ child }}
+                    {% endif %}
+                    </span>
                 </li>
            
             {% endfor %}

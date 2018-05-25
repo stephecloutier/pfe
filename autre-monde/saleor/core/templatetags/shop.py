@@ -30,7 +30,7 @@ def menu(context, site_menu=None, horizontal=False):
 
 
 @register.inclusion_tag('category/menu.html', takes_context=True)
-def full_categories_menu(context, site_menu=None):
+def full_categories_menu(context, current_category=None, site_menu=None):
     if not site_menu:
         return
     menus = context[NAVIGATION_CONTEXT_NAME]
@@ -38,4 +38,4 @@ def full_categories_menu(context, site_menu=None):
     if not menu:
         return
     menu_items = [item for item in menu.items.all() if item.parent_id is None]
-    return {'menu_items': menu_items}
+    return {'menu_items': menu_items, 'current_category': current_category}

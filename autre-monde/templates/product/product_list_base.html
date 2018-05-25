@@ -63,7 +63,7 @@
     </h2>
     <div class="catalogue__content">
         <div class="catalogue__categories catalogue-categories">
-            {% full_categories_menu site_menu=site.settings.top_menu %}
+            {% full_categories_menu current_category=object site_menu=site.settings.top_menu  %}
         </div>
         <div class="catalogue__right">
             {% block filters %}{% endblock filters %}

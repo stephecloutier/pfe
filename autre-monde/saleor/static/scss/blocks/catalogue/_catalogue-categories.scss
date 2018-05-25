@@ -12,12 +12,23 @@
 .catalogue-categories__item {
     border-bottom: 1px solid $light-blue-gray;
     padding: 10px 0;
+    color: $am-blue;
+
+    &--has-children {
+        .catalogue-categories__link-wrapper {
+            margin-bottom: 3px;
+        }
+    }
 }
 
-.catalogue-categories__link {
-    position: relative;
-    color: $am-blue;
-    text-transform: uppercase;
+.catalogue-categories__link-wrapper {
+    position: relative; 
+    text-transform: uppercase;  
+    transition: font-weight $delay ease-out;
+
+    &--current {
+        font-weight: 500;
+    }
 
     &::after {
         content: "";
@@ -30,22 +41,36 @@
         bottom: 2px;
         transition: transform $delay ease-out;
     }
+}
 
-    &--current {
-        color: $am-blue;
+.catalogue-categories__sub-item {
+    padding: 5px 0 0 20px;
+}
+
+.catalogue-categories__sub-link {
+    transition: font-weight $delay ease-out;
+
+    &:hover, &:focus {
         font-weight: 500;
-
-        &::after {
-            bottom: -3px;
-            opacity: 1;
-        }
     }
 }
 
-.catalogue-categories__link:hover, .catalogue-categories__link:focus {
+.catalogue-categories__sub-link-wrapper {
 
-    &:not(.catalogue-categories__link--current)::after {
+    &--current {
+        font-weight: 500;
+    }
+}
+
+.catalogue-categories__link-wrapper:hover, .catalogue-categories__link-wrapper:focus {
+    font-weight: 500;
+    
+    &:not(.catalogue-categories__link-wrapper--current)::after {
         opacity: 1;
         transform: translateY(3px);
     }
+}
+
+.catalogue-categories__link:focus {
+    font-weight: 500;
 }
