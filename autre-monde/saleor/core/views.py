@@ -1,4 +1,5 @@
 import json
+from pprint import pprint
 
 from django.contrib import messages
 from django.template.response import TemplateResponse
@@ -13,10 +14,11 @@ from ..seo.schema.webpage import get_webpage_schema
 
 
 def home(request):
-    new_products = products_for_homepage()[:3]
+    n_products = new_products()[:3]
     cs_products = coming_soon_products()[:3]
-    new_products = products_with_availability(
-        new_products, discounts=request.discounts, taxes=request.taxes,
+
+    n_products = products_with_availability(
+        n_products, discounts=request.discounts, taxes=request.taxes,
         local_currency=request.currency)
     cs_products = products_with_availability(
         cs_products, discounts=request.discounts, taxes=request.taxes,
@@ -25,7 +27,7 @@ def home(request):
     return TemplateResponse(
         request, 'home.html', {
             'parent': None,
-            'new_products': new_products,
+            'n_products': n_products,
             'cs_products': cs_products,
             'webpage_schema': json.dumps(webpage_schema)})
 
