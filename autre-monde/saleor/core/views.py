@@ -7,21 +7,26 @@ from impersonate.views import impersonate as orig_impersonate
 
 from ..account.models import User
 from ..dashboard.views import staff_member_required
-from ..product.utils import products_for_homepage
+from ..product.utils import products_for_homepage, coming_soon_products, new_products
 from ..product.utils.availability import products_with_availability
 from ..seo.schema.webpage import get_webpage_schema
 
 
 def home(request):
-    products = products_for_homepage()[:8]
-    products = products_with_availability(
-        products, discounts=request.discounts, taxes=request.taxes,
+    new_products = products_for_homepage()[:3]
+    cs_products = coming_soon_products()[:3]
+    new_products = products_with_availability(
+        new_products, discounts=request.discounts, taxes=request.taxes,
+        local_currency=request.currency)
+    cs_products = products_with_availability(
+        cs_products, discounts=request.discounts, taxes=request.taxes,
         local_currency=request.currency)
     webpage_schema = get_webpage_schema(request)
     return TemplateResponse(
         request, 'home.html', {
             'parent': None,
-            'products': products,
+            'new_products': new_products,
+            'cs_products': cs_products,
             'webpage_schema': json.dumps(webpage_schema)})
 
 

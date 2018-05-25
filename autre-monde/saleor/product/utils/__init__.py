@@ -1,3 +1,4 @@
+from pprint import pprint
 from urllib.parse import urlencode
 
 from django.conf import settings
@@ -11,6 +12,8 @@ from ...core.utils.filters import get_now_sorted_by
 from ..forms import ProductForm
 from .availability import products_with_availability
 
+from datetime import date
+from django.utils import timezone
 
 def products_visible_to_user(user):
     # pylint: disable=cyclic-import
@@ -34,6 +37,17 @@ def products_for_homepage():
     products = products.filter(is_featured=True)
     return products
 
+def coming_soon_products():
+    user = AnonymousUser()
+    products = products_with_details(user)
+    products = products.filter(release_date__gt=date.today())
+    return products
+
+def new_products():
+    user = AnonymousUser()
+    products = products_with_details(user)
+    products = products.filter(release_date__lt=date.today()).desc()
+    return products
 
 def get_product_images(product):
     """Return list of product images that will be placed in product gallery."""
@@ -103,7 +117,7 @@ def get_product_list_context(request, filter_set):
     # Avoiding circular dependency
     from ..filters import SORT_BY_FIELDS
     products_paginated = get_paginator_items(
-        filter_set.qs, settings.PAGINATE_BY, request.GET.get('page'))
+        filter_set.qs, settings.PAGINATE_BY, request.GET.get('page'))  
     products_and_availability = list(products_with_availability(
         products_paginated, request.discounts, request.taxes,
         request.currency))

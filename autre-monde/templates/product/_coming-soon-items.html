@@ -7,7 +7,7 @@
 
 
 <div class="products-h-list__list">
-    {% for product, availability in products %}
+    {% for product, availability in cs_products %}
     <a href="{{ product.get_absolute_url }}" title="Aller sur la page du produit {{ product }}" class="products-h-list__product product product-h-thumb product-h-thumb--coming-soon">
         <div class="product__img-wrapper">
             <img 
@@ -21,7 +21,7 @@
         </div>
         <div class="product__infos">
             <span class="product__title">{{ product }}</span>
-            <div class="product__short-desc">{{ product.description|safe|truncatechars:80 }}</div>
+            <div class="product__short-desc">{{ product.description|safe|truncatechars:100 }}</div>
             <div class="product__more-infos">
                 <div class="product__more-info product__more-info--time">
                     <svg class="product__more-info__svg" width="15px" height="15px" viewBox="0 0 25 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> 

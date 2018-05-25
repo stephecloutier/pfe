@@ -2,18 +2,22 @@
 {% load i18n %}
 
 {% block content %}
-  <main class="main main__home">
     <div class="home__banner banner">
         <div class="banner__text">
               Votre magasin spécialisé à Liège en jeux de rôle, de cartes, de figurines et de société&nbsp;!
         </div>
     </div>
-    <div class="home__featured">
-      <h2 class="text-center">{% trans "Featured products" context "Homepage title" %}</h2>
-      <div class="row">
-        {% include "product/_items.html" %}
-      </div>
+    <div class="home__products products">
+        <div class="products__h-list products-h-list">
+            <h2 class="products-h-list__title second-title">Nouveautés</h2>
+            {% include "product/_new-items.html" %}
+            <a href="#" class="products-h-list__link secondary-link">Voir toutes les nouveautés</a>
+        </div>
+        <div class="products__h-list products-h-list">
+            <h2 class="products-h-list__title second-title">À venir</h2>
+            {% include "product/_coming-soon-items.html" %}
+            <a href="#" class="products-h-list__link secondary-link">Voir tous les produits à venir</a>
+        </div>
     </div>
     <script type="application/ld+json">{{ webpage_schema|safe }}</script>
-  </main>
 {% endblock %}

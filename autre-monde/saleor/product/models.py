@@ -115,6 +115,7 @@ class Product(SeoModel):
         max_length=128, default=DEFAULT_TAX_RATE_NAME, blank=True)
 
     objects = ProductQuerySet.as_manager()
+    release_date = models.DateField()
 
     class Meta:
         app_label = 'product'
