@@ -2,9 +2,10 @@
     max-width: $max-width;
     width: 100%;
     margin: 0 auto 30px;
-    padding-top: 15px;
+    padding: 15px 0 0 0;
     color: $am-blue;
     font-weight: 500;
+    background-color: transparent;
 }
 
 .breadcrumb__list {
