@@ -128,7 +128,9 @@
             {% if products %}
             <section class="catalogue__products catalogue-products">
                 <h2 class="hidden">Produits du catalogue</h2>
-                {% include "_items.html" with products=products %}
+                <ul class="catalogue-products__list">
+                    {% include "_items.html" with products=products %}
+                </ul>
                 <div class="row">
                     <div class="m-auto">
                         {% if products_paginated.has_other_pages %}
