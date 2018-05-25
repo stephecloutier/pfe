@@ -21,8 +21,6 @@
 
 .product__short-desc {
     text-overflow: ellipsis;
-    overflow: hidden;
-    max-height: 50px;
 }
 
 .product__arrow {
@@ -57,16 +55,4 @@
 .product__more-info__svg {
     margin-right: 5px;
     fill: $accent-red;
-}
-
-@media screen and (max-width: 1000px) {
-    .product__short-desc {
-        max-height: 70px;
-    }
-}
-
-@media screen and (max-width: 850px) {
-    .product__short-desc {
-        max-height: 50px;
-    }
 }
