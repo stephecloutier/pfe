@@ -102,11 +102,17 @@
                   {{ product_form.category|materializecss }}
                 </div>
                 <div class="row">
+                    {{ product_form.distributor|materializecss }}
+                  </div>
+                <div class="row">
+                  {{ product_form.product_reference|materializecss }}
+                </div>
+                {% comment %} <div class="row">
                   {{ product_form.collections|materializecss }}
                 </div>
                 <div class="row is_featured_checkbox">
                     {{ product_form.is_featured|materializecss }}
-                </div>
+                </div> {% endcomment %}
                 <span class="card-title">{% trans "Attributes" %}</span>
                 <br>
                 <h6>

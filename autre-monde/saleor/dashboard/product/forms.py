@@ -220,7 +220,9 @@ class ProductForm(forms.ModelForm, AttributesMixin):
             'charge_taxes': pgettext_lazy(
                 'Charge taxes on product', 'Charge taxes on this product'),
             'tax_rate': pgettext_lazy(
-                'Product tax rate type', 'Tax rate')}
+                'Product tax rate type', 'Tax rate'),
+            'distributor': 'Distributeur',
+            'product_reference': 'Référence produit'}
 
     category = TreeNodeChoiceField(queryset=Category.objects.all())
     collections = forms.ModelMultipleChoiceField(
@@ -274,16 +276,16 @@ class ProductVariantForm(forms.ModelForm, AttributesMixin):
 
     class Meta:
         model = ProductVariant
-        fields = ['sku', 'price_override', 'quantity', 'cost_price', 'distributor', 'ean', 'product_reference']
+        fields = ['sku', 'price_override', 'quantity', 'cost_price', 'distributor_override', 'ean', 'product_reference_override']
         labels = {
             'sku': pgettext_lazy('SKU', 'SKU'),
             'price_override': pgettext_lazy(
                 'Override price', 'Selling price override'),
             'quantity': pgettext_lazy('Integer number', 'Number in stock'),
             'cost_price': pgettext_lazy('Currency amount', 'Cost price'),
-            'distributor': 'Distributeur',
+            'distributor_override': 'Substitution du distributeur',
             'ean': 'Numéro EAN (code barre)',
-            'product_reference': 'Référence produit'
+            'product_reference_override': 'Substitution de la référence produit'
             }
 
     def __init__(self, *args, **kwargs):
@@ -292,6 +294,10 @@ class ProductVariantForm(forms.ModelForm, AttributesMixin):
         if self.instance.product.pk:
             self.fields['price_override'].widget.attrs[
                 'placeholder'] = self.instance.product.price.amount
+            self.fields['distributor_override'].widget.attrs[
+                'placeholder'] = self.instance.product.distributor
+            self.fields['product_reference_override'].widget.attrs[
+                'placeholder'] = self.instance.product.product_reference
             self.available_attributes = (
                 self.instance.product.product_type.variant_attributes.all()
                 .prefetch_related('values'))

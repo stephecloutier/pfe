@@ -116,6 +116,8 @@ class Product(SeoModel):
 
     objects = ProductQuerySet.as_manager()
     release_date = models.DateField()
+    distributor = models.CharField(max_length=32)
+    product_reference = models.CharField(max_length=32, blank=True, null=True)
 
     class Meta:
         app_label = 'product'
@@ -194,15 +196,23 @@ class ProductVariant(models.Model):
     cost_price = MoneyField(
         currency=settings.DEFAULT_CURRENCY, max_digits=12,
         decimal_places=settings.DEFAULT_DECIMAL_PLACES, blank=True, null=True)
-    distributor = models.CharField(max_length=32)
     ean = models.CharField(max_length=13, validators=[validate_ean])
-    product_reference = models.CharField(max_length=32, blank=True, null=True)
+    distributor_override = models.CharField(max_length=32, blank=True, null=True)
+    product_reference_override = models.CharField(max_length=32, blank=True, null=True)
 
     class Meta:
         app_label = 'product'
 
     def __str__(self):
         return self.name or self.sku
+
+    @property
+    def the_distributor(self):
+        return self.distributor_override or self.product.distributor
+    
+    @property
+    def the_product_reference(self):
+        return self.product_reference_override or self.product.product_reference
 
     @property
     def quantity_available(self):
