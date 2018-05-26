@@ -8,24 +8,34 @@
   <meta name="robots" content="nofollow">
 {% endblock meta_tags %}
 
-{% block content %}
-  <div class="col-lg-10 col-sm-12 m-auto">
-    <div class="row login">
-      <div class="col-md-6 login__register">
-        <div class="login__register-link">
-          <h3>{% trans "Don't have an account yet?" context "Login form secondary title" %}</h3>
-          <img class="lazyload lazypreload"
-               data-src="{% static 'images/login-bg.png' %}"
-               data-srcset="{% static 'images/login-bg.png' %} 1x, {% static 'images/login-bg2x.png' %} 2x">
-          <a rel="nofollow" href="{% url 'account:signup' %}" class="btn secondary narrow">
-            {% trans "Register" context "Login form secondary action" %}
-          </a>
-        </div>
+{% block content %}    
+  <section class="login">
+      <div class="login__title-line">
+          <h2 class="login__title main-title">Connexion</h2>
+          <a href="{% url 'account:signup' %}" title="Aller sur la page de création de compte" class="login__title-link">Pas encore de compte&nbsp;? Créez le votre&nbsp;!</a>
       </div>
-      <div class="col-md-6 login__form">
-        <h3>{% trans "Log in" context "Login form title" %}</h3>
-        {% include "account/partials/login_form.html" %}
-      </div>
-    </div>
-  </div>
+      {% include "account/partials/login_form.html" %}
+{% comment %} 
+      <form action="#" method="post" class="login__form login__form--login">
+          <div class="login__form__inputs">
+              <div class="login__form__item">
+                  <label for="email" class="login__form__label">Adresse email</label>
+                  <input type="email" id="email" name="email" class="login__form__input">
+              </div>
+              <div class="login__form__item">
+                  <label for="password" class="login__form__label">Mot de passe</label>
+                  <input type="password" id="password" name="password" class="login__form__input">
+              </div>
+          </div>
+          <a href="#" title="Récupérer mon mot de passe" class="login__form__forgot-password">Mot de passe oublié&nbsp;?</a>
+  
+          <div class="login__form__buttons">
+              <a href="{% url 'account:signup' %}" title="Créer un compte" class="cta cta--dark-blue login__form__button login__form__button--secondary">Créer un compte</a>
+              <input class="cta cta--pink login__form__button login__form__button--main" type="submit" value="Connexion">
+          </div>
+      </form> {% endcomment %}
+  </section>
 {% endblock %}
+  
+
+
