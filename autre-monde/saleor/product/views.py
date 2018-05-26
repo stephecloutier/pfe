@@ -17,7 +17,8 @@ from .filters import ProductCategoryFilter, ProductCollectionFilter, ProductFilt
 from .models import Category, Collection, Product, ProductType
 from .utils import (
     collections_visible_to_user, get_product_images, get_product_list_context,
-    handle_cart_form, products_for_cart, products_with_details, new_products, coming_soon_products, product_price_indicator)
+    handle_cart_form, products_for_cart, products_with_details, new_products, coming_soon_products,
+    product_custom_details)
 from .utils.attributes import get_product_attributes_data
 from .utils.availability import get_availability, products_with_availability
 from .utils.variants_picker import get_variant_picker_data
@@ -61,6 +62,7 @@ def product_details(request, slug, product_id, form=None):
     """
     products = products_with_details(user=request.user)
     product = get_object_or_404(products, id=product_id)
+    product = product_custom_details(product)
     if product.get_slug() != slug:
         return HttpResponsePermanentRedirect(product.get_absolute_url())
     today = datetime.date.today()
@@ -78,20 +80,12 @@ def product_details(request, slug, product_id, form=None):
     # show_variant_picker determines if variant picker is used or select input
     show_variant_picker = all([v.attributes for v in product.variants.all()])
     json_ld_data = product_json_ld(product, product_attributes)
-    price_indicator = product_price_indicator(product.price.amount)
-    product_release_status = None
-    if product.release_date > datetime.date.today():
-        product_release_status = 'cs'
-    elif ((datetime.date.today() - product.release_date) <= datetime.timedelta(weeks=1)):
-        product_release_status = 'news'
-        
+    pprint(product.__dict__)
     ctx = {
         'is_visible': is_visible,
         'form': form,
         'availability': availability,
         'product': product,
-        'price_indicator': price_indicator,
-        'product_release_status': product_release_status,
         'product_attributes': product_attributes,
         'product_images': product_images,
         'show_variant_picker': show_variant_picker,
@@ -140,6 +134,12 @@ def category_index(request, path, category_id):
     categories = category.get_descendants(include_self=True)
     products = products_with_details(user=request.user).filter(
         category__in=categories).order_by('name')
+
+    # Custom details  
+    for product in products:
+        product = product_custom_details(product)
+        # pprint(product.__dict__)
+
     product_filter = ProductCategoryFilter(
         request.GET, queryset=products, category=category)
     ctx = get_product_list_context(request, product_filter)
@@ -154,6 +154,10 @@ def collection_index(request, slug, pk):
         return HttpResponsePermanentRedirect(collection.get_absolute_url())
     products = products_with_details(user=request.user).filter(
         collections__id=collection.id).order_by('name')
+    # Custom details  
+    for product in products:
+        product = product_custom_details(product)
+
     product_filter = ProductCollectionFilter(
         request.GET, queryset=products, collection=collection)
     ctx = get_product_list_context(request, product_filter)
@@ -162,9 +166,13 @@ def collection_index(request, slug, pk):
 
 def category_list(request):
     products = new_products()
+    # Custom details  
+    for product in products:
+        product = product_custom_details(product)  
     products = products_with_availability(
         products, discounts=request.discounts, taxes=request.taxes,
         local_currency=request.currency)
+    
     webpage_schema = get_webpage_schema(request)
     return TemplateResponse(request, 'catalogue/index.html', {
             'parent': None,
@@ -174,6 +182,9 @@ def category_list(request):
 
 def catalogue_coming_soon(request):
     products = coming_soon_products()
+    # Custom details  
+    for product in products:
+        product = product_custom_details(product)
     products = products_with_availability(
         products, discounts=request.discounts, taxes=request.taxes,
         local_currency=request.currency)

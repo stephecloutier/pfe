@@ -36,3 +36,4 @@ static/node_modules
 /autre-monde/webpack-bundle.json
 /autre-monde/templates/templated_email/compiled/*
 /autre-monde/!/templates/templated_email/compiled/.gitkeep
+/autre-monde/common.env

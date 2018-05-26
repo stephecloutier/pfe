@@ -12,7 +12,7 @@ from ...core.utils.filters import get_now_sorted_by
 from ..forms import ProductForm
 from .availability import products_with_availability
 
-from datetime import date
+from datetime import date, timedelta
 from django.utils import timezone
 
 def products_visible_to_user(user):
@@ -28,8 +28,26 @@ def products_with_details(user):
     products = products.prefetch_related(
         'category', 'images', 'variants__variant_images__image',
         'attributes__values', 'product_type__product_attributes__values')
-    return products
+    return products    
 
+def product_custom_details(product):
+    product.release_status = None
+    if product.release_date > date.today():
+        product.release_status = 'cs'
+    elif ((date.today() - product.release_date) <= timedelta(weeks=1)):
+        product.release_status = 'news'
+    
+    amount = product.price.amount
+    if amount <= 10:
+        product.price_indicator = range(1)
+    elif amount <= 30:
+        product.price_indicator = range(2)
+    elif amount <= 40:
+        product.price_indicator = range(3)
+    else :
+        product.price_indicator = range(4)
+    
+    return product
 
 def products_for_homepage():
     user = AnonymousUser()
@@ -42,9 +60,6 @@ def coming_soon_products():
     products = products_with_details(user)
     products = products.filter(release_date__gt=date.today())
     return products
-
-# def new_products():
-#     user = AnonymousUser()
 
 def new_products():
     user = AnonymousUser()
@@ -121,6 +136,8 @@ def get_product_list_context(request, filter_set):
     from ..filters import SORT_BY_FIELDS
     products_paginated = get_paginator_items(
         filter_set.qs, settings.PAGINATE_BY, request.GET.get('page'))  
+    for product in products_paginated.object_list:
+        product = product_custom_details(product)
     products_and_availability = list(products_with_availability(
         products_paginated, request.discounts, request.taxes,
         request.currency))
@@ -142,13 +159,3 @@ def collections_visible_to_user(user):
     if user.is_authenticated and user.is_active and user.is_staff:
         return Collection.objects.all()
     return Collection.objects.public()
-
-def product_price_indicator(amount):
-    if amount <= 10:
-        return range(1)
-    elif amount <= 30:
-        return range(2)
-    elif amount <= 40:
-        return range(3)
-    else :
-        return range(4)
