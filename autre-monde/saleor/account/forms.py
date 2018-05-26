@@ -75,6 +75,8 @@ class SignupForm(forms.ModelForm):
             'unique': pgettext_lazy(
                 'Registration error',
                 'This email has already been registered.')})
+    first_name = forms.CharField()
+    last_name = forms.CharField()
 
     class Meta:
         model = User
@@ -83,7 +85,9 @@ class SignupForm(forms.ModelForm):
             'email': pgettext_lazy(
                 'Email', 'Email'),
             'password': pgettext_lazy(
-                'Password', 'Password')}
+                'Password', 'Password'),
+            'first_name': 'Prénom',
+            'last_name': 'Nom'}
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

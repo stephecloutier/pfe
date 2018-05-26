@@ -10,36 +10,6 @@
 {% endblock meta_tags %}
 
 {% block content %}
-  {% comment %} <div class="col-lg-10 col-sm-12 m-auto">
-    <div class="row login">
-      <div class="col-md-6 login__register">
-        <div class="login__register-link">
-          <h3>{% trans "Already have an account?" context "Signup form secondary title" %}</h3>
-          <img class="signup-img lazyload lazypreload" data-src="{% static 'images/login-bg.png' %}"
-            srcset="{% static 'images/login-bg.png' %} 1x, {% static 'images/login-bg2x.png' %} 2x">
-          <p><a rel="nofollow" href="{% url 'account:login' %}" class="btn secondary narrow">
-            {% trans "Log in" context "Signup form secondary action" %}
-          </a></p>
-        </div>
-      </div>
-      <div class="col-md-6 login__form">
-        <form method="post" action="{% url 'account:signup' %}">
-          <fieldset>
-            <h3>{% trans "Create an account" context "Signup form title" %}</h3>
-            {% csrf_token %}
-            {% bootstrap_form form %}
-            {% if REDIRECT_FIELD_VALUE %}
-              <input type="hidden" name="{{ REDIRECT_FIELD_NAME }}" value="{{ REDIRECT_FIELD_VALUE }}"/>
-            {% endif %}
-          </fieldset>
-          <button type="submit" class="btn primary narrow">
-            {% trans "Create an account" context "Signup form primary action" %}
-          </button>
-        </form>
-      </div>
-    </div>
-  </div> {% endcomment %}
-
   <section class="login">
       <div class="login__title-line">
           <h2 class="login__title main-title">Création d'un compte</h2>
@@ -53,14 +23,14 @@
       <form action="{% url 'account:signup' %}" method="post" class="login__form">
           {% csrf_token %}
           <div class="login__form__inputs login__form__signup__inputs">
-              {% comment %} <div class="login__form__item">
+             <div class="login__form__item">
                   <label for="first-name" class="login__form__label">Prénom *</label>
-                  <input required="required" type="text" id="first-name" name="first-name" class="login__form__input">
+                  <input required="required" type="text" id="first-name" name="first_name" class="login__form__input">
               </div>
               <div class="login__form__item">
                   <label for="last-name" class="login__form__label">Nom *</label>
-                  <input required="required" type="text" id="last-name" name="last-name" class="login__form__input">
-              </div> {% endcomment %}
+                  <input required="required" type="text" id="last-name" name="last_name" class="login__form__input">
+              </div>
               <div class="login__form__item">
                   <label for="email" class="login__form__label">Adresse email *</label>
                   <input required="required" type="email" id="email" name="email" class="login__form__input">
@@ -70,11 +40,11 @@
                   <input required="required" type="password" id="password" name="password" class="login__form__input">
               </div>
           </div>
-          {% comment %} <div class="login__form__newsletter">
+          <div class="login__form__newsletter">
               <label for="newsletter" class="login__form__newsletter__label">M'abonner à la newsletter générale</label>
               <input type="checkbox" checked="checked" class="login__form__newsletter__input">
               <span class="login__form__newsletter__custom-checkbox"></span>
-          </div> {% endcomment %}
+          </div>
 
           <div class="login__form__buttons login__form__buttons--signup">
               <a href="{% url 'account:login' %}" title="Aller me connecter" class="cta cta--dark-blue login__form__button login__form__button--secondary">J'ai déjà un compte</a>
