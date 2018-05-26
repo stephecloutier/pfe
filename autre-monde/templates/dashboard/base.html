@@ -116,12 +116,35 @@
                     </a>
                   </li>
                 {% endif %}
-                {% if perms.product.view_product %}
+                {% comment %} {% if perms.product.view_product %}
                 <li class="{% block menu_collections_class %}{% endblock %}">
                   <a href="{% url 'dashboard:collection-list' %}">
                     {% trans "Collections" context "Dashboard side navigation link" %}
                   </a>
                 </li>
+                {% endif %} {% endcomment %}
+              </ul>
+            </li>
+            {% endif %}
+            {% if perms.order.view_order or perms.account.view_user %}
+            <li class="side-nav-section">
+              <p>
+                {% trans "Sales" context "Dashboard sales. `Sales' is noun of to sell" %}
+              </p>
+              <ul>
+                {% if perms.order.view_order %}
+                  <li class="{% block menu_orders_class %}{% endblock %}">
+                    <a href="{% url 'dashboard:orders' %}">
+                      {% trans "Orders" context "Dashboard orders list" %}
+                    </a>
+                  </li>
+                {% endif %}
+                {% if perms.account.view_user %}
+                  <li class="{% block menu_customers_class %}{% endblock %}">
+                    <a href="{% url 'dashboard:customers' %}">
+                      {% trans "Customers" context "Dashboard customers list" %}
+                    </a>
+                  </li>
                 {% endif %}
               </ul>
             </li>
@@ -149,29 +172,7 @@
               </ul>
             </li>
             {% endif %}
-            {% if perms.order.view_order or perms.account.view_user %}
-            <li class="side-nav-section">
-              <p>
-                {% trans "Sales" context "Dashboard sales. `Sales' is noun of to sell" %}
-              </p>
-              <ul>
-                {% if perms.order.view_order %}
-                  <li class="{% block menu_orders_class %}{% endblock %}">
-                    <a href="{% url 'dashboard:orders' %}">
-                      {% trans "Orders" context "Dashboard orders list" %}
-                    </a>
-                  </li>
-                {% endif %}
-                {% if perms.account.view_user %}
-                  <li class="{% block menu_customers_class %}{% endblock %}">
-                    <a href="{% url 'dashboard:customers' %}">
-                      {% trans "Customers" context "Dashboard customers list" %}
-                    </a>
-                  </li>
-                {% endif %}
-              </ul>
-            </li>
-            {% endif %}
+            
             {% if perms.account.view_group or perms.account.edit_group %}
               <li class="side-nav-section">
                 <p>
