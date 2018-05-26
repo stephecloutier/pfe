@@ -75,8 +75,8 @@ class SignupForm(forms.ModelForm):
             'unique': pgettext_lazy(
                 'Registration error',
                 'This email has already been registered.')})
-    first_name = forms.CharField()
-    last_name = forms.CharField()
+    first_name = forms.CharField(min_length=2, max_length=64)
+    last_name = forms.CharField(min_length=2, max_length=64)
 
     class Meta:
         model = User
@@ -99,6 +99,8 @@ class SignupForm(forms.ModelForm):
         user = super().save(commit=False)
         password = self.cleaned_data['password']
         user.set_password(password)
+        user.first_name = self.cleaned_data['first_name']
+        user.last_name = self.cleaned_data['last_name']
         if commit:
             user.save()
         return user

@@ -19,7 +19,13 @@
       <div class="login__introduction">
           Rejoignez la communauté de L’Autre Monde en créant votre compte! Vous pourrez ajouter des commentaires sur les produits et placer des précommandes, mais aussi personnaliser vos newsletters pour ne rien manquer&nbsp;!
       </div>
-
+      <form method="post" action="{% url 'account:signup' %}">
+          {% csrf_token %}
+          {{form}}
+          <button type="submit" class="btn primary narrow">
+            {% trans "Create an account" context "Signup form primary action" %}
+          </button>
+        </form>
       <form action="{% url 'account:signup' %}" method="post" class="login__form">
           {% csrf_token %}
           <div class="login__form__inputs login__form__signup__inputs">

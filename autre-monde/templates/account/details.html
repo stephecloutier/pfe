@@ -16,8 +16,9 @@
         {% trans "Home" context "Main navigation item" %}
       </a>
     </li>
-    <li>{% trans "Your account" context "Main navigation item" %} (<b>{{ user }}</b>)</li>
+    <li>{% trans "Your account" context "Main navigation item" %} (<b>{{ user.first_name|add:" "|add:user.last_name }}</b>)</li>
   </ul>
+  {% comment %} BREADCRUMB CUSTOM ICI {% endcomment %}
 {% endblock breadcrumb %}
 
 {% block content %}

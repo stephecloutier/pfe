@@ -14,6 +14,7 @@ from .forms import (
     ChangePasswordForm, LoginForm, PasswordResetForm, SignupForm,
     get_address_form, logout_on_password_change)
 
+from pprint import pprint
 
 @find_and_assign_anonymous_cart()
 def login(request):
@@ -80,6 +81,8 @@ def details(request):
     ctx = {'addresses': request.user.addresses.all(),
            'orders': orders_paginated,
            'change_password_form': password_form}
+
+    pprint(request.user.__dict__)
 
     return TemplateResponse(request, 'account/details.html', ctx)
 

@@ -98,40 +98,6 @@
         </div>
     </div>
     </div> -->
-    <!-- <div class="navbar__brand container-fluid d-block">
-        <div class="container">
-        <div class="row no-gutters">
-            <div class="col-8 col-md-4 navbar__logo">
-            <div class="menu-icon-mobile d-md-none navbar__brand__menu-toggle closed open">
-                <svg data-src="{% static "images/mobile-menu.svg" %}" width="28px" height="20px"/>
-                <span>{% trans "menu" context "Hamburger button text" %}</span>
-            </div>
-            <a href="{% url 'home' %}">
-                <svg data-src="{% static "images/logo.svg" %}" height="38px" width="176px"/>
-            </a>
-            </div>
-            <div class="col-2 col-md-4 navbar__search static">
-            {% if SEARCH_IS_ENABLED %}
-                <div class="d-md-none mobile-search-icon">
-                <svg data-src="{% static "images/search.svg" %}" width="30" height="30"/>
-                </div>
-                <form class="form-inline search-form" action="{% url "search:search" %}">
-                <div class="mobile-close-search d-md-none">
-                    <svg data-src="{% static "images/close.svg" %}" width="30" height="30"/>
-                </div>
-                <input class="form-control" type="text" name="q"
-                        value="{% if query %}{{ query }}{% endif %}"
-                        placeholder="{% trans "Search for product" %}"
-                        required>
-                <button class="btn btn-link" type="submit">
-                    <svg data-src="{% static "images/search.svg" %}" width="30" height="30"/>
-                </button>
-                </form>
-            {% endif %}
-            </div>
-        </div>
-        </div>
-    </div>  -->
 
     <div class="header__top-nav top-nav" id="am-top-nav">
         {% include "_language_picker.html" %}
@@ -152,27 +118,12 @@
                     <path d="M19.8608,0 C8.9096,0 0,8.9096 0,19.8608 C0,30.8112 8.9096,39.7216 19.8608,39.7216 C30.8112,39.7216 39.7216,30.8112 39.7216,19.8608 C39.7216,8.9096 30.8128,0 19.8608,0 Z M28.7208,15.3152 C28.7296,15.512 28.7344,15.7104 28.7344,15.9088 C28.7344,21.9496 24.1376,28.9128 15.7272,28.9128 C13.1456,28.9128 10.7424,28.1584 8.72,26.8608 C9.0776,26.9032 9.4416,26.9248 9.8104,26.9248 C11.9528,26.9248 13.9232,26.1936 15.488,24.968 C13.488,24.9312 11.7992,23.6096 11.2176,21.7928 C11.496,21.8456 11.7832,21.8752 12.0768,21.8752 C12.4936,21.8752 12.8984,21.8208 13.2816,21.716 C11.1904,21.2968 9.6152,19.4496 9.6152,17.2336 C9.6152,17.2144 9.6152,17.1944 9.616,17.176 C10.232,17.5176 10.9368,17.724 11.6856,17.7472 C10.46,16.9288 9.6528,15.5288 9.6528,13.9432 C9.6528,13.1048 9.8776,12.3192 10.2712,11.644 C12.5248,14.4104 15.8944,16.2296 19.6928,16.4216 C19.6144,16.0864 19.5752,15.7384 19.5752,15.3792 C19.5752,12.8552 21.6216,10.808 24.1456,10.808 C25.4608,10.808 26.6472,11.3632 27.4824,12.2512 C28.5248,12.0464 29.5008,11.6672 30.3864,11.1416 C30.0424,12.2096 29.32,13.1048 28.3736,13.6712 C29.2992,13.5608 30.1824,13.316 30.9992,12.952 C30.3896,13.8672 29.6144,14.6728 28.7208,15.3152 Z" id="twitter-svg"></path>
                 </svg>
             </a>
+            {% if user.is_staff or request.impersonator.is_staff %}
             <a href="{% url "dashboard:index" %}" target="_blank" rel="noopener">
                 Dashboard
             </a>
+            {% endif %}
         </div>
-        {% comment %} {% if SEARCH_IS_ENABLED %}
-            <div class="d-md-none mobile-search-icon">
-            <svg data-src="{% static "images/search.svg" %}" width="30" height="30"/>
-            </div>
-            <form class="form-inline search-form" action="{% url "search:search" %}">
-            <div class="mobile-close-search d-md-none">
-                <svg data-src="{% static "images/close.svg" %}" width="30" height="30"/>
-            </div>
-            <input class="form-control" type="text" name="q"
-                    value="{% if query %}{{ query }}{% endif %}"
-                    placeholder="{% trans "Search for product" %}"
-                    required>
-            <button class="btn btn-link" type="submit">
-                <svg data-src="{% static "images/search.svg" %}" width="30" height="30"/>
-            </button>
-            </form>
-        {% endif %} {% endcomment %}
         {% if SEARCH_IS_ENABLED %}
         <div id="search-bar" class="top-nav__search-bar search-bar">
             <form action="{% url "search:search" %}">
@@ -197,13 +148,20 @@
         <div class="top-nav__login">
         {% if user.is_authenticated %}
             <div class="top-nav__user top-nav-user">
-            <div class="top-nav-user__avatar">
-                <img class="top-nav-user__img" src="https://www.amvq.quebec/images/public/entretien-chaton.jpg" alt="Username img">
-            </div>   
+            <a href="{% url "account:details" %}" title="Aller sur la page de mon compte" class="top-nav-user__avatar">
+                <svg class="top-nav__login-icon" version="1.1" id="user-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                viewBox="0 0 299.997 299.997" xml:space="preserve">
+                    <path d="M149.996,0C67.157,0,0.001,67.158,0.001,149.997c0,82.837,67.156,150,149.995,150s150-67.163,150-150
+                    C299.996,67.156,232.835,0,149.996,0z M150.453,220.763v-0.002h-0.916H85.465c0-46.856,41.152-46.845,50.284-59.097l1.045-5.587
+                    c-12.83-6.502-21.887-22.178-21.887-40.512c0-24.154,15.712-43.738,35.089-43.738c19.377,0,35.089,19.584,35.089,43.738
+                    c0,18.178-8.896,33.756-21.555,40.361l1.19,6.349c10.019,11.658,49.802,12.418,49.802,58.488H150.453z"/>
+                </svg>
+                {% comment %} <img class="top-nav-user__img" src="https://www.amvq.quebec/images/public/entretien-chaton.jpg" alt="Username img"> {% endcomment %}
+            </a>   
             <div class="top-nav-user__infos">
                 Connecté(e) en tant que
                 <a href="{% url "account:details" %}" title="Aller sur votre profil" class="top-nav-user__infos--username">
-                    {{ user }}
+                    {{ user.first_name|add:" "|add:user.last_name }}
                 </a>
                 <a href="{% url "account:logout" %}">
                     Se déconnecter

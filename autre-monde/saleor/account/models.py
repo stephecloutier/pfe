@@ -107,6 +107,7 @@ class User(PermissionsMixin, AbstractBaseUser):
         on_delete=models.SET_NULL)
 
     USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['first_name', 'last_name', 'is_active', 'is_staff', 'date_joined']
 
     objects = UserManager()
 

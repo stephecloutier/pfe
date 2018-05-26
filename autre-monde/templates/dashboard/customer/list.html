@@ -45,8 +45,8 @@
                   {% trans "Email" context "Customers table header" as label %}
                   {% sorting_header 'email' label %}
 
-                  {% trans "Location" context "Customers table header" as label %}
-                  {% sorting_header 'location' label %}
+                  {% comment %} {% trans "Location" context "Customers table header" as label %}
+                  {% sorting_header 'location' label %} {% endcomment %}
                 </tr>
               </thead>
               <tbody>
@@ -54,8 +54,8 @@
                   <tr data-action-go="{% url "dashboard:customer-details" pk=customer.pk %}">
                     {% with customer.default_billing_address as default_address %}
                       <td>
-                        {% if default_address %}
-                          {{ default_address.first_name }} {{ default_address.last_name }}
+                        {% if customer.first_name or customer.last_name %}
+                          {{ customer.first_name }} {{ customer.last_name }}
                         {% else %}
                           -
                         {% endif %}
@@ -63,13 +63,13 @@
                       <td>
                         {{ customer.email }}
                       </td>
-                      <td>
+                      {% comment %} <td>
                         {% if default_address %}
                           {{ default_address.city }}, {{ default_address.get_country_display }}
                         {% else %}
                           -
                         {% endif %}
-                      </td>
+                      </td> {% endcomment %}
                     {% endwith %}
                   </tr>
                 {% endfor %}
