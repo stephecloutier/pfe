@@ -142,3 +142,13 @@ def collections_visible_to_user(user):
     if user.is_authenticated and user.is_active and user.is_staff:
         return Collection.objects.all()
     return Collection.objects.public()
+
+def product_price_indicator(amount):
+    if amount <= 10:
+        return range(1)
+    elif amount <= 30:
+        return range(2)
+    elif amount <= 40:
+        return range(3)
+    else :
+        return range(4)

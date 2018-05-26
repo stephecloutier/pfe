@@ -222,12 +222,15 @@ class ProductForm(forms.ModelForm, AttributesMixin):
             'tax_rate': pgettext_lazy(
                 'Product tax rate type', 'Tax rate'),
             'distributor': 'Distributeur',
-            'product_reference': 'Référence produit'}
+            'product_reference': 'Référence produit',
+            'on_order': 'Sur commande uniquement',
+            'product_content': 'Contenu du jeu'}
 
     category = TreeNodeChoiceField(queryset=Category.objects.all())
     collections = forms.ModelMultipleChoiceField(
         required=False, queryset=Collection.objects.all())
     description = RichTextField()
+    product_content = RichTextField()
 
     model_attributes_field = 'attributes'
 
@@ -276,7 +279,7 @@ class ProductVariantForm(forms.ModelForm, AttributesMixin):
 
     class Meta:
         model = ProductVariant
-        fields = ['sku', 'price_override', 'quantity', 'cost_price', 'distributor_override', 'ean', 'product_reference_override']
+        fields = ['sku', 'price_override', 'quantity', 'cost_price', 'distributor_override', 'ean', 'product_reference_override', 'product_content_override']
         labels = {
             'sku': pgettext_lazy('SKU', 'SKU'),
             'price_override': pgettext_lazy(
@@ -285,8 +288,11 @@ class ProductVariantForm(forms.ModelForm, AttributesMixin):
             'cost_price': pgettext_lazy('Currency amount', 'Cost price'),
             'distributor_override': 'Substitution du distributeur',
             'ean': 'Numéro EAN (code barre)',
-            'product_reference_override': 'Substitution de la référence produit'
+            'product_reference_override': 'Substitution de la référence produit',
+            'product_content_override': 'Subsitution du contenu du jeu'
             }
+
+    product_content_override = RichTextField()
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

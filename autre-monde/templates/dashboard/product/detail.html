@@ -68,7 +68,11 @@
           </span>
           <div class="row">
             <div class="col s12">
+              {% if product.on_order %}
+              <h5>Produit sur commande uniquement</h5>
+              {% else %}
               <h5>{% render_availability_status product %}</h5>
+              {% endif %}
             </div>
           </div>
           <p>

@@ -76,6 +76,43 @@
       <div class="single-product__infos">
           <div class="single-product__infos__main">
               <h2 class="single-product__title main-title">{{ product }}</h2>
+              
+              <div class="single-product__tags">
+                {% if product_release_status == 'cs' %}
+                <div class="single-product__tag tag__release">
+                  À venir
+                </div>
+                {% elif product_release_status == 'news' %}
+                <div class="single-product__tag tag__release">
+                    Nouveauté
+                </div>
+                {% endif %}
+
+                <div class="single-product__tag tag__stock">
+                    {% comment %} if épuisé, elif sur commande, elif.. -> {% endcomment %}
+                    {% if product.is_in_stock %}
+                    <span class="single-products__tag__text single-products__tag__text--stock">En stock</span>
+                    {% elif product.on_order %}
+                    <span class="single-products__tag__text single-products__tag__text--order-only">Sur commande</span>
+                    {% else %}
+                    <span class="single-products__tag__text single-products__tag__text--rupture">Rupture de stock</span>
+                    {% endif %}
+                </div>
+                
+                <div class="single-product__tag tag__price-indicator">
+                  {% for i in price_indicator %}
+                  <svg class="single-product__tag__price-indicator__svg" version="1.1" xmlns="http://www.w3.org/2000/svg"  width="15px" height="15px" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 10 14" style="enable-background:new 0 0 10 14;" xml:space="preserve">
+                    <path d="M6.4,2.7c-1.6,0-2.8,1-3.3,2.6h4c0.5,0,0.6,0.4,0.6,0.6c0,0.2-0.1,0.6-0.6,0.6H2.9c0,0.3-0.1,0.6-0.1,0.9
+                        c0,0.2,0,0.6,0,0.8h3.4c0.5,0,0.6,0.4,0.6,0.6c0,0.2-0.1,0.6-0.6,0.6H3c0.3,1.5,1.6,2.6,3.3,2.6c0.6,0,1.1-0.1,1.6-0.3
+                        c0.1-0.1,0.3-0.1,0.4-0.1c0.4,0,0.6,0.3,0.6,0.7c0,0.2-0.1,0.4-0.5,0.7c-0.6,0.3-1.4,0.5-2.2,0.5c-2.8,0-4.3-1.9-4.8-4H0.9
+                        C0.4,9.3,0.3,9,0.3,8.8c0-0.2,0.1-0.6,0.6-0.6h0.4c0-0.2,0-0.5,0-0.8c0-0.3,0-0.7,0-0.9H1c-0.5,0-0.6-0.4-0.6-0.6
+                        c0-0.2,0.1-0.6,0.6-0.6h0.6c0.6-2.5,2.5-4,4.9-4c0.6,0,1.4,0.1,1.8,0.3c0.5,0.2,0.6,0.4,0.6,0.7C8.9,2.7,8.6,3,8.2,3
+                        C8.1,3,7.9,3,7.8,2.9C7.4,2.8,6.9,2.7,6.4,2.7z"/>
+                  </svg>   
+                  {% endfor %} 
+                </div>
+              </div>
+
               {% if user.is_staff %}
               <span class="single-product__edit-dashboard">
                 <a href="{% url "dashboard:product-details" pk=product.pk %}">
@@ -83,19 +120,20 @@
                 </a>
               </span>
               {% endif %}
-              <!-- maybe flag (nouveauté, à venir, précommande) -->
+
               <div class="single-product__description">
                       {{ product.description|safe }}
               </div>
-
-              <table class="single-product__more-infos product__more-infos">
-                {% for attribute, value in product_attributes.items %}
-                  <tr>
-                    <td>{{ attribute }}:</td>
-                    <td><strong>{{ value }}</strong></td>
-                  </tr>
-                {% endfor %}
-              </table>
+              <dl class="single-product__base-infos">
+                <div class="single-product-specifications__item">
+                    <dt class="single-product-specifications__item__term">Catégorie&nbsp;:</dt>
+                    <dd class="single-product-specifications__item__definition">{{ product.category }}</dd>
+                </div>
+                <div class="single-product-specifications__item">
+                  <dt class="single-product-specifications__item__term">Date de sortie&nbsp;:</dt>
+                  <dd class="single-product-specifications__item__definition">{{ product.release_date }}</dd>
+                </div>
+              </dl>              
               {% comment %} <div class="single-product__more-infos product__more-infos">
                   <div class="product__more-info product__more-info--time">
                       <svg class="product__more-info__svg" width="15px" height="15px" viewBox="0 0 25 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> 
@@ -141,45 +179,31 @@
               <!-- maybe bouton précommande -->
           </div>
           
-          {% comment %} <div id="am-product-specifications" class="single-product__specifications single-product-specifications">
+          <div id="am-product-specifications" class="single-product__specifications single-product-specifications">
               <div id="am-product-specifications-title" class="single-product-specifications__title deploy-title">
                   <svg class="single-product-specifications__title__icon deploy-title__icon" width="16" height="13" xmlns="http://www.w3.org/2000/svg"><path d="M8 13L0 0h16z" /></svg>
                   <span class="single-product-specifications__title__text deploy-title__text">Informations supplémentaires</span>
               </div>
               <div class="single-product-specifications__inner">
                   <dl class="single-product-specifications__list">
+                      {% for attribute, value in product_attributes.items %}
                       <div class="single-product-specifications__item">
-                          <dt class="single-product-specifications__item__term">Date de sortie prévue:</dt>
-                          <dd class="single-product-specifications__item__definition">Février 2019</dd>
+                          <dt class="single-product-specifications__item__term">{{ attribute }}&nbsp;:</dt>
+                          <dd class="single-product-specifications__item__definition">{{ value }}</dd>
                       </div>
-                      <div class="single-product-specifications__item">
-                          <dt class="single-product-specifications__item__term">Langue(s):</dt>
-                          <dd class="single-product-specifications__item__definition">Français</dd>
-                      </div>
-                      <div class="single-product-specifications__item">
-                          <dt class="single-product-specifications__item__term">Éditeur:</dt>
-                          <dd class="single-product-specifications__item__definition">Oz Editions</dd>
-                      </div>
-                      <div class="single-product-specifications__item">
-                          <dt class="single-product-specifications__item__term">Thème(s):</dt>
-                          <dd class="single-product-specifications__item__definition">Mythologique, Aventure, Famille</dd>
-                      </div>
-                      <div class="single-product-specifications__item">
-                          <dt class="single-product-specifications__item__term">Catégorie(s):</dt>
-                          <dd class="single-product-specifications__item__definition">Jeux de société</dd>
-                      </div>
+                      {% endfor %}
                   </dl>
+                  {% if product.content %}
                   <div class="single-product-specifications__content">
                       <span class="single-product-specifications__content__title">Contenu</span>
                       <ul class="single-product-specifications__content__list">
-                          <li class="single-product-specifications__content__item">9 tuiles village</li>
-                          <li class="single-product-specifications__content__item">16 figurines totem</li>
-                          <li class="single-product-specifications__content__item">7 fruits</li>
-                          <li class="single-product-specifications__content__item">1 figurine shaman</li>
+                          {{ product.content|safe }}
+                          {% comment %} <li class="single-product-specifications__content__item">1 figurine shaman</li> {% endcomment %}
                       </ul>
                   </div>
+                  {% endif %}
               </div>
-          </div> {% endcomment %}
+          </div>
       </div>
     
       <script type="application/ld+json">{{ json_ld_product_data|safe }}</script>

@@ -71,10 +71,7 @@
                 <div class="row">
                   {{ product_form.description|materializecss }}
                 </div>
-                <div class="row">
-                  {{ product_form.release_date|materializecss }}
-                </div>
-                <span class="card-title">Availability</span>
+                <span class="card-title">Disponibilité</span>
                 <div class="row">
                   <div class="col s12 m3">
                     {{ product_form.is_published|materializecss }}
@@ -83,7 +80,24 @@
                     {{ product_form.available_on|materializecss }}
                   </div>
                 </div>
-                {% include "dashboard/includes/_google_preview.html" with object=product form=product_form %}
+                <span class="card-title">Caractéristiques du produit</span>
+                <div class="row">
+                  {{ product_form.release_date|materializecss }}
+                </div>
+                <div class="row">
+                  {{ product_form.category|materializecss }}
+                </div>
+                <div class="row">
+                    {{ product_form.distributor|materializecss }}
+                  </div>
+                <div class="row">
+                  {{ product_form.product_reference|materializecss }}
+                </div>
+                <div class="row">
+                  {{ product_form.content|materializecss }}
+                </div>
+
+                {% comment %} {% include "dashboard/includes/_google_preview.html" with object=product form=product_form %} {% endcomment %}
               </div>
               <div class="col s12 l4">
                 <div class="row">
@@ -98,15 +112,9 @@
                     {{ variant_form.sku|materializecss }}
                   </div>
                 {% endif %}
-                <div class="row">
-                  {{ product_form.category|materializecss }}
-                </div>
-                <div class="row">
-                    {{ product_form.distributor|materializecss }}
-                  </div>
-                <div class="row">
-                  {{ product_form.product_reference|materializecss }}
-                </div>
+                <div class="row is_featured_checkbox">
+                    {{ product_form.on_order|materializecss }}
+                </div> 
                 {% comment %} <div class="row">
                   {{ product_form.collections|materializecss }}
                 </div>

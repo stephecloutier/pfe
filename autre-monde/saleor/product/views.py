@@ -1,3 +1,7 @@
+from pprint import pprint
+import inspect
+from django_prices.forms import MoneyField
+
 import datetime
 import json
 
@@ -13,7 +17,7 @@ from .filters import ProductCategoryFilter, ProductCollectionFilter, ProductFilt
 from .models import Category, Collection, Product, ProductType
 from .utils import (
     collections_visible_to_user, get_product_images, get_product_list_context,
-    handle_cart_form, products_for_cart, products_with_details, new_products, coming_soon_products)
+    handle_cart_form, products_for_cart, products_with_details, new_products, coming_soon_products, product_price_indicator)
 from .utils.attributes import get_product_attributes_data
 from .utils.availability import get_availability, products_with_availability
 from .utils.variants_picker import get_variant_picker_data
@@ -74,11 +78,20 @@ def product_details(request, slug, product_id, form=None):
     # show_variant_picker determines if variant picker is used or select input
     show_variant_picker = all([v.attributes for v in product.variants.all()])
     json_ld_data = product_json_ld(product, product_attributes)
+    price_indicator = product_price_indicator(product.price.amount)
+    product_release_status = None
+    if product.release_date > datetime.date.today():
+        product_release_status = 'cs'
+    elif ((datetime.date.today() - product.release_date) <= datetime.timedelta(weeks=1)):
+        product_release_status = 'news'
+        
     ctx = {
         'is_visible': is_visible,
         'form': form,
         'availability': availability,
         'product': product,
+        'price_indicator': price_indicator,
+        'product_release_status': product_release_status,
         'product_attributes': product_attributes,
         'product_images': product_images,
         'show_variant_picker': show_variant_picker,
