@@ -15,25 +15,6 @@
           <a href="{% url 'account:signup' %}" title="Aller sur la page de création de compte" class="login__title-link">Pas encore de compte&nbsp;? Créez le votre&nbsp;!</a>
       </div>
       {% include "account/partials/login_form.html" %}
-{% comment %} 
-      <form action="#" method="post" class="login__form login__form--login">
-          <div class="login__form__inputs">
-              <div class="login__form__item">
-                  <label for="email" class="login__form__label">Adresse email</label>
-                  <input type="email" id="email" name="email" class="login__form__input">
-              </div>
-              <div class="login__form__item">
-                  <label for="password" class="login__form__label">Mot de passe</label>
-                  <input type="password" id="password" name="password" class="login__form__input">
-              </div>
-          </div>
-          <a href="#" title="Récupérer mon mot de passe" class="login__form__forgot-password">Mot de passe oublié&nbsp;?</a>
-  
-          <div class="login__form__buttons">
-              <a href="{% url 'account:signup' %}" title="Créer un compte" class="cta cta--dark-blue login__form__button login__form__button--secondary">Créer un compte</a>
-              <input class="cta cta--pink login__form__button login__form__button--main" type="submit" value="Connexion">
-          </div>
-      </form> {% endcomment %}
   </section>
 {% endblock %}
   
