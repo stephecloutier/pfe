@@ -230,7 +230,7 @@ class ProductForm(forms.ModelForm, AttributesMixin):
     collections = forms.ModelMultipleChoiceField(
         required=False, queryset=Collection.objects.all())
     description = RichTextField()
-    product_content = RichTextField()
+    # product_content = RichTextField()
 
     model_attributes_field = 'attributes'
 

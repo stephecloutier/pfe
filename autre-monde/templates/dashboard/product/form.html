@@ -13,6 +13,73 @@
 {% endblock %}
 
 {% block body_class %}body-products{% endblock %}
+{% block fb_login_script %}
+  {% comment %} <script>
+      const checkLoginStatus = function () {
+        let isDeclined = false
+        FB.getLoginStatus(function(response) {
+          toggleLoginButton(response);
+          if(response.status == 'connected') {
+            FB.api('/me/permissions', function(response) {
+              for (i = 0; i < response.data.length; i++) { 
+                if (response.data[i].status == 'declined') {
+                  isDeclined = true
+                }
+              }
+              if(isDeclined) {
+                  window.alert('Les autorisations demandées sont nécessaires à la publication de ce produit sur Facebook. Si vous ne les donnez pas toutes, nous ne seront pas en mesure d\'effectuer cette action.')
+              }
+            });
+            if(!isDeclined && !document.getElementById('user-token')) {
+              let form = document.getElementById('form-product')
+              hiddenField = document.createElement('INPUT')
+              hiddenField.setAttribute('type', 'hidden')
+              hiddenField.setAttribute('value', response.authResponse.accessToken)
+              hiddenField.setAttribute('name', 'userToken')
+              hiddenField.setAttribute('id', 'user-token')
+              form.appendChild(hiddenField)
+            }
+          }
+        });
+      }
+      const toggleLoginButton = function (response) {
+        let loginButton = document.getElementById('fb-login-button')
+        let status = response.status
+        if(status == 'connected') {
+          loginButton.classList.add('hidden')
+        } else {
+          loginButton.classList.remove('hidden')
+        }
+      }
+
+      
+
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId            : 'your-app-id',
+          autoLogAppEvents : true,
+          xfbml            : true,
+          version          : 'v3.0'
+        });
+
+        checkLoginStatus()
+        
+
+
+
+      };
+    
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v3.0&appId=1829835427319504&autoLogAppEvents=1';
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+
+
+  </script> {% endcomment %}
+{% endblock %}
 
 {% block menu_products_class %}active{% endblock %}
 
@@ -89,7 +156,7 @@
                 </div>
                 <div class="row">
                     {{ product_form.distributor|materializecss }}
-                  </div>
+                </div>
                 <div class="row">
                   {{ product_form.product_reference|materializecss }}
                 </div>
@@ -159,4 +226,7 @@
       <div class="col m12 l3 help-box"></div>
     </div>
   </div>
+  {% comment %} <div class="facebook-login">  
+    <div id="fb-login-button" onlogin="checkLoginStatus()" class="fb-login-button" data-max-rows="1" data-size="medium" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false" data-scope="manage_pages, publish_pages"></div>
+  </div> {% endcomment %}
 {% endblock %}

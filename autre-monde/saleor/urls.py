@@ -20,6 +20,7 @@ from .order.urls import urlpatterns as order_urls
 from .page.urls import urlpatterns as page_urls
 from .product.urls import urlpatterns as product_urls
 from .search.urls import urlpatterns as search_urls
+from .events.urls import urlpatterns as events_url
 
 handler404 = 'saleor.core.views.handle_404'
 
@@ -49,6 +50,7 @@ translatable_urlpatterns = [
         include((feed_urls, 'data_feeds'), namespace='data_feeds')),
     url(r'^search/', include((search_urls, 'search'), namespace='search')),
     url(r'^about/', include((about_urls, 'about'), namespace='about')),
+    url(r'^calendrier/', include ((events_url, 'events'), namespace='events')),
     url(r'', include('payments.urls'))]
 
 urlpatterns = non_translatable_urlpatterns + i18n_patterns(
