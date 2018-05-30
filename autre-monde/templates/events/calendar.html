@@ -34,17 +34,17 @@
             </form>
 
             <div class="calendar__month-selection">
-                <div class="calendar__month-selection__arrow calendar__month-selection__arrow--left">
+                <a class="calendar__month-selection__arrow calendar__month-selection__arrow--left" href="{% url 'events:calendar-date' date=previous_month %}">
                     <svg class="calendar__month-selection__arrow__icon" version="1.1"  width="12px" height="21px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 12 21" xml:space="preserve">
                         <path d="M0.4,9.5l9.1-9c0.6-0.6,1.5-0.6,2.1,0c0.6,0.6,0.6,1.5,0,2.1l-8,8l8,8c0.6,0.6,0.6,1.5,0,2.1 c-0.6,0.6-1.5,0.6-2.1,0l-9.1-9c-0.3-0.3-0.4-0.7-0.4-1C0,10.1,0.1,9.7,0.4,9.5z"/>
                     </svg>
-                </div>
-                <div class="calendar__month-selection__title">{{ formatedDate }}</div>
-                <div class="calendar__month-selection__arrow calendar__month-selection__arrow--right">
+                </a>
+                <div class="calendar__month-selection__title">{{ formated_date }}</div>
+                <a class="calendar__month-selection__arrow calendar__month-selection__arrow--right" href="{% url 'events:calendar-date' date=next_month %}">
                     <svg class="calendar__month-selection__arrow__icon" width="12px" height="21px" viewBox="0 0 12 21" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                         <path d="M11.5682563,11.539608 L2.51654796,20.568994 C1.94074997,21.1436687 1.00719223,21.1436687 0.431673781,20.568994 C-0.14389126,19.9948307 -0.14389126,19.0635929 0.431673781,18.489476 L8.44103824,10.499849 L0.431906728,2.51050079 C-0.143658314,1.93610503 -0.143658314,1.0049602 0.431906728,0.430796818 C1.00747177,-0.143598939 1.94098292,-0.143598939 2.51678091,0.430796818 L11.5684893,9.4603223 C11.8562718,9.74754342 12,10.12358 12,10.4998025 C12,10.8762109 11.8559923,11.2525263 11.5682563,11.539608 Z" id="Shape"></path>
                     </svg>
-                </div>
+                </a>
             </div>
 
             <div class="calendar__display"> </div>
@@ -52,21 +52,26 @@
 
         <div class="calendar__days">
             <ul class="calendar__days__list">
-                {% comment %} {% for day in days_with_events %} {% endcomment %}
-                <li class="calendar__days__item">
-                    <div class="calendar-day__title">Vendredi 2 mars{% comment %}{{ day.date }} {% endcomment %}</div>
-                    <ul class="calendar-day__list">
-                        {% comment %} <li class="calendar-day__item">
-                            <a href="./single-product.html" title="Aller sur la page du produit" class="calendar-day-event calendar-day-event--news">                                        
-                                <div class="calendar-day-event__title">Sortie de jeu: Tiki</div>
-                                <div class="calendar-day-event__description">Vous êtes une divinité de l'île de Manami et vous raffolez des fruits succulents qui y poussent.</div>
-                            </a>
-                        </li> {% endcomment %}
 
-                        {% comment %} {% for event in day.events %} {% endcomment %}
+                {% for day in release_days %}
+                
+                <li class="calendar__days__item">
+                    <div class="calendar-day__title">{{ day.formated_day }}</div>
+                    <ul class="calendar-day__list">
+                        {% for product in day.products %}
                         <li class="calendar-day__item">
-                            <a href="{% comment %} {% event.fb_link %} {% endcomment %}" title="Aller sur la page de l'évènement" class="calendar-day-event calendar-day-event--event">                                        
-                                <div class="calendar-day-event__title">FNM MTG (Draft){% comment %} {% event.title %} {% endcomment %}</div>
+                            <a href="{{ product.get_absolute_url }}" title="Aller sur la page du produit" class="calendar-day-event calendar-day-event--news">                                        
+                                <div class="calendar-day-event__title">{{ product.name }}</div>
+                                <div class="calendar-day-event__description">{{ product.description|safe|truncatechars:200 }}</div>
+                            </a>
+                        </li>
+                        {% endfor %}
+
+                        {% comment %} {% for event in day.events %}
+                        
+                        <li class="calendar-day__item">
+                            <a href="{% event.fb_link %}" title="Aller sur la page de l'évènement" class="calendar-day-event calendar-day-event--event">                                        
+                                <div class="calendar-day-event__title">FNM MTG (Draft){% event.title %}</div>
                                 <div class="calendar-day-event__infos">
                                     <div class="calendar-day-event__infos__tip">
                                         <div class="calendar-day-event__infos__icon">
@@ -77,9 +82,9 @@
                                                 </g>              
                                             </svg>
                                         </div>
-                                        <div class="calendar-day-event__infos__text">19:30 - 22:30{% comment %} {% event.start_time - event.end_time %} {% endcomment %}</div>
+                                        <div class="calendar-day-event__infos__text">19:30 - 22:30{% event.start_time - event.end_time %}</div>
                                     </div>
-                                    {% comment %} <div class="calendar-day-event__infos__tip">
+                                    <div class="calendar-day-event__infos__tip">
                                         <div class="calendar-day-event__infos__icon">
                                             <svg class="calendar-day-event__infos__icon__svg" version="1.1" xmlns="http://www.w3.org/2000/svg"  width="15px" height="15px" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 10 14" style="enable-background:new 0 0 10 14;" xml:space="preserve">
                                                 <path d="M6.4,2.7c-1.6,0-2.8,1-3.3,2.6h4c0.5,0,0.6,0.4,0.6,0.6c0,0.2-0.1,0.6-0.6,0.6H2.9c0,0.3-0.1,0.6-0.1,0.9
@@ -91,15 +96,15 @@
                                         </svg>                                           
                                      </div>
                                         <div class="calendar-day-event__infos__text">25,00</div>
-                                    </div> {% endcomment %}
+                                    </div>
                                 </div>
-                                <div class="calendar-day-event__description">Venez drafter avec nous le set Magic : Rivals of Ixalan !{% comment %} {% event.description %} {% endcomment %}</div>
+                                <div class="calendar-day-event__description">Venez drafter avec nous le set Magic : Rivals of Ixalan !{% event.description %}</div>
                             </a>
-                        </li>
+                        </li> {% endcomment %}
                         {% comment %} {% endfor %} {% endcomment %}
                     </ul>
                 </li>
-                {% comment %} {% endfor %} {% endcomment %}
+                {% endfor %}
             </ul>
         </div>
     </section>
