@@ -49,60 +49,9 @@
 <body id="am-body">
 {% block header %}
     <header class="navbar header" role="navigation">
-        <!-- <div class="navbar__login container-fluid {% if user.is_impersonate %} bg-warning{% endif %}">
-        <div class=" d-none d-md-block container">
-        <div class="row">
-        <div class="col-6">
-            <p class="text-left">{{ site.settings.header_text }}</p>
-        </div>
-        <div class="col-6">
-            <ul class="float-right">
-            {% include "_language_picker.html" %}
-            {% if user.is_authenticated %}
-                {% if user.is_staff or request.impersonator.is_staff %}
-                <li>
-                    <a href="{% url "dashboard:index" %}" target="_blank" rel="noopener">
-                    {% trans "Dashboard" context "Main navigation item" %}
-                    </a>
-                </li>
-                {% endif %}
-                <li>
-                <a href="{% url "account:details" %}">
-                    {% trans "Your account" context "Main navigation item" %}</a>
-                </li>
-                {% if user.is_impersonate %}
-                <li>
-                    <a href="{% url "impersonate-stop" %}">
-                    {% trans 'Stop impersonating' context 'Main navigation item' %}
-                    </a>
-                </li>
-                {% else %}
-                <li>
-                    <a href="{% url "account:logout" %}">
-                    {% trans "Log out" context "Main navigation item" %}</a>
-                </li>
-                {% endif %}
-            {% else %}
-                <li>
-                <a rel="nofollow" href="{% url "account:signup" %}">
-                    {% trans "Register" context "Main navigation item" %}</a>
-                </li>
-                <li>
-                <a rel="nofollow" href="{% url "account:login" %}">
-                    {% trans "Log in" context "Main navigation item" %}
-                </a>
-                </li>
-            {% endif %}
-            </ul>
-        </div>
-        </div>
-    </div>
-    </div> -->
-
     <div class="header__top-nav top-nav" id="am-top-nav">
-        {% include "_language_picker.html" %}
+        {% comment %} {% include "_language_picker.html" %} {% endcomment %}
         <div id="am-burger-icon" class="top-nav__burger-menu">
-            <!-- <svg class="top-nav__burger-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M491.318 235.318H20.682C9.26 235.318 0 244.577 0 256s9.26 20.682 20.682 20.682h470.636c11.423 0 20.682-9.259 20.682-20.682 0-11.422-9.259-20.682-20.682-20.682zM491.318 78.439H20.682C9.26 78.439 0 87.699 0 99.121c0 11.422 9.26 20.682 20.682 20.682h470.636c11.423 0 20.682-9.26 20.682-20.682 0-11.422-9.259-20.682-20.682-20.682zM491.318 392.197H20.682C9.26 392.197 0 401.456 0 412.879s9.26 20.682 20.682 20.682h470.636c11.423 0 20.682-9.259 20.682-20.682s-9.259-20.682-20.682-20.682z"/></svg> -->
             <svg class="top-nav__burger-icon" width="30" height="30" data-src="{% static "images/mobile-menu.svg" %}"></svg>
         </div>
         <div class="top-nav__social-medias social-medias">
@@ -118,11 +67,11 @@
                     <path d="M19.8608,0 C8.9096,0 0,8.9096 0,19.8608 C0,30.8112 8.9096,39.7216 19.8608,39.7216 C30.8112,39.7216 39.7216,30.8112 39.7216,19.8608 C39.7216,8.9096 30.8128,0 19.8608,0 Z M28.7208,15.3152 C28.7296,15.512 28.7344,15.7104 28.7344,15.9088 C28.7344,21.9496 24.1376,28.9128 15.7272,28.9128 C13.1456,28.9128 10.7424,28.1584 8.72,26.8608 C9.0776,26.9032 9.4416,26.9248 9.8104,26.9248 C11.9528,26.9248 13.9232,26.1936 15.488,24.968 C13.488,24.9312 11.7992,23.6096 11.2176,21.7928 C11.496,21.8456 11.7832,21.8752 12.0768,21.8752 C12.4936,21.8752 12.8984,21.8208 13.2816,21.716 C11.1904,21.2968 9.6152,19.4496 9.6152,17.2336 C9.6152,17.2144 9.6152,17.1944 9.616,17.176 C10.232,17.5176 10.9368,17.724 11.6856,17.7472 C10.46,16.9288 9.6528,15.5288 9.6528,13.9432 C9.6528,13.1048 9.8776,12.3192 10.2712,11.644 C12.5248,14.4104 15.8944,16.2296 19.6928,16.4216 C19.6144,16.0864 19.5752,15.7384 19.5752,15.3792 C19.5752,12.8552 21.6216,10.808 24.1456,10.808 C25.4608,10.808 26.6472,11.3632 27.4824,12.2512 C28.5248,12.0464 29.5008,11.6672 30.3864,11.1416 C30.0424,12.2096 29.32,13.1048 28.3736,13.6712 C29.2992,13.5608 30.1824,13.316 30.9992,12.952 C30.3896,13.8672 29.6144,14.6728 28.7208,15.3152 Z" id="twitter-svg"></path>
                 </svg>
             </a>
-            {% if user.is_staff or request.impersonator.is_staff %}
+            {% comment %} {% if user.is_staff or request.impersonator.is_staff %}
             <a href="{% url "dashboard:index" %}" target="_blank" rel="noopener">
                 Dashboard
             </a>
-            {% endif %}
+            {% endif %} {% endcomment %}
         </div>
         {% if SEARCH_IS_ENABLED %}
         <div id="search-bar" class="top-nav__search-bar search-bar">
@@ -156,7 +105,6 @@
                     c-12.83-6.502-21.887-22.178-21.887-40.512c0-24.154,15.712-43.738,35.089-43.738c19.377,0,35.089,19.584,35.089,43.738
                     c0,18.178-8.896,33.756-21.555,40.361l1.19,6.349c10.019,11.658,49.802,12.418,49.802,58.488H150.453z"/>
                 </svg>
-                {% comment %} <img class="top-nav-user__img" src="https://www.amvq.quebec/images/public/entretien-chaton.jpg" alt="Username img"> {% endcomment %}
             </a>   
             <div class="top-nav-user__infos">
                 Connecté(e) en tant que
@@ -202,12 +150,6 @@
             </nav>
         </div>
     </div>
-
-    <!-- <div class="navbar__menu container d-block">
-        <nav class="navigation">
-        {% menu site_menu=site.settings.top_menu horizontal=True %}
-        </nav>
-    </div> -->
     </header>
 {% endblock %}
 {% block topcontent %}{% endblock topcontent %}
