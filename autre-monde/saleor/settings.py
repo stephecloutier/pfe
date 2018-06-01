@@ -13,7 +13,7 @@ def get_list(text):
     return [item.strip() for item in text.split(',')]
 
 
-DEBUG = ast.literal_eval(os.environ.get('DEBUG', 'True'))
+DEBUG = ast.literal_eval(os.environ.get('DEBUG', 'False'))
 
 SITE_ID = 1
 
@@ -130,7 +130,8 @@ TEMPLATES = [{
         'string_if_invalid': '<< MISSING VARIABLE "%s" >>' if DEBUG else ''}}]
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = 'jo77%6q)8xbm2roi9o1jcbkerg6f3f&#xh8asfl8cytswo8gkg'
+# SECRET_KEY = os.environ.get('SECRET_KEY')
 
 MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
