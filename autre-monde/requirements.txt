@@ -61,6 +61,7 @@ graphene-django==2.0.0
 graphene==2.0.1           # via django-graphql-jwt, graphene-django
 graphql-core==2.0         # via graphene, graphql-relay
 graphql-relay==0.4.5      # via graphene
+gunicorn==19.6.0          # custom stephe
 html5lib==1.0.1           # via bleach, weasyprint
 idna==2.6                 # via cryptography, requests, yarl
 iso8601==0.1.12           # via graphene-django

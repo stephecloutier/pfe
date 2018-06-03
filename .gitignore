@@ -3,6 +3,7 @@ ressources/
 inspiration/
 static/assets
 static/node_modules
+prod_files/*.sql
 
 /autre-monde/*.py[cod]
 /autre-monde/.*
