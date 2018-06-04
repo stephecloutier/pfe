@@ -6,8 +6,7 @@
 .top-nav-user__infos {
     display: flex;
     flex-direction: column;
-    margin-left: 10px;
-    
+    margin-left: 8px;
 
     &--username {
         cursor: pointer;
@@ -15,5 +14,32 @@
         color: $accent-red;
         font-weight: 600;
         line-height: 1;
+    }
+}
+
+.top-nav-users__infos__logout {
+    font-weight: 450;
+    font-size: 0.85rem;
+    margin-top: 2px;
+    color: $dark-blue;
+}
+
+@media screen and (max-width: 750px){
+
+    .top-nav-user__infos {
+        margin-left: 5px;
+        text-align: right;
+
+        &--username {
+            color: white;
+        }
+    }
+    .top-nav-users__infos__logout {
+        color: white;
+        font-weight: 400;
+    }
+
+    .top-nav-user__avatar {
+        display: none;
     }
 }

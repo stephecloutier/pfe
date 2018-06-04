@@ -7,6 +7,7 @@
 
     display: flex;
     justify-content: flex-start;
+    // justify-content: space-between;
     align-items: center;
 }
 
@@ -17,14 +18,13 @@
 
 .top-nav__search-bar {
     flex-grow: 1;
-    margin-left: 50px;
+    margin: 0 5%;
     display: flex;
     justify-content: flex-end;
 }
 
 .top-nav__login {
     color: $am-blue;
-    margin-left: 50px;
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -57,7 +57,6 @@
 .top-nav__user {
     flex-basis: 0%;
     flex-grow: 1;
-    margin-left: 50px;
     display: flex;
     align-items: center;
 }
@@ -70,7 +69,6 @@
     justify-content: center;
     border-radius: 50%;
     overflow: hidden;
-
 }
 
 .top-nav-user__img {
@@ -91,6 +89,10 @@
 @media screen and (max-width: 900px) {
     .top-nav {
         font-size: 0.9rem;
+    }
+
+    .top-nav__search-bar {
+        margin: 0 3%;
     }
 }
 
@@ -132,7 +134,7 @@
         cursor: pointer;
         position: absolute;
         left: 10px;
-        top: calc(60px / 2 - 35px / 2);
+        top: calc(60px / 2 - 30px / 2);
     }
 
     .top-nav__burger-icon {

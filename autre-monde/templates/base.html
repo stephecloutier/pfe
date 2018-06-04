@@ -76,7 +76,7 @@
         </div>
         {% if SEARCH_IS_ENABLED %}
         <div id="search-bar" class="top-nav__search-bar search-bar">
-            <form action="{% url "search:search" %}">
+            <form class="search-bar__form" action="{% url "search:search" %}">
                 <label id="search-bar-label" class="search-bar__label search-bar__label--label-style" for="search">Rechercher dans le catalogue</label>
                 <input 
                     class="search-bar__input" 
@@ -108,11 +108,11 @@
                 </svg>
             </a>   
             <div class="top-nav-user__infos">
-                Connecté(e) en tant que
+                {% comment %} Connecté(e) en tant que {% endcomment %}
                 <a href="{% url "account:details" %}" title="Aller sur votre profil" class="top-nav-user__infos--username">
                     {{ user.first_name|add:" "|add:user.last_name }}
                 </a>
-                <a href="{% url "account:logout" %}">
+                <a class="top-nav-users__infos__logout" href="{% url "account:logout" %}" title="Se déconnecter">
                     Se déconnecter
                 </a>
             </div>
