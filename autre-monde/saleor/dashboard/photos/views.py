@@ -1,10 +1,16 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect, reverse
+from django.contrib import messages
 from django.template.response import TemplateResponse
 from django.views.decorators.http import require_POST
+from django.utils.translation import npgettext_lazy, pgettext_lazy
+from django.http import JsonResponse
 
+from . import forms
 
 from ..views import staff_member_required
 from ...photos.models import Photo
+
+from pprint import pprint
 
 @staff_member_required
 # @permission_required('product.view_product')
@@ -18,7 +24,6 @@ def photos_list(request):
 @staff_member_required
 # @permission_required('product.edit_product')
 def photos_image_create(request):
-    # product = get_object_or_404(Product, pk=product_pk)
     image = Photo()
     form = forms.PhotosImageForm(
         request.POST or None, request.FILES or None, instance=image)
@@ -39,7 +44,7 @@ def photos_image_create(request):
 @staff_member_required
 # @permission_required('product.edit_product')
 def photos_image_edit(request, img_pk):
-    image = get_object_or_404(pk=img_pk) #product.images,
+    image = get_object_or_404(Photo, pk=img_pk) #product.images,
     form = forms.PhotosImageForm(
         request.POST or None, request.FILES or None, instance=image)
     if form.is_valid():
@@ -59,7 +64,7 @@ def photos_image_edit(request, img_pk):
 @staff_member_required
 # @permission_required('product.edit_product')
 def photos_image_delete(request, img_pk):
-    image = get_object_or_404(pk=img_pk) #product.images,
+    image = get_object_or_404(Photo, pk=img_pk) #product.images,
     if request.method == 'POST':
         image.delete()
         msg = pgettext_lazy(
@@ -69,7 +74,7 @@ def photos_image_delete(request, img_pk):
     return TemplateResponse(
         request,
         'dashboard/photos/modal/confirm_delete.html',
-        {'product': product, 'image': image})
+        {'image': image})
 
 
 @require_POST
@@ -91,7 +96,7 @@ def ajax_upload_image(request):
 @require_POST
 @staff_member_required
 def ajax_reorder_photos_images(request):
-    form = forms.ReorderProductImagesForm(request.POST, instance=photos) #??
+    form = forms.ReorderPhotosImagesForm(request.POST)
     status = 200
     ctx = {}
     if form.is_valid():

@@ -4,7 +4,7 @@
 {% load staticfiles %}
 
 {% block title %}
-  {% if product_image.pk %}
+  {% if image.pk %}
     {% trans "Edit - Image" context "Image form text" %}
   {% else %}
     {% trans "Add image" context "Image form text" %}
@@ -13,29 +13,29 @@
 
 {% block body_class %}body-store body-products{% endblock %}
 
-{% block menu_products_class %}active{% endblock %}
+{% comment %} à modifier {% block menu_products_class %}active{% endblock %} {% endcomment %}
 
 {% block header_menu %}
-  {% url "dashboard:product-details" pk=product.pk as url %}
   {% include "dashboard/includes/_back_link.html" with url=url %}
 {% endblock %}
 
 {% block breadcrumbs %}
   <ul class="breadcrumbs breadcrumbs--history">
     <li>
-      <a href="{% url "dashboard:product-details" pk=product.pk %}" class="breadcrumbs--ellipsed-item">
-        {{ product }}
+      <a href="{% url "dashboard:photos-list" %}" class="breadcrumbs--ellipsed-item">
+        Photos
       </a>
     </li>
     <li class="back-mobile">
-      <a href="{% url "dashboard:product-details" pk=product.pk %}" class="breadcrumb">
+      <a href="{% url "dashboard:photos-list" %}" class="breadcrumb">
         <svg data-src="{% static "dashboard/images/arrow-left.svg" %}" fill="#fff" width="20px" height="20px" />
       </a>
     </li>
-    {% if product_image.pk %}
+    {% if image.pk %}
       <li>
         <span class="breadcrumbs--ellipsed-item">
-          {% trans "Image" context "Image form text" %}
+          {% comment %} {% trans "Image" context "Image form text" %} {% endcomment %}
+          {% if image.alt %}{{ image.alt }}{% else %}{{ image.image }}{% endif %}
         </span>
       </li>
       <li>
@@ -47,11 +47,6 @@
       <li>
         <span class="hide-on-med-and-down">
           {% trans "Add image" context "Image form breadcrumbs" %}
-        </span>
-        <span class="hide-on-large-only breadcrumbs--ellipsed-item">
-          {% blocktrans trimmed context "Image form breadcrumbs"  %}
-            Add image for {{ product }}
-          {% endblocktrans %}
         </span>
       </li>
     {% endif %}
@@ -75,10 +70,10 @@
             </div>
           </div>
           <div class="card-action right-align">
-            <a href="{% url "dashboard:product-image-list" product.pk %}" class="btn-flat waves-effect">
+            <a href="{% url "dashboard:photos-list" %}" class="btn-flat waves-effect">
               {% trans "Cancel" context "Dashboard cancel action" %}
             </a>
-            {% if product_image.pk %}
+            {% if image.pk %}
               <button type="submit" class="btn waves-effect">
                 {% trans "Save" context "Dashboard update action" %}
               </button>
