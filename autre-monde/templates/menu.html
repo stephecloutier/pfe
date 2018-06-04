@@ -7,8 +7,8 @@
 </div>
 
 <ul class="main-nav__list">
-    <li class="main-nav__item"><a class="main-nav__link" href="{% url 'home' %}" title="Aller sur la page X">Accueil</a></li>
-    <li class="main-nav__item main-nav__item--catalogue"><a class="main-nav__link" href="{% url "product:category-list" %}" title="Aller sur la page X">Catalogue</a>
+    <li class="main-nav__item"><a class="main-nav__link" href="{% url 'home' %}" title="Aller sur la page d'accueil">Accueil</a></li>
+    <li class="main-nav__item main-nav__item--catalogue"><a class="main-nav__link" href="{% url "product:category-list" %}" title="Aller sur la page du catalogue">Catalogue</a>
         <ul id="am-sub-nav" class="main-nav__sub-nav">
             {% for item in menu_items %}
             <li class="main-nav__sub-item">
@@ -20,7 +20,7 @@
             <svg width="16" height="13" xmlns="http://www.w3.org/2000/svg"><path d="M8 13L0 0h16z" /></svg>
         </span>
     </li>
-    <li class="main-nav__item"><a class="main-nav__link" href="{% url "events:calendar" %}" title="Aller sur la page X">Calendrier</a></li>
-    <li class="main-nav__item"><a class="main-nav__link" href="{% url "about:about" %}" title="Aller sur la page X">Plus d'infos</a></li>
-    <li class="main-nav__item"><a class="main-nav__link" href="./photos.html" title="Aller sur la page X">Photos</a></li>
+    <li class="main-nav__item"><a class="main-nav__link" href="{% url "events:calendar" %}" title="Aller sur la page du calendrier">Calendrier</a></li>
+    <li class="main-nav__item"><a class="main-nav__link" href="{% url "about:about" %}" title="Aller sur la page à propos">Plus d'infos</a></li>
+    <li class="main-nav__item"><a class="main-nav__link" href="{% url "photos:photos" %}" title="Aller sur la page des photos">Photos</a></li>
 </ul>

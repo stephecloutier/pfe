@@ -18,6 +18,7 @@ from .data_feeds.urls import urlpatterns as feed_urls
 from .graphql.api import schema
 from .order.urls import urlpatterns as order_urls
 from .page.urls import urlpatterns as page_urls
+from .photos.urls import urlpatterns as photos_urls
 from .product.urls import urlpatterns as product_urls
 from .search.urls import urlpatterns as search_urls
 from .events.urls import urlpatterns as events_url
@@ -51,6 +52,7 @@ translatable_urlpatterns = [
     url(r'^search/', include((search_urls, 'search'), namespace='search')),
     url(r'^about/', include((about_urls, 'about'), namespace='about')),
     url(r'^calendrier/', include ((events_url, 'events'), namespace='events')),
+    url(r'^photos/', include((photos_urls, 'photos'), namespace='photos')),
     url(r'', include('payments.urls'))]
 
 urlpatterns = non_translatable_urlpatterns + i18n_patterns(

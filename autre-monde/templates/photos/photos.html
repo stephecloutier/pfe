@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block breadcrumb %}
+    <div class="breadcrumb">
+        <ul class="breadcrumb__list">
+            <li class="breadcrumb__item"><a class="breadcrumb__link" href="{% url 'home' %}" title="Aller sur la page accueil">Accueil</a></li>
+            <li class="breadcrumb__item breadcrumb__item--current">Photos</li>
+        </ul>
+    </div>
+{% endblock breadcrumb %}
+
+{% block content %}
+    <section class="photos">
+        <h2 class="main-title">Galerie photos</h2>
+    </section>
+{% endblock %}
