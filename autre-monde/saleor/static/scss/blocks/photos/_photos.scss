@@ -59,7 +59,7 @@
 }
 
 
-.photos__item:hover {
+.photos__item:hover, .photos__item:focus {
     cursor: pointer;
 
     .photos__image {
