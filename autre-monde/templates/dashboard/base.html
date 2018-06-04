@@ -197,6 +197,18 @@
                 </ul>
               </li>
             {% endif %}
+            <li class="side-nav-section" id="first">
+              <p>
+                Site web
+              </p>
+              <ul>
+                <li class="{% block menu_photos_class %}{% endblock %}">
+                  <a href="{% url 'dashboard:photos-list' %}">
+                    Photos
+                  </a>
+                </li>
+              </ul>
+            </li>
             {% if perms.site.edit_settings or perms.shipping.view_shipping or perms.product.view_properties or perms.page.view_page %}
               <li class="side-nav-section">
                 <p>
