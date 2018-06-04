@@ -13,22 +13,22 @@
 .calendar__header-line {
     width: 100%;
     display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
     margin-bottom: 25px;
 }
 
-.calendar__display {
-    flex: 1 0 0%;
-}
+// .calendar__display {
+//     flex: 1 0 0%;
+// }
 
-.calendar__filters {
-    display: flex;
-    flex-direction: column;
-    font-size: 0.85rem;
-    color: $am-blue;
-    flex: 1 0 auto;
-}
+// .calendar__filters {
+//     display: flex;
+//     flex-direction: column;
+//     font-size: 0.85rem;
+//     color: $am-blue;
+//     flex: 1 0 auto;
+// }
 
 .calendar__filters__title {
     font-weight: 500;
@@ -132,6 +132,7 @@
     align-items: center;
     color: $am-blue;
     flex: 1 0 auto;
+    justify-content: center;
 }
 
 .calendar__month-selection__title {
