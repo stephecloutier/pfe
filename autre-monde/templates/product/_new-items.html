@@ -7,7 +7,8 @@
 
 
 <div class="products-h-list__list">
-    {% for product, availability in n_products %}
+    {% if n_products %}
+    {% for product in n_products %}
     <a href="{{ product.get_absolute_url }}" title="Aller sur la page du produit {{ product }}" class="products-h-list__product product product-h-thumb product-h-thumb--news">
         <div class="product__img-wrapper">
             <img 
@@ -72,6 +73,13 @@
         </div>
     </a>
     {% endfor %}
+    {% else %}
+    <div class="no-results no-results--home">
+        <div class="no-results__content">
+            <p>Il n'y a pas de nouveautés pour le moment</p>
+        </div>
+    </div>
+    {% endif %}
 </div>
 
 {% comment %} price and stuff {% endcomment %}

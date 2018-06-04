@@ -59,12 +59,18 @@ def coming_soon_products():
     user = AnonymousUser()
     products = products_with_details(user)
     products = products.filter(release_date__gt=date.today())
+    # Custom details  
+    for product in products:
+        product = product_custom_details(product)
     return products
 
 def new_products():
     user = AnonymousUser()
     products = products_with_details(user)
     products = products.filter(release_date__lte=date.today()).order_by('-release_date')
+    # Custom details  
+    for product in products:
+        product = product_custom_details(product)
     return products
 
 def get_product_images(product):

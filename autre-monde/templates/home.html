@@ -11,12 +11,20 @@
         <div class="products__h-list products-h-list">
             <h2 class="products-h-list__title second-title">Nouveautés</h2>
             {% include "product/_new-items.html" %}
-            <a href="{% url "product:category-list" %}" class="products-h-list__link secondary-link">Voir tous les produits</a>
+            {% if n_products %}
+            <a href="{% url "product:category-list" %}" class="products-h-list__link secondary-link">Voir toutes les nouveautés</a>
+            {% else %}
+            <a href="{% url "product:category-list" %}" class="products-h-list__link secondary-link">Aller sur le catalogue</a>
+            {% endif %}
         </div>
         <div class="products__h-list products-h-list">
             <h2 class="products-h-list__title second-title">À venir</h2>
             {% include "product/_coming-soon-items.html" %}
+            {% if cs_products %}
             <a href="{% url "product:catalogue-coming-soon" %}" class="products-h-list__link secondary-link">Voir tous les produits à venir</a>
+            {% else %}
+            <a href="{% url "product:category-list" %}" class="products-h-list__link secondary-link">Aller sur le catalogue</a>
+            {% endif %}
         </div>
     </div>
     <script type="application/ld+json">{{ webpage_schema|safe }}</script>
