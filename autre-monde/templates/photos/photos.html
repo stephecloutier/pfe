@@ -13,5 +13,23 @@
 {% block content %}
     <section class="photos">
         <h2 class="main-title">Galerie photos</h2>
+
+        <ul class="photos__list">
+            {% for photo in images %}
+            <li class="photos__item">
+                <figure class="photos__figure">
+                    <a data-lightbox="photo" class="process__link" href="{{ photo.image }}" data-title="{% if photo.alt %}{{ photo.alt }}{% endif %}">
+                        <img class="photos__image"
+                             src="{{ photo.image.crop.255x255 }}"
+                             srcset="{{ photo.image.crop.255x255 }} 1x, {{ photo.image.crop.510x510 }} 2x"
+                             alt="{{ photo.alt }}"
+                             width="255"
+                             height="255">
+                        <div class="photos__overlay"></div>
+                    </a>
+                </figure>
+            </li>
+            {% endfor %}
+        </ul>
     </section>
 {% endblock %}
