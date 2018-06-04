@@ -4,10 +4,6 @@
     position: relative;
 }
 
-.search-bar__form {
-    width: 80%;
-}
-
 .search-bar__label {
     position: absolute;
     top: 8px;
@@ -69,6 +65,16 @@
 }
 
 @media screen and (max-width: 750px){
+    .search-bar {
+        margin-right: 5px;
+    }
+    .search-bar__form {
+        width: 80%;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
 
     .search-bar__input {
         opacity: 0;
@@ -92,8 +98,8 @@
     }
 
     .search-bar--focus {
-        position: relative;
-        max-width: 70%;
+        max-width: 100%;
+        flex-grow: 1;
 
         .search-bar__button {
             position: absolute;
@@ -103,6 +109,7 @@
         }
 
         .search-bar__input {
+            min-width: 100%;
             max-width: 100%;
             max-height: 100%;
             opacity: 1;

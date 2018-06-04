@@ -144,11 +144,11 @@
     }
 
     .top-nav__search-bar {
-        max-width: 50px;
+        // max-width: 50px;
+        margin: 0;
     }
 
     .top-nav__login {
-        margin-left: 10px;
         flex-grow: 0;
     }
 
