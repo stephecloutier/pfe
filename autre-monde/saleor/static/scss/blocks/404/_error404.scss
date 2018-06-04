@@ -1,0 +1,28 @@
+.error404 {
+    max-width: $max-width;
+    margin: 0 auto;
+    padding: 100px 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.error404__title {
+    margin-bottom: 30px;
+}
+
+.error404__content {
+    font-size: 1.2rem;
+}
+
+.error404__content__link {
+    font-weight: 500;
+    color: $am-blue;
+    text-decoration: underline;
+}
+
+
+.error404__button {
+    margin-top: 30px;
+}

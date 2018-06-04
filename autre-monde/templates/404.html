@@ -2,6 +2,12 @@
 {% load i18n %}
 
 {% block content %}
-  <h1 class="text-center mt-5">404</h1>
-  <div class="text-center">{% trans 'Page not found' context 'Eror page not found' %}</div>
+  <div class="error404">
+    <h2 class="error404__title second-title">Erreur 404 - {% trans 'Page not found' context 'Eror page not found' %}</h2>
+    <div class="error404__content">
+      <span class="error404__content__more">Si vous avez une question, n'hésitez pas à <a href="{% url "about:about" %}#am-contact-form" title="Aller sur la page avec le formulaire de contact" class="error404__content__link">nous contacter&nbsp;!</a></span>
+    </div>
+    
+    <a href="{% url 'product:category-list' %}" title="Aller sur le catalogue" class="error404__button cta cta--pink">Aller sur le catalogue</a>
+  </div>
 {% endblock %}

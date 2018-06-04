@@ -1004,7 +1004,7 @@ msgstr "Peut voir les paramètres du site"
 #: templates/404.html:6
 msgctxt "Eror page not found"
 msgid "Page not found"
-msgstr "Page introuvable"
+msgstr "La page que vous recherchez est introuvable"
 
 #. Translators: Layout may break if character length is different than four.
 #: templates/_items.html:27 templates/product/_items.html:29
