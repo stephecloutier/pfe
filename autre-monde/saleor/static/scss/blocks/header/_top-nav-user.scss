@@ -17,24 +17,34 @@
     }
 }
 
-.top-nav-users__infos__logout {
+.top-nav-user__infos__links {
     font-weight: 450;
     font-size: 0.85rem;
-    margin-top: 2px;
     color: $dark-blue;
+    margin-top: 2px;
 }
 
-@media screen and (max-width: 750px){
+@media screen and (max-width: 870px) {
+    .top-nav-user__infos__links {
+        display: flex;
+        flex-direction: column;
+        line-height: 1;
+    }
+}
+
+
+@media screen and (max-width: 750px) {
 
     .top-nav-user__infos {
         margin-left: 5px;
-        text-align: right;
+        // text-align: right;
 
         &--username {
             color: white;
         }
     }
-    .top-nav-users__infos__logout {
+
+    .top-nav-user__infos__links {
         color: white;
         font-weight: 400;
     }

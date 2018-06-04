@@ -106,8 +106,8 @@
 
     .top-nav {
         background-color: $am-blue;
-        min-height: 60px;
-        height: 60px;
+        min-height: 70px;
+        height: 70px;
         position: absolute;
         top: 70px;
         left: 0;
@@ -134,7 +134,7 @@
         cursor: pointer;
         position: absolute;
         left: 10px;
-        top: calc(60px / 2 - 30px / 2);
+        top: calc(70px / 2 - 30px / 2);
     }
 
     .top-nav__burger-icon {
@@ -144,7 +144,6 @@
     }
 
     .top-nav__search-bar {
-        // max-width: 50px;
         margin: 0;
     }
 
