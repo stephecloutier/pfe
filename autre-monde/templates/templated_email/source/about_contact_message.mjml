@@ -1,0 +1,43 @@
+<mjml>
+  <mj-head>
+    <mj-include path="./shared/styles" />
+  </mj-head>
+  <mj-body>
+    <mj-container>
+      <mj-section css-class="no-display">
+        <mj-column>
+          <mj-text>
+            {% load i18n %}
+          </mj-text>
+        </mj-column>
+      </mj-section>
+      <mj-include path="./shared/header" />
+      <mj-section>
+        <mj-column>
+          <mj-text font-size="16px">
+              Par {{ name }} - {{ email }}
+          </mj-text>          
+          <mj-text>
+            {{ message }}
+          </mj-text>
+        </mj-column>
+      </mj-section>
+      <mj-section>
+        <mj-column>
+            <mj-text>
+            Cet email a été généré par le formulaire de contact du site de L'Autre Monde
+            </mj-text>
+        </mj-column>
+        </mj-section>
+        <mj-section css-class="no-display">
+        <mj-column>
+            <mj-text>
+            {% if schema_markup %}
+                <script type="application/ld+json">{{ schema_markup|safe }}</script>
+            {% endif %}
+            </mj-text>
+        </mj-column>
+      </mj-section>
+    </mj-container>
+  </mj-body>
+</mjml>

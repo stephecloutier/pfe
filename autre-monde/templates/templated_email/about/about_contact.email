@@ -1,0 +1,11 @@
+{% load i18n %}
+{% block subject %}Formulaire de contact - {{ subject }}{% endblock %}
+
+{% block plain %}
+    Message envoyé depuis le formulaire de contact de L'Autre Monde, par {{ name }} - {{ email }}
+{{ message }}
+{% endblock %}
+
+{% block html %}
+    {% include 'templated_email/compiled/about_contact_message.html' %}
+{% endblock %}

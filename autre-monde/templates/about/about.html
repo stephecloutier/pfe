@@ -75,12 +75,13 @@
     <section class="about__contact">
         <h3 class="about__contact__title second-title">Des questions ou remarques&nbsp;?</h3>
 
-        <form id="am-contact-form" class="about__form" action="#" method="post">
+        <form id="am-contact-form" class="about__form" action="{% url 'about:send-contact-email' %}" method="post">
+            {% csrf_token %}
             <div class="about__form__inner">
                 <div class="about__form__person">
                     <div class="about__form__person__question">
-                        <label for="name" class="about__form__label">Nom</label>
-                        <input class="about__form__input" type="text" id="name" name="name" placeholder="Jean Valjean">
+                        <label for="name" class="about__form__label">Nom *</label>
+                        <input required="required" class="about__form__input" type="text" id="name" name="name" placeholder="Jean Valjean">
                     </div>
                     <div class="about__form__person__question">
                         <label for="mail" class="about__form__label">Adresse email *</label>

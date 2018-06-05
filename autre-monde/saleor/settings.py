@@ -8,6 +8,7 @@ from django.contrib.messages import constants as messages
 from django.utils.translation import gettext_lazy as _
 from django_prices.templatetags.prices_i18n import get_currency_fraction
 
+from pprint import pprint
 
 def get_list(text):
     return [item.strip() for item in text.split(',')]
@@ -62,6 +63,7 @@ if not EMAIL_URL and SENDGRID_USERNAME and SENDGRID_PASSWORD:
     EMAIL_URL = 'smtp://%s:%s@smtp.sendgrid.net:587/?tls=True' % (
         SENDGRID_USERNAME, SENDGRID_PASSWORD)
 email_config = dj_email_url.parse(EMAIL_URL or 'console://')
+
 
 EMAIL_FILE_PATH = email_config['EMAIL_FILE_PATH']
 EMAIL_HOST_USER = email_config['EMAIL_HOST_USER']
