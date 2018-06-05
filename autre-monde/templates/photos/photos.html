@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 {% load i18n %}
+{% load render_bundle from webpack_loader %}
+{% load staticfiles %}
 
 {% block breadcrumb %}
     <div class="breadcrumb">
@@ -32,4 +34,9 @@
             {% endfor %}
         </ul>
     </section>
+{% endblock %}
+
+{% block footer_scripts %}
+{% render_bundle 'storefront' 'js' %}
+<script src="{% static "assets/lightbox-plus-jquery.js" %}" async="async" defer="defer"></script>
 {% endblock %}

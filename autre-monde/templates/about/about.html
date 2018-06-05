@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 {% load i18n %}
+{% load staticfiles %}
+{% load render_bundle from webpack_loader %}
 
 {% block breadcrumb %}
     <div class="breadcrumb">
@@ -24,7 +26,7 @@
             </div>
         </div>
         <div class="about__description__image-wrapper">
-            <img class="about__description__image" width="auto" height="400" src="../assets/images/mascotteJoffrey.png" alt="">
+            <img class="about__description__image" width="auto" height="400" src="{% static "images/mascotteJoffrey.png" %}" alt="">
         </div>
     </div>
     <div class="about__infos">
@@ -98,4 +100,23 @@
         </form>
     </section>
 </section>
+{% endblock %}
+
+{% block footer_scripts %}
+{% render_bundle 'storefront' 'js' %}
+<script>
+    function initMap() {
+
+        var am = {lat: 50.646669, lng: 5.5765268};
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 18,
+            center: am
+        });
+        var marker = new google.maps.Marker({
+            position: am,
+            map: map
+        });
+    }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA9klJlC98DwZoChtG80XcAPTzSvN1VYyk&callback=initMap" async="async" defer="defer"></script>
 {% endblock %}

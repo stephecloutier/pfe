@@ -17,4 +17,4 @@ import './components/styleguide';
 import './components/misc';
 
 import './custom/script';
-import './custom/lightbox-plus-jquery.min.js';
+// import './custom/lightbox-plus-jquery.min.js';
