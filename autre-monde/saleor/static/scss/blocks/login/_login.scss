@@ -39,6 +39,7 @@
     margin-bottom: 25px;
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 .login__form__signup__inputs {
@@ -64,6 +65,15 @@
     padding: 10px;
     width: 100%;
     min-width: 100%;
+}
+
+.passIcon {
+    max-width: 15px;
+    max-height: 15px;
+    position: absolute;
+    top: 2.5rem;
+    right: 0.75rem;
+    cursor: pointer;
 }
 
 .login__form__label {
