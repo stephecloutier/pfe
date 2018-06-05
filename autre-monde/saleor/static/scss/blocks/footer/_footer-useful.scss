@@ -6,6 +6,7 @@
     display: flex;
     align-items: flex-start;  
     justify-content: flex-start;  
+    line-height: 1.3;
 
     &:not(:last-child) {
         margin-bottom: 10px;
@@ -32,6 +33,16 @@
     text-decoration: underline;
 }
 
+@media screen and (max-width: 1110px) {
+
+    .footer-useful-infos__icon {
+        height: 20px;
+        margin-right: 10px;
+    }
+    .footer-useful-infos__svg {
+        height: 20px;
+    }
+}
 
 @media screen and (max-width: 850px) {
     .footer-useful-infos__item {
