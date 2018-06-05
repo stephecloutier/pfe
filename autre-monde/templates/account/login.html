@@ -8,6 +8,15 @@
   <meta name="robots" content="nofollow">
 {% endblock meta_tags %}
 
+{% block breadcrumb %}
+    <div class="breadcrumb">
+        <ul class="breadcrumb__list">
+            <li class="breadcrumb__item"><a class="breadcrumb__link" href="{% url 'home' %}" title="Aller sur la page accueil">Accueil</a></li>
+            <li class="breadcrumb__item breadcrumb__item--current">Connexion</li>
+        </ul>
+    </div>
+{% endblock breadcrumb %}
+
 {% block content %}    
   <section class="login">
       <div class="login__title-line">

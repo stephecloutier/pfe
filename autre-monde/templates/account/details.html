@@ -7,111 +7,62 @@
 {% load staticfiles %}
 {% load status %}
 
-{% block title %}{% trans "Your profile" context "User profile page title" %} — {{ block.super }}{% endblock %}
+{% block title %}Votre compte — {{ block.super }}{% endblock %}
 
 {% block breadcrumb %}
-  <ul class="breadcrumbs list-unstyled">
-    <li>
-      <a href="{% url 'home' %}">
-        {% trans "Home" context "Main navigation item" %}
-      </a>
-    </li>
-    <li>{% trans "Your account" context "Main navigation item" %} (<b>{{ user.first_name|add:" "|add:user.last_name }}</b>)</li>
-  </ul>
-  {% comment %} BREADCRUMB CUSTOM ICI {% endcomment %}
+    <div class="breadcrumb">
+        <ul class="breadcrumb__list">
+            <li class="breadcrumb__item"><a class="breadcrumb__link" href="{% url 'home' %}" title="Aller sur la page accueil">Accueil</a></li>
+            <li class="breadcrumb__item breadcrumb__item--current">{% trans "Your account" context "Main navigation item" %} (<b>{{ user.first_name|add:" "|add:user.last_name }}</b>)</li>
+        </ul>
+    </div>
 {% endblock breadcrumb %}
 
+
 {% block content %}
-  <div class="account">
-    <div class="account__nav container">
-      <h2>{% trans "My account" %}</h2>
-      <ul class="nav nav-tabs col-lg-10 m-auto" role="tablist">
-        <li class="nav-item">
-          <a class="nav-link active" data-toggle="tab" href="#orders" role="tab">
-            <h3>{% trans "Recent Orders" context "User profile tab" %}</h3>
-          </a>
-        </li>
-        {% if user.password %}
-        <li class="nav-item">
-          <a class="nav-link " data-toggle="tab" href="#password" role="tab">
-            <h3>{% trans "Change password" context "User profile tab" %}</h3>
-          </a>
-        </li>
-        {% endif %}
-      </ul>
+  <section class="login">
+    <div class="login__title-line">
+        <h2 class="login__title main-title">Paramètres de mon compte</h2>
     </div>
-    <div class="tab-content col-lg-10 m-auto">
-      <div class="tab-pane active fade show" id="orders" role="tabpanel">
-        <div id="accordion" role="tablist" aria-multiselectable="true">
-          {% if orders|length %}
-            <div class="table__header">
-              <div class="row">
-                <div class="col-md-2 col-3">
-                  <small>{% trans "Order" context "Recent orders column title" %}</small>
-                </div>
-                <div class="col-md-3 d-none d-md-block">
-                  <small>{% trans "Date" context "Recent orders column title" %}</small>
-                </div>
-                <div class="col-md-2 col-4 text-right">
-                  <small>{% trans "Summary" context "Recent orders column title" %}</small>
-                </div>
-                <div class="col-md-4 d-none d-md-block">
-                  <small>{% trans "Status" context "Recent orders column title" %}</small>
-                </div>
-                <div class="col-md-1 col-5"></div>
-              </div>
-            </div>
-            {% for order in orders %}
-              <div class="table__row">
-                <div class="row">
-                  <div class="col-md-2 col-3">
-                    {{ order }}
-                  </div>
-                  <div class="col-md-3 d-none d-md-block">
-                    {{ order.created }}
-                  </div>
-                  <div class="col-md-2 col-4">
-                    <span class="float-right">
-                      {% price order.total.gross %}
-                    </span>
-                  </div>
-                  <div class="col-md-4 d-none d-md-block">
-                    {% render_order_status order.status order.get_status_display %}
-                  </div>
-                  <div class="col-md-1 col-5">
-                    <a href="{{ order.get_absolute_url }}" class="float-right link--styled">
-                      {% trans "Details" context "Recent orders link text" %}
-                    </a>
-                  </div>
-                </div>
-              </div>
-            {% endfor %}
-            <div class="row mt-4">
-              <div class="m-auto">
-                {% if orders.has_other_pages %}
-                  {% bootstrap_pagination orders extra=request.GET.urlencode %}
-                {% endif %}
-              </div>
-            </div>
-          {% else %}
-            <h3 class="text-sm-center account__orders-empty">
-              {% trans "There are not any completed orders yet." context "No recent orders text" %}
-            </h3>
-          {% endif %}
+    <div class="login__account">
+      <svg class="login__account__icon" version="1.1" id="user-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+      viewBox="0 0 299.997 299.997" xml:space="preserve">
+          <path d="M149.996,0C67.157,0,0.001,67.158,0.001,149.997c0,82.837,67.156,150,149.995,150s150-67.163,150-150
+          C299.996,67.156,232.835,0,149.996,0z M150.453,220.763v-0.002h-0.916H85.465c0-46.856,41.152-46.845,50.284-59.097l1.045-5.587
+          c-12.83-6.502-21.887-22.178-21.887-40.512c0-24.154,15.712-43.738,35.089-43.738c19.377,0,35.089,19.584,35.089,43.738
+          c0,18.178-8.896,33.756-21.555,40.361l1.19,6.349c10.019,11.658,49.802,12.418,49.802,58.488H150.453z"/>
+      </svg>
+      <dl class="login__account__list">
+        <div class="login__account__item">
+            <dt class="login__account__term">Prénom</dt>
+            <dd class="login__account__data">{{ user.first_name }}</dd>
         </div>
-      </div>
-      <div class="tab-pane fade" id="password" role="tabpanel">
-        <div class="row ">
-          <div class="col-md-8 col-lg-6 m-auto account__password">
-            <form action="" method="post">
-              {% csrf_token %}
-              {% bootstrap_form change_password_form %}
-              <input type="submit" class="btn primary narrow" value="{% trans "Change password" context "User profile action" %}">
-            </form>
-          </div>
+        <div class="login__account__item">
+            <dt class="login__account__term">Nom</dt>
+            <dd class="login__account__data">{{ user.last_name }}</dd>
         </div>
-      </div>
+        <div class="login__account__item">
+            <dt class="login__account__term">Adresse email</dt>
+            <dd class="login__account__data">{{ user.email }}</dd>
+        </div>
+      </dl>   
     </div>
-  </div>
+    <div class="login__forms">
+        <form class="login__password-form" action="" method="post">
+          <h3 class="login__password-form__title second-title">Modifier votre mot de passe</h3>
+          {% csrf_token %}
+          {% bootstrap_form change_password_form %}
+          <input class="login__password-form__button cta cta--pink" type="submit" class="btn primary narrow" value="{% trans "Change password" context "User profile action" %}">
+        </form>
+
+        <!-- <form class="login__newsletters-form" action="" method="post">
+          <h3 class="second-title">Préférences de newsletter</h3>
+          {% csrf_token %}
+        </form>         -->
+    </div>
+    
+    
+    <!-- {% include "account/partials/login_form.html" %} -->
+  </section>
 {% endblock content %}
 

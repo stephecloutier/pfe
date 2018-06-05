@@ -1,7 +1,6 @@
 .login {
     max-width: $max-width;
     margin: 0 auto 50px;
-    padding-top: 30px;
 }
 
 .login__title-line {
@@ -184,10 +183,100 @@
     }
 }
 
+.login__account {
+    display: flex;
+    width: 100%;
+    margin-bottom: 75px;
+    margin-top: 30px;
+    align-items: center;
+    
+    &__icon {
+        width: 150px;
+        fill: $am-blue;
+        margin-right: 50px;
+    }
+
+    &__list {
+        width: 80%;
+        max-width: 350px;
+    }
+    &__item {
+        margin-bottom: 20px;
+        color: $am-blue;
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    &__item:last-child {
+        margin-bottom: 0;
+    }
+
+    &__term {
+        width: 50%;
+    }
+
+    &__data {
+        width: 50%;
+        display: flex;
+        justify-content: flex-start;
+        font-weight: 500;
+    }
+}
+
+.login__forms {
+    display: flex;
+    align-items: flex-start;
+}
+
+.login__newsletters-form {
+    // background-color: hotpink;
+    height: 100%;
+}
+
+.login__password-form {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    margin-right: 50px;
+
+    label {
+        display: inline-flex;
+        color: $am-blue;
+        font-weight: 450;
+        margin-bottom: 5px;
+        margin-top: 15px;
+    }
+
+    input:not(.cta) {
+        @include default-input;
+        padding: 10px;
+        width: 100%;
+        min-width: 100%;
+    }
+    
+    .relative {
+        position: relative;
+    }
+
+    .passIcon {
+        max-width: 15px;
+        max-height: 15px;
+        position: absolute;
+        top: 3.3rem;
+        right: 0.75rem;
+        cursor: pointer;
+    }
+
+    &__button {
+        margin-top: 20px;
+        max-width: 250px;
+    }
+}
 
 @media screen and (max-width: 1220px) {
     .login {
-        padding: 30px 10px 0;
+        padding: 0 10px;
     }
 }
 
