@@ -25,7 +25,6 @@ def calendar(request, date=datetime.now().strftime("%m-%Y")):
         release_days = [{"products": [products[0]], "formated_day": products[0].release_date.strftime("%A %d %B").lstrip("0").replace(" 0", " ")}]
     i = 0
     for index, product in enumerate(products[1:]):
-        pprint(release_days[i]["products"])
         if release_days[i]["products"][0].release_date != product.release_date:
             release_days.append({"products": [product], "formated_day": product.release_date.strftime("%A %d %B").lstrip("0").replace(" 0", " ")})
             i += 1
