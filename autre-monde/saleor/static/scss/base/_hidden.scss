@@ -1,3 +1,8 @@
 .hidden {
     @include hidden;
 }
+
+.hidden-image {
+    @include hidden;
+    display: none;
+}
