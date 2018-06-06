@@ -12,7 +12,7 @@ class Photo(models.Model):
         upload_to='photos', ppoi_field='ppoi', blank=False)
     ppoi = PPOIField()
     alt = models.CharField(max_length=128, blank=True)
-
+    
     # class Meta:
     #     ordering = ('sort_order', )
         # app_label = 'product'

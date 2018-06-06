@@ -5,6 +5,7 @@ from django.utils.translation import pgettext_lazy
 from ..forms import OrderedModelMultipleChoiceField
 from ..product.widgets import ImagePreviewWidget
 from ...photos.models import Photo
+from ...product.thumbnails import create_photos_thumbnails
 
 class UploadImageForm(forms.ModelForm):
     class Meta:
@@ -20,7 +21,7 @@ class UploadImageForm(forms.ModelForm):
 
     def save(self, commit=True):
         image = super().save(commit=commit)
-        # create_product_thumbnails.delay(image.pk)
+        create_photos_thumbnails.delay(image.pk)
         return image
 
 
@@ -46,7 +47,7 @@ class PhotosImageForm(forms.ModelForm):
 
     def save(self, commit=True):
         image = super().save(commit=commit)
-        # create_product_thumbnails.delay(image.pk)
+        create_photos_thumbnails.delay(image.pk)
         return image
 
 class ReorderPhotosImagesForm(forms.ModelForm):
