@@ -12,7 +12,7 @@
             <h2 class="products-h-list__title second-title">Nouveautés</h2>
             {% include "product/_new-items.html" %}
             {% if n_products %}
-            <a href="{% url "product:category-list" %}" class="products-h-list__link secondary-link">Voir toutes les nouveautés</a>
+            <a href="{% url "product:catalogue-news" %}" class="products-h-list__link secondary-link">Voir toutes les nouveautés</a>
             {% else %}
             <a href="{% url "product:category-list" %}" class="products-h-list__link secondary-link">Aller sur le catalogue</a>
             {% endif %}

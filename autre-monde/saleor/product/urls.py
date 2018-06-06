@@ -14,5 +14,7 @@ urlpatterns = [
     url(r'^$',
         views.category_list, name='category-list'),
     url(r'^a-venir/$',
-        views.catalogue_coming_soon, name='catalogue-coming-soon')
+        views.catalogue_coming_soon, name='catalogue-coming-soon'),
+    url(r'^nouveautes/$',
+        views.catalogue_news, name='catalogue-news')
     ]

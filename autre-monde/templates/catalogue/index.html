@@ -7,10 +7,30 @@
   <li class="breadcrumb__item">
     <a class="breadcrumb__link" href="{% url 'home' %}" title="Aller sur la page accueil">Accueil</a>
   </li>
-  <li class="breadcrumb__item breadcrumb__item--current">
-    Catalogue
+  {% if subtitle %}
+  <li class="breadcrumb__item">
+    <a class="breadcrumb__link" href="{% url 'product:category-list' %}" title="Aller sur la page du catalogue">Catalogue</a>
   </li>
+  <li class="breadcrumb__item breadcrumb__item--current">
+    {{ subtitle }}
+  </li>
+  {% else %}
+    <li class="breadcrumb__item breadcrumb__item--current">
+      Catalogue
+    </li>
+  {% endif %}
 {% endblock %}
+
+
+{% block catalogue_title %}
+<h2 class="catalogue__title main-title">
+    Catalogue
+        {% if subtitle %}
+        <span class="catalogue__title--category"> - {{ subtitle }}</span>
+        {% endif %}
+</h2>
+{% endblock %}
+
 
 
 {% block filters %}{% endblock filters %}

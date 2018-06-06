@@ -34,7 +34,7 @@ def product_custom_details(product):
     product.release_status = None
     if product.release_date > date.today():
         product.release_status = 'cs'
-    elif ((date.today() - product.release_date) <= timedelta(weeks=1)):
+    elif ((date.today() - product.release_date) <= timedelta(weeks=4)):
         product.release_status = 'news'
     
     amount = product.price.amount
@@ -67,7 +67,7 @@ def coming_soon_products():
 def new_products():
     user = AnonymousUser()
     products = products_with_details(user)
-    products = products.filter(release_date__lte=date.today()).order_by('-release_date')
+    products = products.filter(release_date__lte=date.today(), release_date__gte=date.today() - timedelta(weeks=4)).order_by('-release_date')
     # Custom details  
     for product in products:
         product = product_custom_details(product)

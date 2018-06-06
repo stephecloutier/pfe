@@ -181,7 +181,7 @@ def category_list(request):
     return TemplateResponse(request, 'catalogue/index.html', {
             'parent': None,
             'products': products,
-            'webpage_schema': json.dumps(webpage_schema),
+            'webpage_schema': json.dumps(webpage_schema)
             })
 
 
@@ -198,4 +198,22 @@ def catalogue_coming_soon(request):
     return TemplateResponse(request, 'catalogue/index.html', {
         'parent': None,
         'products': products,
-        'webpage_schema': json.dumps(webpage_schema)})
+        'webpage_schema': json.dumps(webpage_schema),
+        'subtitle': 'À venir'})
+
+
+def catalogue_news(request):
+    products = new_products()
+    # Custom details  
+    for product in products:
+        product = product_custom_details(product)
+    products = products_with_availability(
+        products, discounts=request.discounts, taxes=request.taxes,
+        local_currency=request.currency)
+    webpage_schema = get_webpage_schema(request)
+
+    return TemplateResponse(request, 'catalogue/index.html', {
+        'parent': None,
+        'products': products,
+        'webpage_schema': json.dumps(webpage_schema),
+        'subtitle': 'Nouveautés'})
