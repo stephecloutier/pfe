@@ -498,3 +498,7 @@ class ProductBulkUpdate(forms.Form):
 
     def _unpublish_products(self):
         self.cleaned_data['products'].update(is_published=False)
+
+
+# class CustomFilterForm(forms.Form):
+#     label = 

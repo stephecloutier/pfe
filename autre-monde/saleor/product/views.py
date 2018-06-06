@@ -144,6 +144,7 @@ def category_index(request, path, category_id):
         request.GET, queryset=products, category=category)
     ctx = get_product_list_context(request, product_filter)
     ctx.update({'object': category})
+    pprint(ctx)
     return TemplateResponse(request, 'category/index.html', ctx)
 
 

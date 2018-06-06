@@ -90,20 +90,46 @@
 }
 
 .catalogue-filters__checkboxes {
-    display: block;
-    border-right: 1px solid $light-blue-gray;
+    // display: block;
+    // border-right: 1px solid $light-blue-gray;
     flex: 1 1 0%;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .catalogue-filters__checkbox {
-    display: inline-flex;
-    min-width: 120px;
-    margin-bottom: 15px;
-    color: $am-blue;
-    font-weight: 450;
-    align-items: center;
-    position: relative;
-    margin-right: 10px;
+    margin-right: 25px;
+
+    .filter-section__header {
+        margin-bottom: 5px;
+    }
+
+    label {
+        display: inline-flex;
+        min-width: 80px;
+        margin-bottom: 5px;
+        color: $am-blue;
+        font-weight: 450;
+        align-items: center;
+        margin-right: 10px;
+        padding-left: 30px;
+
+        color: $am-blue;
+        font-size: 0.8rem;
+        cursor: pointer;
+        position: relative;
+    }
+
+    input[type="checkbox"] {
+        width: 15px;
+        height: 15px;
+        position: absolute;
+        left: 0;
+        cursor: pointer;
+        z-index: 10;
+        background-color: white;
+        border: none;
+    }
 }
 
 .catalogue-filters__checkbox-label {

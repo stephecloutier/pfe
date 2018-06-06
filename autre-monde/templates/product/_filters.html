@@ -1,69 +1,45 @@
 {% load i18n %}
 {% load staticfiles %}
+{% load shop %}
 
-{% comment %} <div class="product-filters">
-    {% block title_tree %}{% endblock title_tree %}
-</div> {% endcomment %}
-<div class="filters-menu__body d-none d-md-block">
-  <h2>
-    {% trans 'Filters' context 'Filter heading title' %}
-    {% if filter.is_bound_unsorted %}
-      <a href="../">
-        <span class="clear-filters float-right">{% trans 'Clear filters' context 'Product list page filters' %}</span>
-      </a>
-    {% endif %}
-  </h2>
-  <div class="product-filters">
-    <div class="product-filters__attributes" data-icon-up="{% static "images/chevron-up.svg" %}" data-icon-down="{% static "images/chevron-down.svg" %}">
-      <form method="get">
-        {% for field in filter_set.form %}
-          {% if field.name == 'sort_by' %}
-            {% comment %}
-              Field 'sort_by' is hidden because it is rendered in header.
-              This is required if you want to have sorting to be kept during further filtering.
-            {% endcomment %}
-            <input type="hidden" name="sort_by" value="{% if request.GET.sort_by %}{{ request.GET.sort_by }}{% endif %}">
-          {% elif field.name == 'price' %}
-          {% else %}
-            <div class="filter-section" aria-expanded="true">
-              <div class="filter-section__header">
-                <h3>{{ field.label }}</h3>
-                <div class="filter-section__icon">
-                  <img class="lazyload lazypreload" data-src="{% static "images/chevron-up.svg" %}">
-                </div>
-              </div>
-              <div class="filter-section__content">
-                <div class="filter-form-field">
-                  {{ field }}
-                </div>
-              </div>
-            </div>
-          {% endif %}
-        {% endfor %}
-        {% for field in filter_set.form %}
-          {% if field.name == 'price' %}
-            <div class="filter-section" aria-expanded="true">
-              <div class="filter-section__header">
-                <h3>{{ field.label }}</h3>
-                <div class="filter-section__icon">
-                  <img class="lazyload lazypreload" data-src="{% static "images/chevron-up.svg" %}">
-                </div>
-              </div>
-              <div class="filter-section__content">
-                <div class="filter-form-field price-field">
-                  <input id="{{ field.auto_id }}_0" name="{{ field.name }}_0"
-                        value="{% if field.value.0 %}{{ field.value.0 }}{% endif %}" type="number" min="0"
-                        class="form-control d-inline"
-                        placeholder="{% trans 'from' context 'Product price filter' %}"/><span>-</span><input id="{{ field.auto_id }}_1" name="{{ field.name }}_1"
-                        value="{% if field.value.1 %}{{ field.value.1 }}{% endif %}" type="number" min="0"
-                        class="form-control d-inline" placeholder="{% trans 'to' context 'Product price filter' %}"/>
-                </div>
-              </div>
-            </div>
-          {% endif %}
-        {% endfor %}
-        <button class="btn primary" type="submit">{% trans 'Update' context 'Apply filters button' %}</button>
-      </form>
-    </div>
+<div id="am-catalogue-filters" class="catalogue__filters catalogue-filters">  
+  <div id="am-catalogue-filters-title" class="catalogue-filters__title deploy-title">
+      <div class="catalogue-filters__title-icon deploy-title__icon">
+              <svg width="16" height="13" xmlns="http://www.w3.org/2000/svg"><path d="M8 13L0 0h16z" /></svg>
+      </div>
+      <span class="catalogue-filters__title-text deploy-title__text">Filtrer les résultats</span>
   </div>
+  <form method="get" class="catalogue-filters__form">
+      <div class="catalogue-filters__filters">
+          <ul class="catalogue-filters__checkboxes">
+          {% for field in filter_set.form %}
+            {% if field.name == 'sort_by' %}
+              {% comment %}
+                Field 'sort_by' is hidden because it is rendered in header.
+                This is required if you want to have sorting to be kept during further filtering.
+              {% endcomment %}
+              <li class="hidden">
+                  <input type="hidden" name="sort_by" value="{% if request.GET.sort_by %}{{ request.GET.sort_by }}{% endif %}">
+              </li>
+            {% elif field.name == 'price' %}
+            {% else %}
+            <li class="catalogue-filters__checkbox">
+            
+                <div class="filter-section__header">
+                  <h3>{{ field.label }}</h3>
+                </div>
+                {{ field }}
+               
+            </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+    <div class="catalogue-filters__buttons">
+        <!-- <a href="../" class="catalogue-filters__button catalogue-filters__button--clear">
+          Supprimer les filtres
+        </a> -->
+        <input class="catalogue-filters__button catalogue-filters__button--submit" type="submit" value="Appliquer les filtres">        
+    </div>
+  </form>
 </div>
