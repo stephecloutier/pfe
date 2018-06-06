@@ -20,7 +20,7 @@ from ..dashboard.product.filters import ProductFilter as DashboardProductFilter
 from .models import Category, Collection, Product, ProductType
 from .utils import (
     collections_visible_to_user, get_product_images, get_product_list_context, get_product_list_context_without_filter, get_product_list_sorted_context,
-    handle_cart_form, products_for_cart, products_with_details, new_products, coming_soon_products,
+    handle_cart_form, products_for_cart, products_with_details, new_products, coming_soon_products, all_products
     product_custom_details)
 from .utils.attributes import get_product_attributes_data
 from .utils.availability import get_availability, products_with_availability
