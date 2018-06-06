@@ -82,8 +82,6 @@ def details(request):
            'orders': orders_paginated,
            'change_password_form': password_form}
 
-    pprint(request.user.__dict__)
-
     return TemplateResponse(request, 'account/details.html', ctx)
 
 

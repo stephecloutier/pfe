@@ -179,7 +179,7 @@ def collection_index(request, slug, pk):
     return TemplateResponse(request, 'collection/index.html', ctx)
 
 def category_list(request):
-    products_qs = new_products()
+    products_qs = all_products()
     # Custom details  
     for product in products_qs:
         product = product_custom_details(product)  
@@ -197,6 +197,7 @@ def catalogue_coming_soon(request):
     
     ctx = get_product_list_context_without_filter(request, products_qs)
 
+    ctx.update({'subtitle': 'À venir'})
     return TemplateResponse(request, 'catalogue/index.html', ctx)
 
 
@@ -208,4 +209,5 @@ def catalogue_news(request):
     
     ctx = get_product_list_context_without_filter(request, products_qs)
 
+    ctx.update({'subtitle': 'Nouveautés'})
     return TemplateResponse(request, 'catalogue/index.html', ctx)

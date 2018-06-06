@@ -73,6 +73,14 @@ def new_products():
         product = product_custom_details(product)
     return products
 
+def all_products():
+    user = AnonymousUser()
+    products = products_with_details(user)
+    # Custom details  
+    for product in products:
+        product = product_custom_details(product)
+    return products
+
 def get_product_images(product):
     """Return list of product images that will be placed in product gallery."""
     return list(product.images.all())

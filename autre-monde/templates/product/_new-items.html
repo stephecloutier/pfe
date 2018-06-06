@@ -16,8 +16,8 @@
                 class="product__img" 
                 width="80" 
                 height="80"
-                src="{% product_first_image product method="crop" size="80x80" %}"
-                srcset="{% product_first_image product method="crop" size="80x80" %} 1x, {% product_first_image product method="crop" size="160x160" %} 2x"
+                src="{% product_first_image product method="crop" size="60x60" %}"
+                srcset="{% product_first_image product method="crop" size="60x60" %} 1x, {% product_first_image product method="crop" size="120x120" %} 2x"
             >
         </div>
         <div class="product__infos">
@@ -31,7 +31,7 @@
                     {% elif product.on_order %}
                     <span class="more-info more-info__stock--order">Sur commande</span>
                     {% else %}
-                    <span class="more-info more-info__stock--rupture">Rupture</span>
+                    <span class="more-info more-info__stock--rupture">En rupture</span>
                     {% endif %}
                 </div>
                 <div class="more-info more-info__price">
