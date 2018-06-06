@@ -11,3 +11,7 @@
 @import "lightbox";
 @import "carousel";
 @import "alert";
+
+body {
+  font-feature-settings: "lnum";
+}
