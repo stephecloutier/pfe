@@ -1,0 +1,44 @@
+.more-info {
+    padding: 2px 5px;
+    border-radius: 2px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 50px;
+    font-size: 14px;
+    margin-left: 3px;
+}
+
+.more-info__release {
+
+    &--cs {
+        background-color: $coming-soon-product;
+    }
+
+    &--news {
+        background-color: $new-product;
+    }
+}
+
+.more-info__stock {
+
+    &--stock {
+        background-color: $stock;
+    }
+    &--order {
+        background-color: $on-order;
+    }
+    &--rupture {
+        background-color: $rupture;
+    }
+}
+
+.more-info__price {
+    background-color: $am-blue;
+
+    &__svg {
+        width: 9px;
+        fill: currentColor;
+    }
+}

@@ -21,21 +21,17 @@
 
     .product__infos {
         transition: transform $delay ease-out;
-        position: relative;
     }
 
     .product__more-infos {
         position: absolute;
-        bottom: -25px;
-        left: 0;
+        bottom: 15px;
+        left: calc(30px + 80px + 10px);
         max-width: 100%;
         transition: opacity $delay ease-out;
     }    
 
     &:hover, &:focus {
-        .product__infos {
-            transform: translateY(-15px);
-        }
     
         .product__more-infos {
             opacity: 1;
