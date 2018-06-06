@@ -133,12 +133,10 @@
                 <ul class="catalogue-products__list">
                     {% include "_items.html" with products=products %}
                 </ul>
-                <div class="row">
-                    <div class="m-auto">
-                        {% if products_paginated.has_other_pages %}
-                        {% bootstrap_pagination products_paginated extra=request.GET.urlencode %}
-                        {% endif %}
-                    </div>
+                <div class="catalogue__pagination">
+                    {% if products_paginated.has_other_pages %}
+                    {% bootstrap_pagination products_paginated extra=request.GET.urlencode %}
+                    {% endif %}
                 </div>
             </section>
             {% else %}

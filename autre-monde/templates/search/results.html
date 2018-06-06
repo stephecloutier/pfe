@@ -94,7 +94,9 @@
                   <ul class="catalogue-products__list">
                     {% include "_items.html" with products=results %}
                   </ul>
-                  {% bootstrap_pagination results url=query_string %}
+                  {% if results.has_other_pages %}
+                    {% bootstrap_pagination results url=query_string %}
+                  {% endif %}
                   <!-- <div class="row">
                       <div class="m-auto">
                           {% if products_paginated.has_other_pages %}

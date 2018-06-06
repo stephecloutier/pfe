@@ -9,15 +9,17 @@ from django.http import HttpResponsePermanentRedirect, JsonResponse
 from django.shortcuts import get_object_or_404, redirect
 from django.template.response import TemplateResponse
 from django.urls import reverse
+from django.conf import settings
+from django.core.paginator import InvalidPage, Paginator
 
 from ..cart.utils import set_cart_cookie
-from ..core.utils import serialize_decimal
+from ..core.utils import serialize_decimal, get_paginator_items
 from ..seo.schema.product import product_json_ld
 from .filters import ProductCategoryFilter, ProductCollectionFilter, ProductFilter
 from ..dashboard.product.filters import ProductFilter as DashboardProductFilter
 from .models import Category, Collection, Product, ProductType
 from .utils import (
-    collections_visible_to_user, get_product_images, get_product_list_context, get_product_list_sorted_context,
+    collections_visible_to_user, get_product_images, get_product_list_context, get_product_list_context_without_filter, get_product_list_sorted_context,
     handle_cart_form, products_for_cart, products_with_details, new_products, coming_soon_products,
     product_custom_details)
 from .utils.attributes import get_product_attributes_data
@@ -30,6 +32,14 @@ from ..seo.schema.webpage import get_webpage_schema
 
 # from ..product.utils import products_for_homepage, coming_soon_products, 
 
+def paginate_results(results, get_data, paginate_by=settings.PAGINATE_BY):
+    paginator = Paginator(results, paginate_by)
+    page_number = get_data.get('page', 1)
+    try:
+        page = paginator.page(page_number)
+    except InvalidPage:
+        raise Http404('No such page!')
+    return page
 
 def product_details(request, slug, product_id, form=None):
     """Product details page.
@@ -81,7 +91,6 @@ def product_details(request, slug, product_id, form=None):
     # show_variant_picker determines if variant picker is used or select input
     show_variant_picker = all([v.attributes for v in product.variants.all()])
     json_ld_data = product_json_ld(product, product_attributes)
-    pprint(product.__dict__)
     ctx = {
         'is_visible': is_visible,
         'form': form,
@@ -131,21 +140,24 @@ def category_index(request, path, category_id):
     if actual_path != path:
         return redirect('product:category', permanent=True, path=actual_path,
                         category_id=category_id)
+
     # Check for subcategories
     categories = category.get_descendants(include_self=True)
+
     products = products_with_details(user=request.user).filter(
         category__in=categories).order_by('name')
 
     # Custom details  
     for product in products:
         product = product_custom_details(product)
-        # pprint(product.__dict__)
 
     product_filter = ProductCategoryFilter(
         request.GET, queryset=products, category=category)
+
+    products = paginate_results(list(products), request.GET)
+
     ctx = get_product_list_context(request, product_filter)
     ctx.update({'object': category})
-    pprint(ctx)
     return TemplateResponse(request, 'category/index.html', ctx)
 
 
@@ -167,53 +179,33 @@ def collection_index(request, slug, pk):
     return TemplateResponse(request, 'collection/index.html', ctx)
 
 def category_list(request):
-    products = new_products()
+    products_qs = new_products()
     # Custom details  
-    for product in products:
+    for product in products_qs:
         product = product_custom_details(product)  
-    products = products_with_availability(
-        products, discounts=request.discounts, taxes=request.taxes,
-        local_currency=request.currency)
 
-    webpage_schema = get_webpage_schema(request)
-
-    # ctx = get_product_list_sorted_context(request)
-    return TemplateResponse(request, 'catalogue/index.html', {
-            'parent': None,
-            'products': products,
-            'webpage_schema': json.dumps(webpage_schema)
-            })
+    ctx = get_product_list_context_without_filter(request, products_qs)
+  
+    return TemplateResponse(request, 'catalogue/index.html', ctx)
 
 
 def catalogue_coming_soon(request):
-    products = coming_soon_products()
+    products_qs = coming_soon_products()
     # Custom details  
-    for product in products:
+    for product in products_qs:
         product = product_custom_details(product)
-    products = products_with_availability(
-        products, discounts=request.discounts, taxes=request.taxes,
-        local_currency=request.currency)
-    webpage_schema = get_webpage_schema(request)
+    
+    ctx = get_product_list_context_without_filter(request, products_qs)
 
-    return TemplateResponse(request, 'catalogue/index.html', {
-        'parent': None,
-        'products': products,
-        'webpage_schema': json.dumps(webpage_schema),
-        'subtitle': 'À venir'})
+    return TemplateResponse(request, 'catalogue/index.html', ctx)
 
 
 def catalogue_news(request):
-    products = new_products()
+    products_qs = new_products()
     # Custom details  
-    for product in products:
+    for product in products_qs:
         product = product_custom_details(product)
-    products = products_with_availability(
-        products, discounts=request.discounts, taxes=request.taxes,
-        local_currency=request.currency)
-    webpage_schema = get_webpage_schema(request)
+    
+    ctx = get_product_list_context_without_filter(request, products_qs)
 
-    return TemplateResponse(request, 'catalogue/index.html', {
-        'parent': None,
-        'products': products,
-        'webpage_schema': json.dumps(webpage_schema),
-        'subtitle': 'Nouveautés'})
+    return TemplateResponse(request, 'catalogue/index.html', ctx)

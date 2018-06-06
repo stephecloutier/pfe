@@ -3,7 +3,7 @@ from urllib.parse import urlencode
 
 from django.conf import settings
 from django.contrib.auth.models import AnonymousUser
-from django.db.models import F
+from django.db.models import F, Q
 
 from ...cart.utils import (
     get_cart_from_request, get_or_create_cart_from_request)
@@ -157,6 +157,23 @@ def get_product_list_context(request, filter_set):
         'sort_by_choices': SORT_BY_FIELDS,
         'now_sorted_by': now_sorted_by,
         'is_descending': is_descending}
+
+def get_product_list_context_without_filter(request, items):
+    """
+    :param request: request object
+    :return: context dictionary
+    """
+    products_paginated = get_paginator_items(
+        items, settings.PAGINATE_BY, request.GET.get('page'))  
+    for product in products_paginated.object_list:
+        product = product_custom_details(product)
+    products_and_availability = list(products_with_availability(
+        products_paginated, request.discounts, request.taxes,
+        request.currency))
+    return {
+        'products': products_and_availability,
+        'products_paginated': products_paginated,
+       }
 
 def get_product_list_sorted_context(request):
     """

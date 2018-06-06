@@ -1,5 +1,6 @@
 import ast
 import os.path
+import locale
 
 import dj_database_url
 import dj_email_url
@@ -304,7 +305,7 @@ MESSAGE_TAGS = {
 LOW_STOCK_THRESHOLD = 10
 MAX_CART_LINE_QUANTITY = int(os.environ.get('MAX_CART_LINE_QUANTITY', 50))
 
-PAGINATE_BY = 16
+PAGINATE_BY = 12
 DASHBOARD_PAGINATE_BY = 30
 DASHBOARD_SEARCH_LIMIT = 5
 
