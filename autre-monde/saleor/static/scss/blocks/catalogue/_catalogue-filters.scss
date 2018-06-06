@@ -85,7 +85,7 @@
     &--submit {
         background-color: $am-blue;
         text-indent: 0;
-        font-size: 1em;
+        font-size: 1rem;
     }
 }
 
@@ -274,7 +274,7 @@
             text-transform: uppercase;
             color: $am-blue;
             font-weight: 500;
-            font-size: 1.1rem;
+            font-size: 1.125rem;
             position: absolute;
             line-height: 1;
             top: calc(50% - 1.1rem / 2);
