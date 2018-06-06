@@ -63,6 +63,8 @@
 
 .product__short-desc {
     text-overflow: ellipsis;
+    word-wrap: break-word;
+    hyphens: auto;  
 }
 
 .product__arrow {
