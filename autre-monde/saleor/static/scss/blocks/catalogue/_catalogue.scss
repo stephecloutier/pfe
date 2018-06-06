@@ -5,6 +5,42 @@
     padding: 0 0 60px;
 }
 
+.catalogue__pagination {
+    margin-top: 50px;
+    font-family: $font-family-sans-serif;
+    .pagination {
+        list-style: none;
+        display: block;
+        text-align: center;
+
+        .page-item {
+            display: inline-block;
+            font-size: 0.85rem;
+
+            .page-link {
+            color: $am-blue;
+            padding: $global-padding / 2 $global-padding;
+            border: none;
+
+            &:hover {
+                text-decoration: none;
+                background-color: $light-blue-gray;
+            }
+        }
+            &.active {
+                a {
+                    background-color: $am-blue;
+                    color: $white;
+
+                    &:hover {
+                    color: $white;
+                    }
+                }
+            }
+        }
+    }
+}
+
 .catalogue__title {
     &--category {
         font-weight: 400;
