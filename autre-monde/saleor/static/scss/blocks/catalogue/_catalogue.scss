@@ -85,3 +85,9 @@
         left: -9999px;
     }
 }
+
+@media screen and (max-width: 350px) { 
+    .catalogue__content {
+        margin-top: 0;
+    }
+}

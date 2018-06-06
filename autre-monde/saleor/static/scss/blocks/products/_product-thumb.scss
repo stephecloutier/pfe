@@ -109,6 +109,7 @@
             max-height: none;
             position: relative;
             top: 0;
+            left: 0;
         }
     
         .product:hover, .product:focus {
@@ -117,4 +118,17 @@
             }
         }
     }
+}
+
+@media screen and (max-width: 350px) { 
+    .catalogue-products__item {
+        min-width: 100%;
+    }
+
+    // .product-thumb {
+    //     .product__more-infos {
+    //         left: 0;
+    //         bottom: 0;
+    //     }
+    // }
 }
