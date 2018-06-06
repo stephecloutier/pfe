@@ -158,6 +158,22 @@ def get_product_list_context(request, filter_set):
         'now_sorted_by': now_sorted_by,
         'is_descending': is_descending}
 
+def get_product_list_sorted_context(request):
+    """
+    :param request: request object
+    :return: context dictionary
+    """
+    # Avoiding circular dependency
+    from ..filters import SORT_BY_FIELDS
+    
+    now_sorted_by = get_now_sorted_by(filter_set) ##TO DO
+    arg_sort_by = request.GET.get('sort_by')
+    is_descending = arg_sort_by.startswith('-') if arg_sort_by else False
+    return {
+        'sort_by_choices': SORT_BY_FIELDS,
+        'now_sorted_by': now_sorted_by,
+        'is_descending': is_descending}
+
 
 def collections_visible_to_user(user):
     # pylint: disable=cyclic-import

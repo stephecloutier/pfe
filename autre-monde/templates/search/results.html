@@ -33,64 +33,61 @@
           </div>
           <div class="catalogue__right">
               {% block filters %}{% endblock filters %}
-              <div class="col-md-5">
-                  <h3 class="d-md-none float-left filters-toggle">
-                      {% trans 'Filters' context 'Filter heading title' %}
-                  </h3>
-                  <div class="sort-by">
-                      <div class="click-area d-none"></div>
-                      <button class="btn btn-link">
-                      <div>
-                          <span>
-                          {% if now_sorted_by == 'name' %}
-                              {% blocktrans trimmed %}
-                              Sort by: <b>name</b>
-                              {% endblocktrans %}
-                          {% elif now_sorted_by == 'price' %}
-                              {% blocktrans trimmed %}
-                              Sort by: <b>price</b>
-                              {% endblocktrans %}
-                          {% endif %}
-                          </span>
-                          <div class="sort-order-icon">
-                          {% if is_descending %}
-                              <svg data-src="{% static "images/arrow-down.svg" %}" />
-                          {% else %}
-                              <svg data-src="{% static "images/arrow-up.svg" %}" />
-                          {% endif %}
-                          </div>
-                      </div>
-                      </button>
-                      <ul class="sort-list d-none">
-                      {% for choice, label in sort_by_choices.items %}
-                          <li>
-                          <div class="row">
-                              <div class="col-6">
-                              {% trans 'Sort by' context 'Product list filters' %}:
-                              <strong>{{ label }}</strong>
-                              </div>
-                              <div class="col-6">
-                              <div>
-                                  <a href="{% get_sort_by_url choice %}">
-                                  <span>{% trans 'ascending' context 'sort by option' %}</span>
-                                  <div class="sort-order-icon float-right">
-                                      <img class="lazyload lazypreload" data-src="{% static "images/arrow-up.svg" %}">
-                                  </div>
-                                  </a>
-                                  <a href="{% get_sort_by_url choice descending=True %}">
-                                  <span>{% trans 'descending' context 'sort by option' %}</span>
-                                  <div class="sort-order-icon float-right">
-                                      <img class="lazyload lazypreload" data-src="{% static "images/arrow-down.svg" %}">
-                                  </div>
-                                  </a>
-                              </div>
-                              </div>
-                          </div>
-                          </li>
-                      {% endfor %}
-                      </ul>
-                  </div>
-              </div>
+              <!-- <div class="catalogue__sorting">
+                    <div class="sort-by">
+                        <div class="click-area d-none"></div>
+                        <button class="btn btn-link">
+                        <div>
+                            <span>
+                            {% if now_sorted_by == 'name' %}
+                                {% blocktrans trimmed %}
+                                Sort by: <b>name</b>
+                                {% endblocktrans %}
+                            {% elif now_sorted_by == 'price' %}
+                                {% blocktrans trimmed %}
+                                Sort by: <b>price</b>
+                                {% endblocktrans %}
+                            {% endif %}
+                            </span>
+                            <div class="sort-order-icon">
+                            {% if is_descending %}
+                                <svg data-src="{% static "images/arrow-down.svg" %}" />
+                            {% else %}
+                                <svg data-src="{% static "images/arrow-up.svg" %}" />
+                            {% endif %}
+                            </div>
+                        </div>
+                        </button>
+                        <ul class="sort-list d-none">
+                        {% for choice, label in sort_by_choices.items %}
+                            <li>
+                            <div class="row">
+                                <div class="col-6">
+                                <span class="catalogue__sorting__title">{% trans 'Sort by' context 'Product list filters' %}:</span>  
+                                <strong>{{ label }}</strong>
+                                </div>
+                                <div class="col-6">
+                                <div>
+                                    <a href="{% get_sort_by_url choice %}">
+                                    <span>{% trans 'ascending' context 'sort by option' %}</span>
+                                    <div class="sort-order-icon float-right">
+                                        <img class="lazyload lazypreload" data-src="{% static "images/arrow-up.svg" %}">
+                                    </div>
+                                    </a>
+                                    <a href="{% get_sort_by_url choice descending=True %}">
+                                    <span>{% trans 'descending' context 'sort by option' %}</span>
+                                    <div class="sort-order-icon float-right">
+                                        <img class="lazyload lazypreload" data-src="{% static "images/arrow-down.svg" %}">
+                                    </div>
+                                    </a>
+                                </div>
+                                </div>
+                            </div>
+                            </li>
+                        {% endfor %}
+                        </ul>
+                    </div>
+                </div> -->
               {% if query and results %}
               <section class="catalogue__products catalogue-products">
                   <h2 class="hidden">Produits du catalogue</h2>

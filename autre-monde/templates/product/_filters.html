@@ -2,7 +2,7 @@
 {% load staticfiles %}
 {% load shop %}
 
-<div id="am-catalogue-filters" class="catalogue__filters catalogue-filters">  
+<div id="am-catalogue-filters" class="catalogue__filters catalogue-filters--closed catalogue-filters">  
   <div id="am-catalogue-filters-title" class="catalogue-filters__title deploy-title">
       <div class="catalogue-filters__title-icon deploy-title__icon">
               <svg width="16" height="13" xmlns="http://www.w3.org/2000/svg"><path d="M8 13L0 0h16z" /></svg>
@@ -24,12 +24,10 @@
             {% elif field.name == 'price' %}
             {% else %}
             <li class="catalogue-filters__checkbox">
-            
                 <div class="filter-section__header">
                   <h3>{{ field.label }}</h3>
                 </div>
                 {{ field }}
-               
             </li>
             {% endif %}
           {% endfor %}

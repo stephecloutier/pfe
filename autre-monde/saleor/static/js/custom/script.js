@@ -19,7 +19,7 @@ if (topNavSearchBarLabel && !search.value) {
 }
 
 if (productSpecifications) productSpecifications.classList.add('single-product-specifications--closed');
-
+// if (catalogueFilters) catalogueFilters.classList.add('catalogue-filters--closed');
 
 const manageScroll = function() {
     let header = document.getElementById('am-main-bar');
@@ -83,7 +83,6 @@ const toggleCatalogueFilters = function() {
 }
 
 const toggleProductSpecifications = function() {
-    console.log(productSpecifications)
     productSpecifications.classList.toggle('single-product-specifications--closed');
 }
 

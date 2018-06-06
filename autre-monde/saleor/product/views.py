@@ -14,9 +14,10 @@ from ..cart.utils import set_cart_cookie
 from ..core.utils import serialize_decimal
 from ..seo.schema.product import product_json_ld
 from .filters import ProductCategoryFilter, ProductCollectionFilter, ProductFilter
+from ..dashboard.product.filters import ProductFilter as DashboardProductFilter
 from .models import Category, Collection, Product, ProductType
 from .utils import (
-    collections_visible_to_user, get_product_images, get_product_list_context,
+    collections_visible_to_user, get_product_images, get_product_list_context, get_product_list_sorted_context,
     handle_cart_form, products_for_cart, products_with_details, new_products, coming_soon_products,
     product_custom_details)
 from .utils.attributes import get_product_attributes_data
@@ -173,12 +174,15 @@ def category_list(request):
     products = products_with_availability(
         products, discounts=request.discounts, taxes=request.taxes,
         local_currency=request.currency)
-    
+
     webpage_schema = get_webpage_schema(request)
+
+    # ctx = get_product_list_sorted_context(request)
     return TemplateResponse(request, 'catalogue/index.html', {
             'parent': None,
             'products': products,
-            'webpage_schema': json.dumps(webpage_schema)})
+            'webpage_schema': json.dumps(webpage_schema),
+            })
 
 
 def catalogue_coming_soon(request):

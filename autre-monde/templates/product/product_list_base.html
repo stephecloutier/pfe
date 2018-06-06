@@ -67,6 +67,7 @@
         </div>
         <div class="catalogue__right">
             {% block filters %}{% endblock filters %}
+            {% block sorting %}
             <div class="catalogue__sorting">
                 <div class="sort-by">
                     <div class="click-area d-none"></div>
@@ -122,6 +123,7 @@
                     </ul>
                 </div>
             </div>
+            {% endblock sorting %}
             {% if products %}
             <section class="catalogue__products catalogue-products">
                 <h2 class="hidden">Produits du catalogue</h2>
