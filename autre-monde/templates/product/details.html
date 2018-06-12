@@ -157,7 +157,7 @@
       </div>
     
       <script type="application/ld+json">{{ json_ld_product_data|safe }}</script>
-      <div class="single-product__images product__gallery">
+      {% comment %} <div class="single-product__images product__gallery"> {% endcomment %}
           {% with images=product_images %}
             {% if images %}
               <div id="carousel-example-generic" class="carousel slide">
@@ -180,6 +180,7 @@
                     <svg data-src="{% static "images/gallery-arrow.svg" %}" />
                   </a>
                 {% endif %}
+                {% if images|length > 1 %}
                 <ol class="carousel-indicators d-none d-md-block">
                   {% for image in images %}
                     {% if images|length > 1 %}
@@ -193,6 +194,7 @@
                     {% endif %}
                   {% endfor %}
                 </ol>
+                {% endif %}
               </div>
             {% else %}
               <img data-src="{% placeholder size=500 %}"
@@ -201,7 +203,7 @@
                    class="img-fluid lazyload lazypreload">
             {% endif %}
           {% endwith %}
-      </div>
+      {% comment %} </div> {% endcomment %}
   </section>
   <div class="single-product__cta">
     <div class="single-product__cta__inner">
