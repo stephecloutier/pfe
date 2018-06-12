@@ -22,6 +22,17 @@
     }
 }
 
+.cta--white {
+    background-color: white;
+    color: $dark-blue;
+
+    &:hover, &:focus {
+        border-color: white;
+        background-color: $dark-blue;
+        color: white;
+    }
+}
+
 .cta--dark-blue {
     background-color: $dark-blue;
     color: white;

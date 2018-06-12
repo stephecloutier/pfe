@@ -204,6 +204,9 @@
       </div>
   </section>
   <div class="single-product__cta">
-    <a href="{{ product.get_contact_url }}">CTA</a>
+    <div class="single-product__cta__inner">
+        Des questions par rapport à ce produit&nbsp;?
+        <a title="Nous contacter à propos de ce produit" href="{{ product.get_contact_url }}#am-contact-form" class="single-product__cta-button cta cta--white">Nous contacter</a>
+    </div>
   </div>
 {% endblock %}

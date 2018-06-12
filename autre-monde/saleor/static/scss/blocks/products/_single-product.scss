@@ -1,6 +1,6 @@
 .single-product {
     max-width: $max-width;
-    margin: 0 auto 50px;
+    margin: 0 auto;
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
@@ -140,12 +140,42 @@
 }
 
 
+.single-product__cta {
+    margin-top: 30px;
+    background-color: $dark-blue;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 0;
+}
 
+.single-product__cta__inner {
+    max-width: $max-width;
+    margin: 0 auto;
+    font-weight: 600;
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.single-product__cta-button {
+    box-shadow: none;
+    margin-top: 20px;
+}
 
 @media screen and (max-width: 1220px) {
 
     .single-product {
         padding: 0 10px;
+    }
+
+    .single-product__cta__inner {
+        padding: 0 20px;
     }
 }
 
