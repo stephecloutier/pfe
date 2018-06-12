@@ -79,7 +79,6 @@
 
     <section class="about__contact">
         <h3 class="about__contact__title second-title">Des questions ou remarques&nbsp;?</h3>
-
         <form id="am-contact-form" class="about__form" action="{% url 'about:send-contact-email' %}" method="post">
             {% csrf_token %}
             <div class="about__form__inner">
@@ -94,12 +93,22 @@
                     </div>
                     <div class="about__form__person__question">
                         <label for="subject" class="about__form__label">Sujet *</label>
-                        <input class="about__form__input" required="required" type="text" id="subject" name="subject" placeholder="Question sur les précommandes">
+                        <input class="about__form__input" 
+                               required="required" 
+                               type="text" id="subject" 
+                               name="subject" 
+                               placeholder="Question sur les précommandes"
+                               value="{% if product_slug and product_id %} Demande pour le produit '{{ product_slug }} - {{ product_id }}' {% endif %}">
                     </div>
                 </div>
                 <div class="about__form__message">
                     <label class="about__form__label" for="message">Message *</label>
-                    <textarea class="about__form__message__input" name="message" id="message" cols="30" rows="10"></textarea>
+                    <textarea 
+                        required="required"
+                        class="about__form__message__input" 
+                        name="message" id="message" 
+                        cols="30" 
+                        rows="10">{% if product_slug and product_id %}En ce qui concerne le produit "{{ product_slug }} - {{ product_id }}", j'aimerais avoir des informations supplémentaires...{% endif %}</textarea>
                 </div>
             </div>
             <input class="about__form__submit cta cta--pink" type="submit" value="Envoyer">

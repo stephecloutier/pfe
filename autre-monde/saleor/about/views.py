@@ -3,9 +3,19 @@ from django.template.response import TemplateResponse
 from templated_email import send_templated_mail
 from django.conf import settings
 
+from pprint import pprint
+
 # Create your views here.
 def about(request):
     return TemplateResponse(request, 'about/about.html')
+
+def about_cta_contact(request, product_slug, product_id):
+    ctx = {
+        'product_slug': product_slug,
+        'product_id': product_id
+    }
+    pprint(ctx)
+    return TemplateResponse(request, 'about/about.html', ctx)
 
 def send_contact_email(request):
     send_templated_mail(

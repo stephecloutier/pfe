@@ -179,6 +179,12 @@ class Product(SeoModel):
         price = apply_tax_to_price(taxes, tax_rate, price)
         return TaxedMoneyRange(start=price, stop=price)
 
+    def get_contact_url(self):
+        return reverse(
+            'about:about-contact',
+            kwargs={'product_slug': self.get_slug(), 'product_id': self.id})
+
+
 
 class ProductVariant(models.Model):
     sku = models.CharField(max_length=32, unique=True)
