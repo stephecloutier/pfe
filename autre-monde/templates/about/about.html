@@ -15,7 +15,6 @@
 {% block content %}
 <section class="about">
     <h2 class="about__title main-title">Plus d'infos</h2>
-
     <div class="about__description">
         <div class="about__description__inner">
             <span class="about__description__title">L'Autre Monde</span>
@@ -85,11 +84,24 @@
                 <div class="about__form__person">
                     <div class="about__form__person__question">
                         <label for="name" class="about__form__label">Nom *</label>
-                        <input required="required" class="about__form__input" type="text" id="name" name="name" placeholder="Jean Valjean">
+                        <input 
+                            required="required" 
+                            class="about__form__input" 
+                            type="text" id="name" 
+                            name="name" 
+                            placeholder="Jean Valjean"
+                            value="{% if user.is_authenticated %}{{ user.first_name }} {{ user.last_name }}{% endif %}">
                     </div>
                     <div class="about__form__person__question">
                         <label for="mail" class="about__form__label">Adresse email *</label>
-                        <input class="about__form__input" required="required" type="email" id="mail" name="mail" placeholder="jeanvaljean@mail.com">
+                        <input 
+                            class="about__form__input" 
+                            required="required" 
+                            type="email" 
+                            id="mail" 
+                            name="mail" 
+                            placeholder="jeanvaljean@mail.com"
+                            value="{% if user.is_authenticated %}{{ user }}{% endif %}">
                     </div>
                     <div class="about__form__person__question">
                         <label for="subject" class="about__form__label">Sujet *</label>
