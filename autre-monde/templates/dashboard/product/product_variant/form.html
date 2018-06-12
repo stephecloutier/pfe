@@ -82,9 +82,6 @@
                 <div class="row">
                   {{ form.product_reference_override|materializecss }}
                 </div>
-                <div class="row">
-                  {{ form.product_content_override|materializecss }}
-                </div>
                 <p class="card-title">{% trans "Attributes" %}</p>
                 {% for attribute_field in form.iter_attribute_fields %}
                   <div class="row attribute-select-or-create">

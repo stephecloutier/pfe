@@ -119,7 +119,6 @@ class Product(SeoModel):
     distributor = models.CharField(max_length=32)
     product_reference = models.CharField(max_length=32, blank=True, null=True)
     on_order = models.BooleanField(default=False)
-    content = models.TextField(blank=True, null=True)
 
     class Meta:
         app_label = 'product'
@@ -201,7 +200,6 @@ class ProductVariant(models.Model):
     ean = models.CharField(max_length=13, validators=[validate_ean])
     distributor_override = models.CharField(max_length=32, blank=True, null=True)
     product_reference_override = models.CharField(max_length=32, blank=True, null=True)
-    product_content_override = models.TextField(blank=True, null=True)
 
     class Meta:
         app_label = 'product'
@@ -216,10 +214,6 @@ class ProductVariant(models.Model):
     @property
     def the_product_reference(self):
         return self.product_reference_override or self.product.product_reference
-
-    @property
-    def the_content(self):
-        return self.product_content_override or self.product.content
 
     @property
     def quantity_available(self):

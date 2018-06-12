@@ -136,7 +136,7 @@
               </dl>              
           </div>
           
-          {% if product_attributes.items or product.content %}
+          {% if product_attributes.items %}
           <div id="am-product-specifications" class="single-product__specifications single-product-specifications">
               <div id="am-product-specifications-title" class="single-product-specifications__title deploy-title">
                   <svg class="single-product-specifications__title__icon deploy-title__icon" width="16" height="13" xmlns="http://www.w3.org/2000/svg"><path d="M8 13L0 0h16z" /></svg>
@@ -151,15 +151,6 @@
                       </div>
                       {% endfor %}
                   </dl>
-                  {% if product.content %}
-                  <div class="single-product-specifications__content">
-                      <span class="single-product-specifications__content__title">Contenu</span>
-                      <ul class="single-product-specifications__content__list">
-                          {{ product.content|safe }}
-                          {% comment %} <li class="single-product-specifications__content__item">1 figurine shaman</li> {% endcomment %}
-                      </ul>
-                  </div>
-                  {% endif %}
               </div>
           </div>
           {% endif %}
